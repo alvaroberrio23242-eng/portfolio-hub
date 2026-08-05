@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Álvaro Berrío — Archivo de proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0D12;
+    --surface: #13161D;
+    --surface-2: #1B1F29;
+    --line: #262B36;
+    --text: #EDEAE2;
+    --muted: #8A8F9C;
+    --amber: #E3A24C;
+    --teal: #46D7C0;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 40px 0 0;
+  }
+  .mark{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .mark strong{ color: var(--text); font-weight: 600; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 70px 0 50px;
+  }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 22px;
+  }
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+  }
+  h1 em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--amber);
+  }
+  .lead{
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* ---------- Waveform signature ---------- */
+  .wave{
+    display:flex;
+    align-items:flex-end;
+    gap: 4px;
+    height: 46px;
+    margin: 46px 0 8px;
+    overflow: hidden;
+  }
+  .wave span{
+    flex: 1 1 auto;
+    max-width: 6px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--amber), var(--teal));
+    opacity: .55;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%, 100% { transform: scaleY(var(--h1, .3)); }
+    50% { transform: scaleY(var(--h2, 1)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wave span{ animation: none; transform: scaleY(.6); }
+  }
+
+  /* ---------- Index label ---------- */
+  .index-label{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin: 60px 0 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .index-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+
+  /* ---------- Project cards ---------- */
+  .cards{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 90px;
+  }
+
+  .card{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .card.open{
+    border-color: var(--card-accent, var(--amber));
+    background: var(--surface-2);
+  }
+
+  .card-head{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    gap: 22px;
+    padding: 22px 24px;
+    background: none;
+    border: none;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+  }
+  .num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--card-accent, var(--amber));
+    flex: 0 0 auto;
+    width: 34px;
+  }
+  .card-title-wrap{ flex: 1 1 auto; min-width: 0; }
+  .card-title{
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .card-tag{
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .chevron{
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    color: var(--muted);
+    transition: transform .3s ease;
+  }
+  .card.open .chevron{ transform: rotate(135deg); color: var(--card-accent, var(--amber)); }
+
+  .card-body{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+  .card.open .card-body{ max-height: 2200px; }
+
+  .card-body-inner{
+    padding: 4px 24px 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+
+  .desc{
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 20px;
+    max-width: 62ch;
+  }
+
+  .feature-list{
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    display: grid;
+    gap: 9px;
+  }
+  .feature-list li{
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feature-list li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color: var(--card-accent, var(--amber));
+  }
+
+  .pills{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .pill{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* ---------- Live embed (SalsaQuest) ---------- */
+  .embed-frame{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: #05070a;
+  }
+  .embed-frame iframe{
+    width: 100%;
+    height: 520px;
+    border: 0;
+    display: block;
+  }
+  .embed-caption{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- Terminal mock (OSINT) ---------- */
+  .terminal{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #05070a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    overflow: hidden;
+  }
+  .terminal-bar{
+    display:flex;
+    gap: 6px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .terminal-bar span{
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--line);
+  }
+  .terminal pre{
+    margin: 0;
+    padding: 16px 18px 20px;
+    line-height: 1.7;
+    color: #B9F5E8;
+    white-space: pre-wrap;
+  }
+  .terminal pre .muted2{ color: var(--muted); }
+  .terminal pre .accent{ color: var(--teal); }
+
+  /* ---------- File tree mock (EduPack) ---------- */
+  .filetree{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #05070a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 16px 18px 18px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .filetree .folder{ color: var(--text); }
+  .filetree .file{ color: var(--amber); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 30px 0 50px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 560px){
+    .card-head{ padding: 18px; gap: 14px; }
+    .card-body-inner{ padding: 4px 18px 24px; padding-top: 20px; }
+    .embed-frame iframe{ height: 420px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="mark">
+    <span><strong>Álvaro Berrío</strong> — desarrollador</span>
+    <span>Ago 2026</span>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <p class="eyebrow">Archivo de proyectos</p>
+  <h1>Del compás cubano<br><em>al código abierto.</em></h1>
+  <p class="lead">
+    Construyo herramientas de software en dos frecuencias: la que documenta y difunde
+    la cultura salsera, y la que investiga y organiza información en la red.
+    Estas son las últimas tres fichas del archivo.
+  </p>
+
+  <div class="wave" id="wave" aria-hidden="true"></div>
+</section>
+
+<main class="wrap">
+  <div class="index-label" id="index-label">Índice</div>
+
+  <div class="cards">
+
+    <!-- FICHA 01 — SalsaQuest -->
+    <article class="card" style="--card-accent: var(--amber);">
+      <button class="card-head" aria-expanded="false">
+        <span class="num">01</span>
+        <span class="card-title-wrap">
+          <p class="card-title">SalsaQuest | Son Havana</p>
+          <p class="card-tag">Agenda viva de música y cultura cubana en La Habana</p>
+        </span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Plataforma web para descubrir dónde suena la música en vivo en La Habana:
+            agenda semanal de bandas y locales con direcciones verificadas por varias
+            fuentes, y una guía interactiva de instrumentos afrocubanos donde cada
+            clic despliega su ficha completa.
+          </p>
+          <ul class="feature-list">
+            <li>Agenda de música en vivo, actualizada semana a semana</li>
+            <li>Direcciones y horarios verificados por varias fuentes</li>
+            <li>Guía interactiva de instrumentos con ficha detallada por clic</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Aplicación web</span>
+            <span class="pill">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://salsaquest-1.onrender.com/" loading="lazy" title="Vista en vivo de SalsaQuest | Son Havana" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FICHA 02 — EduPack Builder -->
+    <article class="card" style="--card-accent: var(--amber);">
+      <button class="card-head" aria-expanded="false">
+        <span class="num">02</span>
+        <span class="card-title-wrap">
+          <p class="card-title">EduPack Builder</p>
+          <p class="card-tag">Kit pedagógico y recolector multimedia sobre cultura salsera</p>
+        </span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Suite de herramientas en Python que automatiza la recopilación de recursos
+            multimedia con licencias abiertas — Wikimedia Commons, CC-BY, CC0, dominio
+            público — y empaqueta material didáctico sobre la cultura de la salsa en
+            Medellín: guías docentes, trivias interactivas y dinámicas de clase, listas
+            en un archivo ZIP para el aula.
+          </p>
+          <ul class="feature-list">
+            <li>Genera guías docentes, trivias y dinámicas de clase automáticamente</li>
+            <li>Busca y filtra imágenes con licencias reutilizables en APIs públicas</li>
+            <li>Empaqueta todo en ZIP, listo para distribución educativa</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Herramienta de línea de comandos</span>
+            <span class="pill" style="border-color: var(--amber); color: var(--amber);">Vista previa — código en desarrollo</span>
+          </div>
+          <div class="filetree">
+            <div class="folder">EduPack_Builder/</div>
+            <div>&nbsp;&nbsp;├── <span class="file">descargar_salsa_filtrado.py</span> <span style="opacity:.6">— búsqueda y descarga de imágenes libres</span></div>
+            <div>&nbsp;&nbsp;├── <span class="file">generar_unidad_educativa_son_havana.py</span> <span style="opacity:.6">— generador de la unidad pedagógica</span></div>
+            <div>&nbsp;&nbsp;└── <span class="file">requirements.txt</span></div>
+          </div>
+          <p style="font-family:'JetBrains Mono', monospace; font-size:11px; color: var(--muted); margin: 12px 0 0;">
+            ↳ Estructura planeada del proyecto, según su documentación. El código todavía se está terminando de subir.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- FICHA 03 — OSINT Search Pro -->
+    <article class="card" style="--card-accent: var(--teal);">
+      <button class="card-head" aria-expanded="false">
+        <span class="num">03</span>
+        <span class="card-title-wrap">
+          <p class="card-title">OSINT Search Pro</p>
+          <p class="card-tag">Plataforma de inteligencia de fuentes abiertas</p>
+        </span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Plataforma construida con Python y Flask para investigadores, analistas de
+            ciberseguridad y periodistas que necesitan reunir información pública desde
+            distintas fuentes de internet. Hoy centraliza la búsqueda vía DuckDuckGo con
+            una interfaz oscura y resultados organizados; el roadmap suma más motores
+            y herramientas de inteligencia.
+          </p>
+          <ul class="feature-list">
+            <li>Búsqueda vía DuckDuckGo con resultados organizados por relevancia</li>
+            <li>Interfaz web oscura, construida en Flask</li>
+            <li>En camino: WHOIS, geolocalización IP, VirusTotal, exportación a PDF/Excel</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Flask</span>
+            <span class="pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://osint-search-pro.onrender.com/" loading="lazy" title="Vista en vivo de OSINT Search Pro" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!--
+      ══════════════════════════════════════════════════════════════
+      PLANTILLA PARA AGREGAR UN NUEVO PROYECTO
+      Copia el bloque de abajo (quitando los comentarios <!-- --> ),
+      pégalo justo antes de </div> que cierra .cards, y completa:
+
+        1. --card-accent: usa var(--amber) o var(--teal)
+           (o define un tercer acento en :root si hace falta)
+        2. <span class="num">04</span>            → siguiente número
+        3. <p class="card-title">…</p>            → nombre del proyecto
+        4. <p class="card-tag">…</p>              → una línea, qué hace
+        5. <p class="desc">…</p>                  → párrafo descriptivo
+        6. <ul class="feature-list">…</ul>        → 2 a 4 puntos clave
+        7. <span class="pill">…</span>            → tecnologías / estado
+        8. Elige UNO de los tres bloques de "vista":
+           - .embed-frame  → si el proyecto tiene demo en vivo (iframe)
+           - .terminal     → si es una herramienta de línea de comandos
+           - .filetree     → si quieres mostrar su estructura de archivos
+           (copia ese bloque de cualquiera de las 3 fichas existentes)
+
+      <article class="card" style="--card-accent: var(--amber);">
+        <button class="card-head" aria-expanded="false">
+          <span class="num">04</span>
+          <span class="card-title-wrap">
+            <p class="card-title">Nombre del proyecto</p>
+            <p class="card-tag">Una línea que resume qué hace</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="desc">Descripción del proyecto…</p>
+            <ul class="feature-list">
+              <li>Característica clave 1</li>
+              <li>Característica clave 2</li>
+            </ul>
+            <div class="pills">
+              <span class="pill">Tecnología</span>
+            </div>
+            <!-- vista: embed-frame / terminal / filetree -->
+          </div>
+        </div>
+      </article>
+      ══════════════════════════════════════════════════════════════
+    -->
+
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Álvaro Berrío</span>
+  <span>Archivo actualizado en agosto de 2026</span>
+</footer>
+
+<script>
+  // Waveform bars
+  const wave = document.getElementById('wave');
+  const BAR_COUNT = 60;
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('span');
+    const h1 = (0.15 + Math.random() * 0.35).toFixed(2);
+    const h2 = (0.5 + Math.random() * 0.5).toFixed(2);
+    bar.style.setProperty('--h1', h1);
+    bar.style.setProperty('--h2', h2);
+    bar.style.animationDelay = (Math.random() * 2.6).toFixed(2) + 's';
+    wave.appendChild(bar);
+  }
+
+  // Índice — se actualiza solo según cuántas fichas .card haya en el HTML
+  const cards = document.querySelectorAll('.card');
+  document.getElementById('index-label').textContent =
+    'Índice · ' + String(cards.length).padStart(2, '0') + ' fichas';
+
+  // Accordion — single open at a time, no external navigation
+  cards.forEach(card => {
+    const head = card.querySelector('.card-head');
+    head.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      cards.forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.card-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        head.setAttribute('aria-expanded', 'true');
+        setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
+      }
+    });
+  });
+
+  // Open first card by default
+  cards[0].classList.add('open');
+  cards[0].querySelector('.card-head').setAttribute('aria-expanded', 'true');
+</script>
+
+</body>
+</html>
