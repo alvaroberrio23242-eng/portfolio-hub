@@ -17,7 +17,6 @@
     --muted: #8A8F9C;
     --amber: #E3A24C;
     --teal: #46D7C0;
-    --magenta: #E34C9E;
   }
 
   *{ box-sizing: border-box; }
@@ -25,32 +24,10 @@
 
   body{
     margin:0;
-    background: transparent;
+    background: var(--bg);
     color: var(--text);
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-  }
-
-  /* ---------- Fondo de video fijo ---------- */
-  .video-bg-container{
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -3;
-    background-color: var(--bg); /* respaldo mientras carga o si falla */
-  }
-  #video-bg{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .video-bg-overlay{
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background: rgba(11, 13, 18, 0.72); /* mismo tono que --bg, para que las tarjetas sigan legibles */
   }
 
   a{ color: inherit; }
@@ -78,7 +55,24 @@
 
   /* ---------- Hero ---------- */
   .hero{
+    position: relative;
     padding: 70px 0 50px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+  .hero-video-overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.94) 70%, var(--bg));
+    z-index: -1;
   }
   .eyebrow{
     font-family: 'JetBrains Mono', monospace;
@@ -366,13 +360,6 @@
 </head>
 <body>
 
-<div class="video-bg-container">
-  <video id="video-bg" autoplay muted loop playsinline poster="portfolio-poster.jpg">
-    <source src="portfolio-bg.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="video-bg-overlay"></div>
-
 <header class="wrap">
   <div class="mark">
     <span><strong>Álvaro Berrío</strong> — desarrollador</span>
@@ -380,7 +367,12 @@
   </div>
 </header>
 
-<section class="hero wrap">
+<section class="hero">
+ <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+    <source src="hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="wrap">
   <p class="eyebrow">Archivo de proyectos</p>
   <h1>Del compás cubano<br><em>al código abierto.</em></h1>
   <p class="lead">
@@ -390,6 +382,7 @@
   </p>
 
   <div class="wave" id="wave" aria-hidden="true"></div>
+  </div>
 </section>
 
 <main class="wrap">
@@ -402,7 +395,7 @@
       <button class="card-head" aria-expanded="false">
         <span class="num">01</span>
         <span class="card-title-wrap">
-          <p class="card-title">SalsaQuest</p>
+          <p class="card-title">SalsaQuest | Son Havana</p>
           <p class="card-tag">Agenda viva de música y cultura cubana en La Habana</p>
         </span>
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -425,7 +418,7 @@
             <span class="pill">En producción</span>
           </div>
           <div class="embed-frame">
-            <iframe src="https://salsaquest-1.onrender.com/" loading="lazy" title="Vista en vivo de SalsaQuest" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <iframe src="https://salsaquest-1.onrender.com/" loading="lazy" title="Vista en vivo de SalsaQuest | Son Havana" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
             <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
           </div>
         </div>
@@ -511,51 +504,15 @@
       </div>
     </article>
 
-    <!-- FICHA 04 — RockQuest -->
-    <article class="card" style="--card-accent: var(--magenta);">
-      <button class="card-head" aria-expanded="false">
-        <span class="num">04</span>
-        <span class="card-title-wrap">
-          <p class="card-title">RockQuest</p>
-          <p class="card-tag">Enciclopedia interactiva de la historia del rock</p>
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="card-body">
-        <div class="card-body-inner">
-          <p class="desc">
-            Aplicación web construida con Python, Flask y SQLAlchemy que recorre la
-            historia del rock: décadas, línea de tiempo, subgéneros, bandas y artistas
-            reales cargados en base de datos, y una trivia interactiva — todo con
-            fondo de video rotativo y estética neón.
-          </p>
-          <ul class="feature-list">
-            <li>Bandas y artistas reales en base de datos, cruzados por década y subgénero</li>
-            <li>Línea del tiempo con hitos puntuales de la historia del rock</li>
-            <li>Trivia interactiva sin fricción, sin registro ni puntaje guardado</li>
-          </ul>
-          <div class="pills">
-            <span class="pill">Python</span>
-            <span class="pill">Flask</span>
-            <span class="pill" style="border-color: var(--magenta); color: var(--magenta);">En producción</span>
-          </div>
-          <div class="embed-frame">
-            <iframe src="https://rockquest.onrender.com/" loading="lazy" title="Vista en vivo de RockQuest" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
-          </div>
-        </div>
-      </div>
-    </article>
-
     <!--
       ══════════════════════════════════════════════════════════════
       PLANTILLA PARA AGREGAR UN NUEVO PROYECTO
-      Copia el bloque de abajo (quitando las etiquetas de comentario que lo rodean),
+      Copia el bloque de abajo (quitando los comentarios <!-- --> ),
       pégalo justo antes de </div> que cierra .cards, y completa:
 
         1. --card-accent: usa var(--amber) o var(--teal)
            (o define un tercer acento en :root si hace falta)
-        2. <span class="num">05</span>            → siguiente número
+        2. <span class="num">04</span>            → siguiente número
         3. <p class="card-title">…</p>            → nombre del proyecto
         4. <p class="card-tag">…</p>              → una línea, qué hace
         5. <p class="desc">…</p>                  → párrafo descriptivo
@@ -569,7 +526,7 @@
 
       <article class="card" style="--card-accent: var(--amber);">
         <button class="card-head" aria-expanded="false">
-          <span class="num">05</span>
+          <span class="num">04</span>
           <span class="card-title-wrap">
             <p class="card-title">Nombre del proyecto</p>
             <p class="card-tag">Una línea que resume qué hace</p>
