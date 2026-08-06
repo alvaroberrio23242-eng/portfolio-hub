@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -62,18 +61,18 @@
     overflow: hidden;
     isolation: isolate;
   }
-  .hero-video{
-    position: absolute;
+  .site-bg-video{
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -2;
   }
-  .hero-video-overlay{
-    position: absolute;
+  .site-bg-overlay{
+    position: fixed;
     inset: 0;
-    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.94) 70%, var(--bg));
+    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.9));
     z-index: -1;
   }
   .eyebrow{
@@ -362,6 +361,11 @@
 </head>
 <body>
 
+<video class="site-bg-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+  <source src="hero-bg.mp4" type="video/mp4">
+</video>
+<div class="site-bg-overlay"></div>
+
 <header class="wrap">
   <div class="mark">
     <span><strong>Álvaro Berrío</strong> — desarrollador</span>
@@ -370,10 +374,6 @@
 </header>
 
 <section class="hero">
- <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
-    <source src="hero-bg.mp4" type="video/mp4">
-  </video>
-  <div class="hero-video-overlay"></div>
   <div class="wrap">
   <p class="eyebrow">Archivo de proyectos</p>
   <h1>Del compás cubano<br><em>al código abierto.</em></h1>
