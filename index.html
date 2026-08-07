@@ -410,7 +410,7 @@
   <h1>Del compás cubano<br><em>al código abierto.</em></h1>
   <p class="lead">
     Construyo herramientas de software en dos frecuencias: la que documenta y difunde
-    la cultura salsera, y la que investiga y organiza información en la red.
+    la cultura general, y la que investiga y organiza información en la red.
     Estas son las últimas tres fichas del archivo.
   </p>
 
@@ -468,7 +468,7 @@
           <span class="num">02</span>
           <span class="card-title-wrap">
             <p class="card-title">EduPack Builder</p>
-            <p class="card-tag">Kit pedagógico y recolector multimedia sobre cultura salsera</p>
+            <p class="card-tag">App web que arma paquetes educativos sobre cualquier tema</p>
           </span>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -477,31 +477,27 @@
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
-            Suite de herramientas en Python que automatiza la recopilación de recursos
-            multimedia con licencias abiertas — Wikimedia Commons, CC-BY, CC0, dominio
-            público — y empaqueta material didáctico sobre la cultura de la salsa en
-            Medellín: guías docentes, trivias interactivas y dinámicas de clase, listas
-            en un archivo ZIP para el aula.
+            Aplicación web en Flask para armar paquetes educativos completos sobre
+            cualquier tema: guía docente, trivia interactiva, imágenes, videos,
+            repositorios de código y artículos — todo buscado y filtrado por licencia
+            abierta (Wikimedia Commons, Openverse, GitHub, Wikipedia), y empaquetado
+            en un .zip listo para el aula.
           </p>
           <ul class="feature-list">
-            <li>Genera guías docentes, trivias y dinámicas de clase automáticamente</li>
-            <li>Busca y filtra imágenes con licencias reutilizables en APIs públicas</li>
-            <li>Empaqueta todo en ZIP, listo para distribución educativa</li>
+            <li>Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive</li>
+            <li>Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema</li>
+            <li>Genera la guía docente y la trivia a partir de lo que tú escribes en el formulario</li>
+            <li>Empaqueta todo en un .zip descargable, listo para distribución educativa</li>
           </ul>
           <div class="pills">
             <span class="pill">Python</span>
-            <span class="pill">Herramienta de línea de comandos</span>
-            <span class="pill" style="border-color: var(--amber); color: var(--amber);">Vista previa — código en desarrollo</span>
+            <span class="pill">Flask</span>
+            <span class="pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
           </div>
-          <div class="filetree">
-            <div class="folder">EduPack_Builder/</div>
-            <div>&nbsp;&nbsp;├── <span class="file">descargar_salsa_filtrado.py</span> <span style="opacity:.6">— búsqueda y descarga de imágenes libres</span></div>
-            <div>&nbsp;&nbsp;├── <span class="file">generar_unidad_educativa_son_havana.py</span> <span style="opacity:.6">— generador de la unidad pedagógica</span></div>
-            <div>&nbsp;&nbsp;└── <span class="file">requirements.txt</span></div>
+          <div class="embed-frame">
+            <iframe src="https://edupack-builder.onrender.com" loading="lazy" title="Vista en vivo de EduPack Builder" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
           </div>
-          <p style="font-family:'JetBrains Mono', monospace; font-size:11px; color: var(--muted); margin: 12px 0 0;">
-            ↳ Estructura planeada del proyecto, según su documentación. El código todavía se está terminando de subir.
-          </p>
         </div>
       </div>
     </article>
