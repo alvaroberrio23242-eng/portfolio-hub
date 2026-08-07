@@ -172,14 +172,42 @@
     width: 100%;
     display:flex;
     align-items: center;
-    gap: 22px;
+    gap: 10px;
     padding: 22px 24px;
+  }
+  .card-toggle{
+    flex: 1 1 auto;
+    min-width: 0;
+    display:flex;
+    align-items: center;
+    gap: 22px;
     background: none;
     border: none;
     color: inherit;
     text-align: left;
     cursor: pointer;
     font: inherit;
+    padding: 0;
+  }
+  .card-link{
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .03em;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--card-accent, var(--line));
+    color: var(--card-accent, var(--text));
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .2s ease, color .2s ease;
+  }
+  .card-link:hover{
+    background: var(--card-accent, var(--amber));
+    color: var(--bg);
   }
   .num{
     font-family: 'JetBrains Mono', monospace;
@@ -353,7 +381,10 @@
   }
 
   @media (max-width: 560px){
-    .card-head{ padding: 18px; gap: 14px; }
+    .card-head{ padding: 18px; gap: 10px; }
+    .card-toggle{ gap: 14px; }
+    .card-link{ padding: 8px 10px; font-size: 0; }
+    .card-link::before{ content: "↗"; font-size: 14px; }
     .card-body-inner{ padding: 4px 18px 24px; padding-top: 20px; }
     .embed-frame iframe{ height: 420px; }
   }
@@ -394,14 +425,17 @@
 
     <!-- FICHA 01 — SalsaQuest -->
     <article class="card" style="--card-accent: var(--amber);">
-      <button class="card-head" aria-expanded="false">
-        <span class="num">01</span>
-        <span class="card-title-wrap">
-          <p class="card-title">SalsaQuest | Son Havana</p>
-          <p class="card-tag">Agenda viva de música y cultura cubana en La Habana</p>
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">01</span>
+          <span class="card-title-wrap">
+            <p class="card-title">SalsaQuest | Son Havana</p>
+            <p class="card-tag">Agenda viva de música y cultura cubana en La Habana</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://salsaquest-1.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
@@ -429,14 +463,17 @@
 
     <!-- FICHA 02 — EduPack Builder -->
     <article class="card" style="--card-accent: var(--amber);">
-      <button class="card-head" aria-expanded="false">
-        <span class="num">02</span>
-        <span class="card-title-wrap">
-          <p class="card-title">EduPack Builder</p>
-          <p class="card-tag">Kit pedagógico y recolector multimedia sobre cultura salsera</p>
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">02</span>
+          <span class="card-title-wrap">
+            <p class="card-title">EduPack Builder</p>
+            <p class="card-tag">Kit pedagógico y recolector multimedia sobre cultura salsera</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://edupack-builder.onrender.com" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
@@ -471,14 +508,17 @@
 
     <!-- FICHA 03 — OSINT Search Pro -->
     <article class="card" style="--card-accent: var(--teal);">
-      <button class="card-head" aria-expanded="false">
-        <span class="num">03</span>
-        <span class="card-title-wrap">
-          <p class="card-title">OSINT Search Pro</p>
-          <p class="card-tag">Plataforma de inteligencia de fuentes abiertas</p>
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">03</span>
+          <span class="card-title-wrap">
+            <p class="card-title">OSINT Search Pro</p>
+            <p class="card-tag">Plataforma de inteligencia de fuentes abiertas</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://osint-search-pro.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
@@ -508,14 +548,17 @@
 
     <!-- FICHA 04 — RockQuest -->
     <article class="card" style="--card-accent: var(--magenta);">
-      <button class="card-head" aria-expanded="false">
-        <span class="num">04</span>
-        <span class="card-title-wrap">
-          <p class="card-title">RockQuest</p>
-          <p class="card-tag">Enciclopedia interactiva de la historia del rock</p>
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">04</span>
+          <span class="card-title-wrap">
+            <p class="card-title">RockQuest</p>
+            <p class="card-tag">Enciclopedia interactiva de la historia del rock</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://rockquest.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
@@ -545,7 +588,7 @@
     <!--
       ══════════════════════════════════════════════════════════════
       PLANTILLA PARA AGREGAR UN NUEVO PROYECTO
-      Copia el bloque de abajo (quitando los comentarios <!-- --> ),
+      Copia el bloque de abajo (quitando las etiquetas de comentario que lo envuelven),
       pégalo justo antes de </div> que cierra .cards, y completa:
 
         1. --card-accent: usa var(--amber) o var(--teal)
@@ -556,21 +599,25 @@
         5. <p class="desc">…</p>                  → párrafo descriptivo
         6. <ul class="feature-list">…</ul>        → 2 a 4 puntos clave
         7. <span class="pill">…</span>            → tecnologías / estado
-        8. Elige UNO de los tres bloques de "vista":
+        8. href del <a class="card-link">          → URL en vivo del proyecto
+        9. Elige UNO de los tres bloques de "vista":
            - .embed-frame  → si el proyecto tiene demo en vivo (iframe)
            - .terminal     → si es una herramienta de línea de comandos
            - .filetree     → si quieres mostrar su estructura de archivos
            (copia ese bloque de cualquiera de las 3 fichas existentes)
 
       <article class="card" style="--card-accent: var(--amber);">
-        <button class="card-head" aria-expanded="false">
-          <span class="num">05</span>
-          <span class="card-title-wrap">
-            <p class="card-title">Nombre del proyecto</p>
-            <p class="card-tag">Una línea que resume qué hace</p>
-          </span>
-          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
+        <div class="card-head">
+          <button class="card-toggle" aria-expanded="false">
+            <span class="num">05</span>
+            <span class="card-title-wrap">
+              <p class="card-title">Nombre del proyecto</p>
+              <p class="card-tag">Una línea que resume qué hace</p>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <a class="card-link" href="https://tu-app-en-vivo.com" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+        </div>
         <div class="card-body">
           <div class="card-body-inner">
             <p class="desc">Descripción del proyecto…</p>
@@ -581,7 +628,7 @@
             <div class="pills">
               <span class="pill">Tecnología</span>
             </div>
-            <!-- vista: embed-frame / terminal / filetree -->
+            [ vista: embed-frame / terminal / filetree ]
           </div>
         </div>
       </article>
@@ -617,16 +664,16 @@
 
   // Accordion — single open at a time, no external navigation
   cards.forEach(card => {
-    const head = card.querySelector('.card-head');
-    head.addEventListener('click', () => {
+    const toggle = card.querySelector('.card-toggle');
+    toggle.addEventListener('click', () => {
       const isOpen = card.classList.contains('open');
       cards.forEach(c => {
         c.classList.remove('open');
-        c.querySelector('.card-head').setAttribute('aria-expanded', 'false');
+        c.querySelector('.card-toggle').setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
         card.classList.add('open');
-        head.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-expanded', 'true');
         setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
       }
     });
@@ -634,7 +681,7 @@
 
   // Open first card by default
   cards[0].classList.add('open');
-  cards[0].querySelector('.card-head').setAttribute('aria-expanded', 'true');
+  cards[0].querySelector('.card-toggle').setAttribute('aria-expanded', 'true');
 </script>
 
 </body>
