@@ -392,10 +392,40 @@
 </head>
 <body>
 
-<video class="site-bg-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+<video id="siteBgVideo" class="site-bg-video" autoplay muted loop playsinline preload="auto">
   <source src="hero-bg.mp4" type="video/mp4">
 </video>
 <div class="site-bg-overlay"></div>
+<script>
+  // Fuerza un loop sin corte/flash: reinicia el video un poco antes de que
+  // termine en vez de esperar al evento "ended" (que en muchos MP4 deja
+  // ver un frame gris/negro mientras el navegador vuelve al inicio).
+  (function () {
+    var v = document.getElementById('siteBgVideo');
+    if (!v) return;
+
+    var RESTART_MARGIN = 0.15; // segundos antes del final
+
+    v.addEventListener('timeupdate', function () {
+      if (v.duration && v.currentTime > v.duration - RESTART_MARGIN) {
+        v.currentTime = 0;
+        v.play();
+      }
+    });
+
+    // Refuerzo por si el navegador dispara "ended" antes del timeupdate
+    v.addEventListener('ended', function () {
+      v.currentTime = 0;
+      v.play();
+    });
+
+    // Algunos navegadores pausan el video si la pestaña pierde foco;
+    // lo retomamos al volver.
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && v.paused) v.play();
+    });
+  })();
+</script>
 
 <header class="wrap">
   <div class="mark">
