@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -103,6 +102,28 @@
     color: var(--muted);
     max-width: 56ch;
     margin: 0;
+  }
+
+  /* ---------- Hero CTAs ---------- */
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .hero-actions .card-link{
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  .hero-cta{
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .hero-cta:hover{
+    background: transparent;
+    color: var(--amber);
   }
 
   /* ---------- Waveform signature ---------- */
@@ -413,20 +434,25 @@
 
 <header class="wrap">
   <div class="mark">
-    <span><strong>Álvaro Benjamín Berrío Cabello</strong> — estudiante de desarrollo de software</span>
+    <span><strong>Álvaro Berrío</strong> — AI Engineer &amp; Automation Developer</span>
     <span>Ago 2026</span>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-  <p class="eyebrow">Archivo de proyectos</p>
-  <h1>Del compás cubano<br><em>al código abierto.</em></h1>
+  <p class="eyebrow">Agentes de IA &amp; automatización</p>
+  <h1>Agentes de IA y software<br><em>para escalar tu negocio.</em></h1>
   <p class="lead">
-    Construyo herramientas de software en dos frecuencias: la que documenta y difunde
-    la cultura general, y la que investiga y organiza información en la red.
-    Estas son las últimas fichas del archivo.
+    Diseño e implemento sistemas de automatización, agentes autónomos y arquitecturas
+    web que optimizan tiempos de operación, extraen inteligencia de datos y aumentan
+    las ventas de tu empresa.
   </p>
+
+  <div class="hero-actions">
+    <a class="card-link hero-cta" href="https://wa.me/TU_NUMERO" target="_blank" rel="noopener noreferrer">💬 Agendar asesoría por WhatsApp</a>
+    <a class="card-link" href="https://cal.com/TU_USUARIO" target="_blank" rel="noopener noreferrer">📅 Agendar demo de 15 min</a>
+  </div>
 
   <div class="wave" id="wave" aria-hidden="true"></div>
   </div>
@@ -444,7 +470,7 @@
           <span class="num">01</span>
           <span class="card-title-wrap">
             <p class="card-title">SalsaQuest</p>
-            <p class="card-tag">Descubre bandas, locales y cultura salsera</p>
+            <p class="card-tag">Directorio inteligente y buscador geolocalizado en tiempo real</p>
           </span>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -453,22 +479,22 @@
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
-            SalsaQuest es una plataforma diseñada para los amantes de la salsa. Su
-            objetivo es centralizar información sobre la escena salsera, facilitando
-            el descubrimiento de bandas, orquestas, locales de música en vivo y
-            recursos educativos relacionados con los instrumentos que forman parte de
-            este género musical.
+            Arquitectura web enfocada en la centralización y estructuración de datos
+            sobre eventos en vivo, establecimientos y artistas. Implementa integración
+            de APIs públicas, reproducción en streaming e interfaz interactiva diseñada
+            para alta retención de usuarios.
           </p>
           <ul class="feature-list">
-            <li>🎵 Explora bandas y orquestas de salsa</li>
-            <li>📍 Descubre locales con presentaciones de música en vivo</li>
-            <li>🥁 Aprende sobre los instrumentos afrocubanos mediante una guía interactiva</li>
-            <li>🎧 Escucha una selección de canciones de salsa directamente en Spotify</li>
-            <li>🔍 Consulta información recopilada desde múltiples fuentes públicas</li>
+            <li>🎵 Agregación de datos de bandas y orquestas desde múltiples fuentes</li>
+            <li>📍 Descubrimiento geolocalizado de locales con eventos en vivo</li>
+            <li>🥁 Guía interactiva educativa integrada a la experiencia</li>
+            <li>🎧 Integración con Spotify vía API</li>
+            <li>🔍 Estructuración de información pública dispersa en un solo directorio</li>
           </ul>
           <div class="pills">
             <span class="pill">Aplicación web</span>
-            <span class="pill">En producción</span>
+            <span class="pill">Integración de APIs</span>
+            <span class="pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
           </div>
           <div class="embed-frame">
             <iframe src="https://salsaquest-1.onrender.com/" loading="lazy" title="Vista en vivo de SalsaQuest" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
@@ -485,7 +511,7 @@
           <span class="num">02</span>
           <span class="card-title-wrap">
             <p class="card-title">EduPack Builder</p>
-            <p class="card-tag">App web que arma paquetes educativos sobre cualquier tema</p>
+            <p class="card-tag">Agente autónomo de curación y empaquetado de datos con IA</p>
           </span>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -494,17 +520,18 @@
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
-            Aplicación web en Flask para armar paquetes educativos completos sobre
-            cualquier tema: guía docente, trivia interactiva, imágenes, videos,
-            repositorios de código y artículos — todo buscado y filtrado por licencia
-            abierta (Wikimedia Commons, Openverse, GitHub, Wikipedia), y empaquetado
-            en un .zip listo para el aula.
+            Sistema automatizado basado en Flask que realiza scraping inteligente,
+            filtrado por licencias abiertas y generación autónoma de documentación
+            técnica. Procesa la búsqueda en múltiples APIs (Wikimedia, Openverse,
+            GitHub, Wikipedia) y compila paquetes de contenido listos para
+            distribución en segundos.
           </p>
           <ul class="feature-list">
+            <li>⚡ Reduce el tiempo de compilación de contenido de 3 horas a solo 15 segundos</li>
             <li>Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive</li>
             <li>Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema</li>
-            <li>Genera la guía docente y la trivia a partir de lo que tú escribes en el formulario</li>
-            <li>Empaqueta todo en un .zip descargable, listo para distribución educativa</li>
+            <li>Genera documentación estructurada a partir de una simple entrada de usuario</li>
+            <li>Empaqueta todo en un .zip descargable, listo para distribución</li>
           </ul>
           <div class="pills">
             <span class="pill">Python</span>
@@ -526,20 +553,19 @@
           <span class="num">03</span>
           <span class="card-title-wrap">
             <p class="card-title">OSINT Search Pro</p>
-            <p class="card-tag">Plataforma de inteligencia de fuentes abiertas</p>
+            <p class="card-tag">Plataforma B2B de ciberinteligencia y extracción de datos</p>
           </span>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <a class="card-link" href="https://osint-search-pro.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+        <a class="card-link" href="https://osintsearchpro-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
       </div>
       <div class="card-body">
         <div class="card-body-inner">
           <p class="desc">
-            Plataforma construida con Python y Flask para investigadores, analistas de
-            ciberseguridad y periodistas que necesitan reunir información pública desde
-            distintas fuentes de internet. Hoy centraliza la búsqueda vía DuckDuckGo con
-            una interfaz oscura y resultados organizados; el roadmap suma más motores
-            y herramientas de inteligencia.
+            Motor de búsqueda e inteligencia de datos centralizado, diseñado para
+            análisis competitivo, auditorías de ciberseguridad e investigación de
+            mercado. Filtra y organiza grandes volúmenes de información pública en
+            tiempo real desde una interfaz oscura construida en Flask.
           </p>
           <ul class="feature-list">
             <li>Búsqueda vía DuckDuckGo con resultados organizados por relevancia</li>
@@ -552,12 +578,14 @@
             <span class="pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
           </div>
           <div class="embed-frame">
-            <iframe src="https://osint-search-pro.onrender.com/" loading="lazy" title="Vista en vivo de OSINT Search Pro" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <iframe src="https://osintsearchpro-production.up.railway.app/" loading="lazy" title="Vista en vivo de OSINT Search Pro" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
             <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
           </div>
         </div>
       </div>
     </article>
+
+    <div class="index-label" style="margin-top: 46px;">Proyectos de experimentación y videojuegos</div>
 
     <!-- FICHA 04 — RockQuest -->
     <article class="card" style="--card-accent: var(--magenta);">
@@ -632,6 +660,10 @@
             <span class="pill">Python</span>
             <span class="pill">Pygame</span>
             <span class="pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/" loading="lazy" title="Vista en vivo de Aventura Antioqueña" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — compilado en WebAssembly, puede tardar unos segundos en cargar.</div>
           </div>
         </div>
       </div>
