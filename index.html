@@ -384,6 +384,55 @@
   .filetree .folder{ color: var(--text); }
   .filetree .file{ color: var(--amber); }
 
+  /* ---------- Category filter ---------- */
+  .filter-bar{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+  }
+  .filter-pill{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .03em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .filter-pill:hover{
+    color: var(--text);
+    border-color: var(--muted);
+  }
+  .filter-pill.active{
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+  }
+  .card.filtered-out{
+    display: none;
+  }
+
+  /* ---------- Why note ---------- */
+  .why-note{
+    display: flex;
+    gap: 10px;
+    padding: 14px 16px;
+    margin: 4px 0 20px;
+    background: rgba(255,255,255,.03);
+    border-left: 2px solid var(--card-accent, var(--amber));
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .why-note strong{
+    color: var(--text);
+  }
+
   /* ---------- Footer ---------- */
   footer{
     padding: 30px 0 50px;
@@ -457,7 +506,7 @@
 
   <div class="hero-actions">
     <a class="card-link hero-cta" href="https://wa.me/573165192825" target="_blank" rel="noopener noreferrer">💬 Agendar asesoría por WhatsApp</a>
-    <a class="card-link" href="https://cal.com/TU_USUARIO" target="_blank" rel="noopener noreferrer">📅 Agendar demo de 15 min</a>
+    <a class="card-link" href="https://cal.com/alvaro-benjamin-berrio-cabello-d1wned/15min" target="_blank" rel="noopener noreferrer">📅 Agendar demo de 15 min</a>
   </div>
 
   <div class="wave" id="wave" aria-hidden="true"></div>
@@ -467,10 +516,16 @@
 <main class="wrap">
   <div class="index-label" id="index-label">Índice</div>
 
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-pill active" data-filter="all">Todos</button>
+    <button class="filter-pill" data-filter="web">Web apps</button>
+    <button class="filter-pill" data-filter="ia">Agentes IA</button>
+    <button class="filter-pill" data-filter="juego">Juegos</button>
+  </div>
+
   <div class="cards">
 
-    <!-- FICHA 01 — SalsaQuest -->
-    <article class="card" style="--card-accent: var(--amber);">
+    <article class="card" data-category="web" style="--card-accent: var(--amber);">
       <div class="card-head">
         <button class="card-toggle" aria-expanded="false">
           <span class="num">01</span>
@@ -498,6 +553,10 @@
             <li>🔐 Registro de usuarios con captura de datos y recompensa</li>
             <li>🎧 Reproductor de Spotify embebido con playlist oficial</li>
           </ul>
+          <div class="why-note">
+            <span>💭</span>
+            <span><strong>Por qué así:</strong> ningún negocio de salsa en la ciudad ofrecía algo parecido — la mayoría se queda en menú digital o directorio básico. La apuesta fue diferenciarse con storytelling y gamificación real. La parte más exigente fue el diseño visual: lograr un glassmorphism coherente sobre un video de fondo en loop, sin que el texto perdiera legibilidad ni el rendimiento se resintiera.</span>
+          </div>
           <div class="pills">
             <span class="pill">Aplicación web</span>
             <span class="pill">Integración de APIs</span>
@@ -511,8 +570,7 @@
       </div>
     </article>
 
-    <!-- FICHA 02 — EduPack Builder -->
-    <article class="card" style="--card-accent: var(--amber);">
+    <article class="card" data-category="web ia" style="--card-accent: var(--amber);">
       <div class="card-head">
         <button class="card-toggle" aria-expanded="false">
           <span class="num">02</span>
@@ -553,8 +611,7 @@
       </div>
     </article>
 
-    <!-- FICHA 03 — OSINT Search Pro -->
-    <article class="card" style="--card-accent: var(--teal);">
+    <article class="card" data-category="web" style="--card-accent: var(--teal);">
       <div class="card-head">
         <button class="card-toggle" aria-expanded="false">
           <span class="num">03</span>
@@ -579,6 +636,10 @@
             <li>Interfaz web oscura, construida en Flask</li>
             <li>En camino: WHOIS, geolocalización IP, VirusTotal, exportación a PDF/Excel</li>
           </ul>
+          <div class="why-note">
+            <span>💭</span>
+            <span><strong>Por qué así:</strong> nació como reto técnico personal para aprender scraping y consumo de APIs de forma sólida. El mayor desafío fue estructurar y normalizar resultados que llegan en formatos distintos desde múltiples fuentes públicas, en un único formato consistente y legible para el usuario.</span>
+          </div>
           <div class="pills">
             <span class="pill">Python</span>
             <span class="pill">Flask</span>
@@ -594,8 +655,7 @@
 
     <div class="index-label" style="margin-top: 46px;">Proyectos de experimentación y videojuegos</div>
 
-    <!-- FICHA 04 — RockQuest -->
-    <article class="card" style="--card-accent: var(--magenta);">
+    <article class="card" data-category="juego" style="--card-accent: var(--magenta);">
       <div class="card-head">
         <button class="card-toggle" aria-expanded="false">
           <span class="num">04</span>
@@ -633,8 +693,7 @@
       </div>
     </article>
 
-    <!-- FICHA 05 — Aventura Antioqueña -->
-    <article class="card" style="--card-accent: var(--teal);">
+    <article class="card" data-category="juego" style="--card-accent: var(--teal);">
       <div class="card-head">
         <button class="card-toggle" aria-expanded="false">
           <span class="num">05</span>
@@ -723,6 +782,22 @@
   // Open first card by default
   cards[0].classList.add('open');
   cards[0].querySelector('.card-toggle').setAttribute('aria-expanded', 'true');
+
+  // Category filter
+  const filterBar = document.getElementById('filter-bar');
+  const filterPills = filterBar.querySelectorAll('.filter-pill');
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      cards.forEach(card => {
+        const cats = (card.dataset.category || '').split(' ');
+        const match = filter === 'all' || cats.includes(filter);
+        card.classList.toggle('filtered-out', !match);
+      });
+    });
+  });
 </script>
 
 </body>
