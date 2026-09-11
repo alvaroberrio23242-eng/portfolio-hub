@@ -1,0 +1,38 @@
+/* ============================================
+   Berrío Design System — Colors
+   Dark-mode only palette
+   ============================================ */
+
+:root {
+  /* ---- Backgrounds ---- */
+  --bg:         #0B0D12;
+  --surface:    #13161D;
+  --surface-2:  #1B1F29;
+
+  /* ---- Borders ---- */
+  --line:       #262B36;
+
+  /* ---- Text ---- */
+  --text:       #EDEAE2;
+  --muted:      #8A8F9C;
+
+  /* ---- Accents ---- */
+  --amber:      #E3A24C;
+  --teal:       #46D7C0;
+  --magenta:    #E34C9E;
+
+  /* ---- Semantic (derived) ---- */
+  --embed-bg:       #05070a;
+  --terminal-text:  #B9F5E8;
+
+  /* ---- Overlays & tints ---- */
+  --error-bg:       rgba(227, 76, 158, .1);
+  --overlay-top:    rgba(11, 13, 18, .82);
+  --overlay-bottom: rgba(11, 13, 18, .9);
+  --tint-white-3:   rgba(255, 255, 255, .03);
+  --tint-white-2:   rgba(255, 255, 255, .02);
+
+  /* ---- Accent by category (component-scoped) ---- */
+  /* Use via inline style: style="--card-accent: var(--amber)" */
+  --card-accent: var(--amber);
+}

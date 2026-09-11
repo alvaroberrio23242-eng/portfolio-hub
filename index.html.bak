@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Álvaro Berrío — Archivo de proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0D12;
+    --surface: #13161D;
+    --surface-2: #1B1F29;
+    --line: #262B36;
+    --text: #EDEAE2;
+    --muted: #8A8F9C;
+    --amber: #E3A24C;
+    --teal: #46D7C0;
+    --magenta: #E34C9E;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 40px 0 0;
+  }
+  .mark{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .mark strong{ color: var(--text); font-weight: 600; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    padding: 70px 0 50px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .site-bg-video{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+  .site-bg-overlay{
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.9));
+    z-index: -1;
+  }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 22px;
+  }
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+  }
+  h1 em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--amber);
+  }
+  .lead{
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* ---------- Hero CTAs ---------- */
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .hero-actions .card-link{
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  .hero-cta{
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .hero-cta:hover{
+    background: transparent;
+    color: var(--amber);
+  }
+
+  /* ---------- Waveform signature ---------- */
+  .wave{
+    display:flex;
+    align-items:flex-end;
+    gap: 4px;
+    height: 46px;
+    margin: 46px 0 8px;
+    overflow: hidden;
+  }
+  .wave span{
+    flex: 1 1 auto;
+    max-width: 6px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--amber), var(--teal));
+    opacity: .55;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%, 100% { transform: scaleY(var(--h1, .3)); }
+    50% { transform: scaleY(var(--h2, 1)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wave span{ animation: none; transform: scaleY(.6); }
+  }
+
+  /* ---------- Index label ---------- */
+  .index-label{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin: 60px 0 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .index-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+
+  /* ---------- Project cards ---------- */
+  .cards{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 90px;
+  }
+
+  .card{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .card.open{
+    border-color: var(--card-accent, var(--amber));
+    background: var(--surface-2);
+  }
+
+  .card-head{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 24px;
+  }
+  .card-toggle{
+    flex: 1 1 auto;
+    min-width: 0;
+    display:flex;
+    align-items: center;
+    gap: 22px;
+    background: none;
+    border: none;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+  }
+  .card-link{
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .03em;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--card-accent, var(--line));
+    color: var(--card-accent, var(--text));
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .2s ease, color .2s ease;
+  }
+  .card-link:hover{
+    background: var(--card-accent, var(--amber));
+    color: var(--bg);
+  }
+  .num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--card-accent, var(--amber));
+    flex: 0 0 auto;
+    width: 34px;
+  }
+  .card-title-wrap{ flex: 1 1 auto; min-width: 0; }
+  .card-title{
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .card-tag{
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .chevron{
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    color: var(--muted);
+    transition: transform .3s ease;
+  }
+  .card.open .chevron{ transform: rotate(135deg); color: var(--card-accent, var(--amber)); }
+
+  .card-body{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+  .card.open .card-body{ max-height: 2200px; }
+
+  .card-body-inner{
+    padding: 4px 24px 30px;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+
+  .desc{
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 20px;
+    max-width: 62ch;
+  }
+
+  .feature-list{
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    display: grid;
+    gap: 9px;
+  }
+  .feature-list li{
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feature-list li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color: var(--card-accent, var(--amber));
+  }
+
+  .pills{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .pill{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* ---------- Live embed (SalsaQuest) ---------- */
+  .embed-frame{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: #05070a;
+  }
+  .embed-frame iframe{
+    width: 100%;
+    height: 520px;
+    border: 0;
+    display: block;
+  }
+  .embed-caption{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- Terminal mock (OSINT) ---------- */
+  .terminal{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #05070a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    overflow: hidden;
+  }
+  .terminal-bar{
+    display:flex;
+    gap: 6px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .terminal-bar span{
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--line);
+  }
+  .terminal pre{
+    margin: 0;
+    padding: 16px 18px 20px;
+    line-height: 1.7;
+    color: #B9F5E8;
+    white-space: pre-wrap;
+  }
+  .terminal pre .muted2{ color: var(--muted); }
+  .terminal pre .accent{ color: var(--teal); }
+
+  /* ---------- File tree mock (EduPack) ---------- */
+  .filetree{
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #05070a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 16px 18px 18px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .filetree .folder{ color: var(--text); }
+  .filetree .file{ color: var(--amber); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 30px 0 50px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 560px){
+    .card-head{ padding: 18px; gap: 10px; }
+    .card-toggle{ gap: 14px; }
+    .card-link{ padding: 8px 10px; font-size: 0; }
+    .card-link::before{ content: "↗"; font-size: 14px; }
+    .card-body-inner{ padding: 4px 18px 24px; padding-top: 20px; }
+    .embed-frame iframe{ height: 420px; }
+  }
+</style>
+</head>
+<body>
+
+<video id="siteBgVideo" class="site-bg-video" autoplay muted loop playsinline preload="auto">
+  <source src="hero-bg.mp4" type="video/mp4">
+</video>
+<div class="site-bg-overlay"></div>
+<script>
+  // Algunos navegadores pausan el video si la pestaña pierde foco;
+  // lo retomamos al volver. El loop en sí lo maneja el atributo
+  // nativo "loop" del <video>, que ahora es fluido porque el archivo
+  // ya no tiene el tramo en blanco que tenía al final.
+  (function () {
+    var v = document.getElementById('siteBgVideo');
+    if (!v) return;
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && v.paused) v.play();
+    });
+  })();
+</script>
+
+<header class="wrap">
+  <div class="mark">
+    <span><strong>Álvaro Berrío</strong> — AI Engineer &amp; Automation Developer</span>
+    <span style="display:inline-flex; align-items:center; gap:16px;">
+      <a href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:inherit;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.17.69-3.84-1.34-3.84-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.33-5.21 5.62.41.36.77 1.06.77 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5Z"/></svg>
+        github.com/alvaroberrio23242-eng
+      </a>
+      <span>Ago 2026</span>
+    </span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+  <p class="eyebrow">Agentes de IA &amp; automatización</p>
+  <h1>Agentes de IA y software<br><em>para escalar tu negocio.</em></h1>
+  <p class="lead">
+    Diseño e implemento sistemas de automatización, agentes autónomos y arquitecturas
+    web que optimizan tiempos de operación, extraen inteligencia de datos y aumentan
+    las ventas de tu empresa.
+  </p>
+
+  <div class="hero-actions">
+    <a class="card-link hero-cta" href="https://wa.me/573165192825" target="_blank" rel="noopener noreferrer">💬 Agendar asesoría por WhatsApp</a>
+    <a class="card-link" href="https://cal.com/TU_USUARIO" target="_blank" rel="noopener noreferrer">📅 Agendar demo de 15 min</a>
+  </div>
+
+  <div class="wave" id="wave" aria-hidden="true"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="index-label" id="index-label">Índice</div>
+
+  <div class="cards">
+
+    <!-- FICHA 01 — SalsaQuest -->
+    <article class="card" style="--card-accent: var(--amber);">
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">01</span>
+          <span class="card-title-wrap">
+            <p class="card-title">SalsaQuest</p>
+            <p class="card-tag">Experiencia web interactiva de storytelling y trivia salsera</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://salsaquest-1.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Aplicación web construida en Python/Flask pensada para turistas que visitan
+            lugares emblemáticos de la cultura salsera (como Son Havana). Combina
+            storytelling, trivia gamificada y módulos interactivos sobre la historia,
+            la música y los personajes de la salsa, con fondo de video de La Habana en
+            loop y estética glassmorphism "neón salsero".
+          </p>
+          <ul class="feature-list">
+            <li>🕰️ Línea de tiempo interactiva de la historia de la salsa, filtrable por década</li>
+            <li>🕺 Biografías de artistas (La Lupe, Rubén Blades, Willie Colón, Oscar D'León y más) con modal de detalle</li>
+            <li>🎯 Trivia salsera gamificada con reto diario, puntos y leaderboard</li>
+            <li>🔐 Registro de usuarios con captura de datos y recompensa</li>
+            <li>🎧 Reproductor de Spotify embebido con playlist oficial</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Aplicación web</span>
+            <span class="pill">Integración de APIs</span>
+            <span class="pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://salsaquest-1.onrender.com/" loading="lazy" title="Vista en vivo de SalsaQuest" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FICHA 02 — EduPack Builder -->
+    <article class="card" style="--card-accent: var(--amber);">
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">02</span>
+          <span class="card-title-wrap">
+            <p class="card-title">EduPack Builder</p>
+            <p class="card-tag">Agente autónomo de curación y empaquetado de datos con IA</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://web-production-0f3c8.up.railway.app" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Sistema automatizado basado en Flask que realiza scraping inteligente,
+            filtrado por licencias abiertas y generación autónoma de documentación
+            técnica. Procesa la búsqueda en múltiples APIs (Wikimedia, Openverse,
+            GitHub, Wikipedia) y compila paquetes de contenido listos para
+            distribución en segundos.
+          </p>
+          <ul class="feature-list">
+            <li>⚡ Reduce el tiempo de compilación de contenido de 3 horas a solo 15 segundos</li>
+            <li>Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive</li>
+            <li>Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema</li>
+            <li>Genera documentación estructurada a partir de una simple entrada de usuario</li>
+            <li>Empaqueta todo en un .zip descargable, listo para distribución</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Flask</span>
+            <span class="pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://web-production-0f3c8.up.railway.app" loading="lazy" title="Vista en vivo de EduPack Builder" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — alojado en Railway.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FICHA 03 — OSINT Search Pro -->
+    <article class="card" style="--card-accent: var(--teal);">
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">03</span>
+          <span class="card-title-wrap">
+            <p class="card-title">OSINT Search Pro</p>
+            <p class="card-tag">Plataforma B2B de ciberinteligencia y extracción de datos</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://osintsearchpro-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Motor de búsqueda e inteligencia de datos centralizado, diseñado para
+            análisis competitivo, auditorías de ciberseguridad e investigación de
+            mercado. Filtra y organiza grandes volúmenes de información pública en
+            tiempo real desde una interfaz oscura construida en Flask.
+          </p>
+          <ul class="feature-list">
+            <li>Búsqueda vía DuckDuckGo con resultados organizados por relevancia</li>
+            <li>Interfaz web oscura, construida en Flask</li>
+            <li>En camino: WHOIS, geolocalización IP, VirusTotal, exportación a PDF/Excel</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Flask</span>
+            <span class="pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://osintsearchpro-production.up.railway.app/" loading="lazy" title="Vista en vivo de OSINT Search Pro" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="index-label" style="margin-top: 46px;">Proyectos de experimentación y videojuegos</div>
+
+    <!-- FICHA 04 — RockQuest -->
+    <article class="card" style="--card-accent: var(--magenta);">
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">04</span>
+          <span class="card-title-wrap">
+            <p class="card-title">RockQuest</p>
+            <p class="card-tag">Enciclopedia interactiva de la historia del rock</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="card-link" href="https://rockquest.onrender.com/" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Aplicación web construida con Python, Flask y SQLAlchemy que recorre la
+            historia del rock: décadas, línea de tiempo, subgéneros, bandas y artistas
+            reales cargados en base de datos, y una trivia interactiva — todo con
+            fondo de video rotativo y estética neón.
+          </p>
+          <ul class="feature-list">
+            <li>Bandas y artistas reales en base de datos, cruzados por década y subgénero</li>
+            <li>Línea del tiempo con hitos puntuales de la historia del rock</li>
+            <li>Trivia interactiva sin fricción, sin registro ni puntaje guardado</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Flask</span>
+            <span class="pill" style="border-color: var(--magenta); color: var(--magenta);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://rockquest.onrender.com/" loading="lazy" title="Vista en vivo de RockQuest" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — si no carga, el hosting puede tardar en despertar (Render en plan gratuito).</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FICHA 05 — Aventura Antioqueña -->
+    <article class="card" style="--card-accent: var(--teal);">
+      <div class="card-head">
+        <button class="card-toggle" aria-expanded="false">
+          <span class="num">05</span>
+          <span class="card-title-wrap">
+            <p class="card-title">Aventura Antioqueña</p>
+            <p class="card-tag">Juego educativo de trivia sobre la cultura antioqueña</p>
+          </span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div style="display:flex; gap:8px; flex:0 0 auto;">
+          <a class="card-link" href="https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/" target="_blank" rel="noopener noreferrer">Jugar en el navegador ↗</a>
+          <a class="card-link" href="https://alvaroberrio23242-eng.itch.io/aventura-antioquea" target="_blank" rel="noopener noreferrer">Ver en itch.io ↗</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p class="desc">
+            Juego de trivia construido en Python y Pygame, compilado a WebAssembly
+            para correr directo en el navegador. El jugador crea su personaje y avanza
+            por niveles temáticos (gastronomía, arquitectura, biodiversidad) respondiendo
+            preguntas sobre Antioquia, con fondos animados y música ambiental en cada pantalla.
+          </p>
+          <ul class="feature-list">
+            <li>Tres niveles temáticos con preguntas sobre cultura, comida y naturaleza antioqueña</li>
+            <li>Personalización de personaje (nombre, género) antes de empezar</li>
+            <li>Sistema de vidas, puntaje y ranking persistente entre partidas</li>
+            <li>Compilado con Pygbag: Python corriendo 100% en el navegador, sin instalación</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Python</span>
+            <span class="pill">Pygame</span>
+            <span class="pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
+          </div>
+          <div class="embed-frame">
+            <iframe src="https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/" loading="lazy" title="Vista en vivo de Aventura Antioqueña" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            <div class="embed-caption">Vista incrustada en vivo — compilado en WebAssembly, puede tardar unos segundos en cargar.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Álvaro Berrío</span>
+  <span>Archivo actualizado en agosto de 2026</span>
+</footer>
+
+<script>
+  // Waveform bars
+  const wave = document.getElementById('wave');
+  const BAR_COUNT = 60;
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('span');
+    const h1 = (0.15 + Math.random() * 0.35).toFixed(2);
+    const h2 = (0.5 + Math.random() * 0.5).toFixed(2);
+    bar.style.setProperty('--h1', h1);
+    bar.style.setProperty('--h2', h2);
+    bar.style.animationDelay = (Math.random() * 2.6).toFixed(2) + 's';
+    wave.appendChild(bar);
+  }
+
+  // Índice — se actualiza solo según cuántas fichas .card haya en el HTML
+  const cards = document.querySelectorAll('.card');
+  document.getElementById('index-label').textContent =
+    'Índice · ' + String(cards.length).padStart(2, '0') + ' fichas';
+
+  // Accordion — single open at a time, no external navigation
+  cards.forEach(card => {
+    const toggle = card.querySelector('.card-toggle');
+    toggle.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      cards.forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.card-toggle').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
+      }
+    });
+  });
+
+  // Open first card by default
+  cards[0].classList.add('open');
+  cards[0].querySelector('.card-toggle').setAttribute('aria-expanded', 'true');
+</script>
+
+</body>
+</html>

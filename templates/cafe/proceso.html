@@ -1,0 +1,46 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Proceso{% endblock %}
+{% block meta_description %}Del cultivo a la distribución. Conoce las 6 etapas que hacen posible cada taza de Café La Protectora.{% endblock %}
+{% block canonical %}proceso{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label">Proceso</p>
+    <h1 class="cafe-section-title">Del Grano a Tu Taza</h1>
+    <p class="cafe-section-subtitle">
+      Cada etapa del proceso refleja el cuidado y la dedicación de los caficultores
+      trujillanos. Desde el cultivo en la cordillera hasta tu taza.
+    </p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <div class="cafe-process-grid">
+      {% for step in process_steps %}
+      <div class="cafe-process-card">
+        <div class="cafe-process-icon">{{ step.icon }}</div>
+        <h3 class="cafe-process-title">{{ step.title }}</h3>
+        <p class="cafe-process-desc">{{ step.description }}</p>
+        <p class="cafe-process-desc" style="margin-top: 8px; font-size: 13px; color: var(--cafe-accent);">
+          {{ step.detail }}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="cafe-disclaimer" style="margin-top: 48px;">
+      <p class="cafe-disclaimer-text">
+        <strong>Nota:</strong> Este proceso ha sido documentado a partir de la información
+        publicada en el sitio oficial de Café La Protectora (cafelaprotectora.com.ve/quienes-somos).
+        Las imágenes mostradas son representativas y no necesariamente corresponden a las
+        instalaciones reales de la empresa.
+      </p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

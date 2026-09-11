@@ -1,0 +1,146 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Del Origen a Tu Taza{% endblock %}
+{% block meta_description %}Café La Protectora — Café venezolano de origen andino, cultivado en la Cordillera Andina de Trujillo. Conoce nuestra historia, proceso y productos.{% endblock %}
+{% block canonical %}{% endblock %}
+
+{% block content %}
+<!-- ═══ HERO ═══ -->
+<section class="cafe-hero">
+  <div class="wrap">
+    <p class="cafe-hero-eyebrow">Trujillo · Cordillera Andina · Venezuela</p>
+    <h1>Del Origen a Tu <em>Taza</em></h1>
+    <p class="cafe-hero-lead">
+      Café venezolano cultivado en la parte alta del estado Trujillo,
+      a entre 900 y 1,200 metros de altura. Tradición, calidad y sabor
+      en cada grano.
+    </p>
+    <div class="cafe-hero-actions">
+      <a class="cafe-btn cafe-btn-primary" href="/cafe/historia">Conoce Nuestro Café</a>
+      <a class="cafe-btn" href="/cafe/donde-comprar">Dónde Comprar</a>
+    </div>
+
+    <div class="cafe-hero-stats">
+      <div class="cafe-stat">
+        <span class="cafe-stat-number">2005</span>
+        <span class="cafe-stat-label">Fundación</span>
+      </div>
+      <div class="cafe-stat">
+        <span class="cafe-stat-number">900–1,200m</span>
+        <span class="cafe-stat-label">Altura de cultivo</span>
+      </div>
+      <div class="cafe-stat">
+        <span class="cafe-stat-number">100%</span>
+        <span class="cafe-stat-label">Café puro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HISTORIA RESUMEN ═══ -->
+<div class="wrap">
+  <div class="cafe-section-label">Nuestra historia</div>
+</div>
+<section class="wrap">
+  <h2 class="cafe-section-title">Una marca nacida en los Andes</h2>
+  <p class="cafe-section-subtitle">
+    Café La Protectora es una empresa venezolana que nace en el año 2005 en el estado Trujillo,
+    inspirados en la tradición cafetera de los habitantes de la zona andina.
+  </p>
+
+  <div class="cafe-timeline">
+    {% for item in timeline %}
+    <div class="cafe-timeline-item">
+      <p class="cafe-timeline-year">{{ item.year }}</p>
+      <p class="cafe-timeline-event">{{ item.event }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 24px;">
+    <a class="cafe-btn" href="/cafe/historia">Ver historia completa →</a>
+  </div>
+</section>
+
+<!-- ═══ PROCESO RESUMEN ═══ -->
+<div class="wrap">
+  <div class="cafe-section-label">Del grano a tu taza</div>
+</div>
+<section class="wrap">
+  <h2 class="cafe-section-title">Nuestro proceso</h2>
+  <p class="cafe-section-subtitle">
+    Desde el cultivo en la Cordillera Andina hasta tu taza, cada etapa refleja
+    el cuidado y la dedicación de los caficultores trujillanos.
+  </p>
+
+  <div class="cafe-process-grid">
+    {% for step in process_steps %}
+    <div class="cafe-process-card">
+      <div class="cafe-process-icon">{{ step.icon }}</div>
+      <h3 class="cafe-process-title">{{ step.title }}</h3>
+      <p class="cafe-process-desc">{{ step.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 24px;">
+    <a class="cafe-btn" href="/cafe/proceso">Conoce el proceso completo →</a>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTOS ═══ -->
+<div class="wrap">
+  <div class="cafe-section-label">Nuestros productos</div>
+</div>
+<section class="wrap">
+  <h2 class="cafe-section-title">Café molido de calidad</h2>
+  <p class="cafe-section-subtitle">
+    Seleccionamos siempre el mejor grano cultivado en la parte alta del estado Trujillo y
+    Cordillera Andina, garantizando la satisfacción del cliente.
+  </p>
+
+  <div class="cafe-products-grid">
+    {% for product in products %}
+    <a href="/cafe/productos/{{ product.slug }}" class="cafe-product-card">
+      <div class="cafe-product-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;">
+        ☕
+      </div>
+      <span class="cafe-product-badge">{{ product.badge }}</span>
+      <h3 class="cafe-product-name">{{ product.name }}</h3>
+      <p class="cafe-product-desc">{{ product.description[:80] }}...</p>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 24px;">
+    <a class="cafe-btn" href="/cafe/productos">Ver todos los productos →</a>
+  </div>
+</section>
+
+<!-- ═══ DÓNDE COMPRAR ═══ -->
+<div class="wrap">
+  <div class="cafe-section-label">Disponibilidad</div>
+</div>
+<section class="wrap" style="padding-bottom: 48px;">
+  <div class="cafe-card" style="padding: 40px; text-align: center;">
+    <h2 class="cafe-section-title">¿Dónde encontrar Café La Protectora?</h2>
+    <p class="cafe-section-subtitle" style="margin: 0 auto 24px; text-align: center;">
+      Café La Protectora se distribuye a través de supermercados y distribuidores
+      autorizados en toda Venezuela.
+    </p>
+    <a class="cafe-btn cafe-btn-primary" href="/cafe/donde-comprar">Encontrar Distribuidores</a>
+  </div>
+</section>
+
+<!-- ═══ DISCLAIMER ═══ -->
+<div class="wrap" style="padding-bottom: 48px;">
+  <div class="cafe-disclaimer">
+    <p class="cafe-disclaimer-text">
+      <strong>Independent Digital Concept</strong> — Este es un proyecto conceptual e independiente
+      creado por Álvaro Berrío como caso de estudio de Brand &amp; Digital Product Experience.
+      No existe relación comercial, laboral ni de representación con Café La Protectora C.A.
+      Todos los datos provienen de fuentes públicas documentadas.
+    </p>
+  </div>
+</div>
+{% endblock %}

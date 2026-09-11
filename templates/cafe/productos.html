@@ -1,0 +1,68 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Productos{% endblock %}
+{% block meta_description %}Café molido venezolano en presentaciones de 50g a 1Kg. Calidad gourmet de los Andes de Trujillo.{% endblock %}
+{% block canonical %}productos{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Café La Protectora - Productos",
+  "numberOfItems": {{ products|length }},
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "Product",
+      "position": {{ loop.index }},
+      "name": "{{ product.name }}",
+      "description": "{{ product.description }}",
+      "brand": { "@type": "Brand", "name": "Café La Protectora" },
+      "image": "{{ product.image }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label">Productos</p>
+    <h1 class="cafe-section-title">Nuestros Productos</h1>
+    <p class="cafe-section-subtitle">
+      Seleccionamos siempre el mejor grano cultivado en la parte alta del estado Trujillo
+      y Cordillera Andina. Café molido de calidad en diferentes presentaciones.
+    </p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <div class="cafe-products-grid">
+      {% for product in products %}
+      <a href="/cafe/productos/{{ product.slug }}" class="cafe-product-card">
+        <div class="cafe-product-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;">
+          ☕
+        </div>
+        <span class="cafe-product-badge">{{ product.badge }}</span>
+        <h3 class="cafe-product-name">{{ product.name }}</h3>
+        <p class="cafe-product-desc">{{ product.description[:100] }}...</p>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="cafe-disclaimer" style="margin-top: 48px;">
+      <p class="cafe-disclaimer-text">
+        <strong>Nota:</strong> Todos nuestros productos son café molido. Las imágenes
+        son representativas. Los precios y disponibilidad pueden variar según el
+        distribuidor autorizado. Consulte en su punto de venta de confianza.
+      </p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

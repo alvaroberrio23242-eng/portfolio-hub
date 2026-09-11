@@ -1,0 +1,40 @@
+/* ============================================
+   Berrío Design System — Motion
+   Transitions & animations
+   ============================================ */
+
+:root {
+  /* ---- Transition durations ---- */
+  --duration-fast:   .2s;
+  --duration-base:   .25s;
+  --duration-medium: .3s;
+  --duration-slow:   .4s;
+
+  /* ---- Easing ---- */
+  --ease-default: ease;
+
+  /* ---- Composed transitions ---- */
+  --transition-fast:   var(--duration-fast) var(--ease-default);
+  --transition-base:   var(--duration-base) var(--ease-default);
+  --transition-medium: var(--duration-medium) var(--ease-default);
+  --transition-slow:   var(--duration-slow) var(--ease-default);
+
+  /* ---- Animation (waveform signature) ---- */
+  --animation-pulse-duration: 2.6s;
+  --animation-pulse: pulse var(--animation-pulse-duration) var(--ease-default) infinite;
+}
+
+/* Waveform keyframe */
+@keyframes pulse {
+  0%, 100% { transform: scaleY(var(--h1, .3)); }
+  50%      { transform: scaleY(var(--h2, 1)); }
+}
+
+/* Accessibility: respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

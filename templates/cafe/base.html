@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Café La Protectora{% endblock %} — Café Venezolano de Origen Andino</title>
+<meta name="description" content="{% block meta_description %}Del origen andino de Trujillo a tu taza. Conoce la historia, el proceso y los productos de Café La Protectora.{% endblock %}">
+<meta name="keywords" content="café venezolano, café de Trujillo, café gourmet, café de origen, Cordillera Andina, Pampán, Santa Ana">
+<meta name="author" content="Álvaro Berrío">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://alvaroberrio.dev/cafe/{% block canonical %}{% endblock %}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{% block og_title %}Café La Protectora — Café Venezolano de Origen Andino{% endblock %}">
+<meta property="og:description" content="{% block og_description %}Del origen andino de Trujillo a tu taza. Tradición, calidad y sabor en cada grano.{% endblock %}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_VE">
+<meta property="og:site_name" content="Café La Protectora — Digital Brand Experience">
+<meta property="og:image" content="/static/cafe/img/og-image.jpg">
+
+<!-- Twitter/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% block tw_title %}Café La Protectora{% endblock %}">
+<meta name="twitter:description" content="{% block tw_description %}Café venezolano de origen andino. Tradición del grano a tu taza.{% endblock %}">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/static/cafe/css/style.css">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Café La Protectora",
+  "url": "https://cafelaprotectora.com.ve",
+  "description": "Café venezolano de origen andino, cultivado en la Cordillera Andina de Trujillo.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santa Ana",
+    "addressRegion": "Trujillo",
+    "addressCountry": "VE"
+  },
+  "sameAs": [
+    "https://www.instagram.com/cafelaprotectora/",
+    "https://www.facebook.com/CafeLaProtectora"
+  ]
+}
+</script>
+{% block schema %}{% endblock %}
+
+{% block head %}{% endblock %}
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="cafe-nav" role="navigation" aria-label="Navegación principal">
+  <div class="cafe-nav-inner">
+    <a href="/cafe/" class="cafe-nav-brand">
+      <span class="cafe-nav-brand-icon" aria-hidden="true">☕</span>
+      <span class="cafe-nav-brand-text">Café La Protectora</span>
+    </a>
+    <ul class="cafe-nav-links" id="cafe-nav-links">
+      <li><a href="/cafe/historia"{% if active_page == 'historia' %} class="active"{% endif %}>Historia</a></li>
+      <li><a href="/cafe/origen"{% if active_page == 'origen' %} class="active"{% endif %}>Origen</a></li>
+      <li><a href="/cafe/proceso"{% if active_page == 'proceso' %} class="active"{% endif %}>Proceso</a></li>
+      <li><a href="/cafe/productos"{% if active_page == 'productos' %} class="active"{% endif %}>Productos</a></li>
+      <li><a href="/cafe/donde-comprar"{% if active_page == 'donde-comprar' %} class="active"{% endif %}>Dónde Comprar</a></li>
+      <li><a href="/cafe/contacto"{% if active_page == 'contacto' %} class="active"{% endif %}>Contacto</a></li>
+    </ul>
+    <button class="cafe-nav-toggle" id="cafe-nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ CONTENT ═══ -->
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="cafe-footer" role="contentinfo">
+  <div class="wrap">
+    <div class="cafe-footer-inner">
+      <div>
+        <p class="cafe-footer-brand">Café La Protectora</p>
+        <p class="cafe-footer-tagline">Del origen andino de Trujillo a tu taza. Tradición, calidad y sabor en cada grano.</p>
+      </div>
+      <div class="cafe-footer-links">
+        <div class="cafe-footer-col">
+          <h4>Explorar</h4>
+          <ul>
+            <li><a href="/cafe/historia">Historia</a></li>
+            <li><a href="/cafe/origen">Origen</a></li>
+            <li><a href="/cafe/proceso">Proceso</a></li>
+            <li><a href="/cafe/productos">Productos</a></li>
+          </ul>
+        </div>
+        <div class="cafe-footer-col">
+          <h4>Comprar</h4>
+          <ul>
+            <li><a href="/cafe/donde-comprar">Dónde Comprar</a></li>
+            <li><a href="/cafe/contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="cafe-footer-col">
+          <h4>Portfolio</h4>
+          <ul>
+            <li><a href="/">Álvaro Berrío</a></li>
+            <li><a href="/#proyectos">Proyectos</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cafe-footer-bottom">
+      <span class="cafe-footer-copy">&copy; 2026 Café La Protectora — Independent Digital Concept</span>
+      <span class="cafe-footer-credit">Case study by <a href="/" style="color:var(--cafe-accent);">Álvaro Berrío</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS ═══ -->
+<script src="/static/cafe/js/app.js"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

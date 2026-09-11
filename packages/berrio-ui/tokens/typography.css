@@ -1,0 +1,46 @@
+/* ============================================
+   Berrío Design System — Typography
+   3-font system: Display / Body / Mono
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---- Font stacks ---- */
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ---- Font weights ---- */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semi:    600;
+  --weight-bold:    700;
+
+  /* ---- Font sizes ---- */
+  --text-xs:      11px;
+  --text-sm:      12px;
+  --text-base-sm: 13px;
+  --text-base:    14px;
+  --text-md:      15px;
+  --text-lg:      17px;
+  --text-xl:      21px;
+  --text-2xl:     26px;
+  --text-3xl:     clamp(34px, 6vw, 58px);
+
+  /* ---- Line heights ---- */
+  --leading-tight:   1.08;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.7;
+
+  /* ---- Letter spacing ---- */
+  --tracking-tight:  0;
+  --tracking-normal: .04em;
+  --tracking-wide:   .14em;
+  --tracking-wider:  .18em;
+
+  /* ---- Responsive display sizes ---- */
+  --text-page-title:  clamp(28px, 5vw, 42px);
+}

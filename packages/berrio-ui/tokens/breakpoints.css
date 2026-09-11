@@ -1,0 +1,14 @@
+/* ============================================
+   Berrío Design System — Breakpoints
+   ============================================ */
+
+:root {
+  --bp-mobile: 560px;
+}
+
+/* Mobile styles */
+@media (max-width: var(--bp-mobile)) {
+  :root {
+    --gutter-x: var(--space-5);   /* 10px on mobile (reduced) */
+  }
+}

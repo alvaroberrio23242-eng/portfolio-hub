@@ -1,0 +1,91 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Contacto{% endblock %}
+{% block meta_description %}Contáctanos para información comercial, distribución o consultas generales sobre Café La Protectora.{% endblock %}
+{% block canonical %}contacto{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label">Contacto</p>
+    <h1 class="cafe-section-title">Contáctanos</h1>
+    <p class="cafe-section-subtitle">
+      ¿Tienes preguntas sobre nuestros productos, distribución o procesos comerciales?
+      Estamos aquí para ayudarte.
+    </p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <div class="cafe-contact-grid">
+      <div class="cafe-contact-form">
+        <h2 class="cafe-section-title" style="font-size: 22px;">Envíanos un mensaje</h2>
+
+        <div class="cafe-form-group">
+          <label class="cafe-form-label" for="name">Nombre</label>
+          <input class="cafe-form-input" type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="cafe-form-group">
+          <label class="cafe-form-label" for="email">Correo electrónico</label>
+          <input class="cafe-form-input" type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="cafe-form-group">
+          <label class="cafe-form-label" for="subject">Asunto</label>
+          <input class="cafe-form-input" type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="cafe-form-group">
+          <label class="cafe-form-label" for="message">Mensaje</label>
+          <textarea class="cafe-form-textarea" id="message" name="message" required></textarea>
+        </div>
+
+        <div>
+          <button class="cafe-btn cafe-btn-primary" type="submit">Enviar Mensaje</button>
+        </div>
+
+        <div class="cafe-disclaimer" style="margin-top: 16px;">
+          <p class="cafe-disclaimer-text">
+            <strong>Nota:</strong> Este formulario es una funcionalidad demo.
+            Para contactar directamente a Café La Protectora, utilice los
+            canales oficiales de la marca.
+          </p>
+        </div>
+      </div>
+
+      <div class="cafe-contact-info">
+        <h2 class="cafe-section-title" style="font-size: 22px;">Canales oficiales</h2>
+
+        <div class="cafe-contact-block">
+          <p class="cafe-contact-block-title">Correo electrónico</p>
+          <p><a href="mailto:info@cafelaprotectora.com.ve" style="color:var(--cafe-accent);">info@cafelaprotectora.com.ve</a></p>
+        </div>
+
+        <div class="cafe-contact-block">
+          <p class="cafe-contact-block-title">Instagram</p>
+          <p><a href="https://www.instagram.com/cafelaprotectora/" target="_blank" rel="noopener noreferrer" style="color:var(--cafe-accent);">@cafelaprotectora</a></p>
+        </div>
+
+        <div class="cafe-contact-block">
+          <p class="cafe-contact-block-title">Facebook</p>
+          <p><a href="https://www.facebook.com/CafeLaProtectora" target="_blank" rel="noopener noreferrer" style="color:var(--cafe-accent);">Café La Protectora</a></p>
+        </div>
+
+        <div class="cafe-contact-block">
+          <p class="cafe-contact-block-title">Sitio oficial</p>
+          <p><a href="https://cafelaprotectora.com.ve/" target="_blank" rel="noopener noreferrer" style="color:var(--cafe-accent);">cafelaprotectora.com.ve</a></p>
+        </div>
+
+        <div class="cafe-contact-block">
+          <p class="cafe-contact-block-title">Ubicación</p>
+          <p>Santa Ana, Municipio Pampán<br>Estado Trujillo, Venezuela</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

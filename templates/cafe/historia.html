@@ -1,0 +1,91 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Nuestra Historia{% endblock %}
+{% block meta_description %}Desde Café La India hasta Café La Protectora. Una historia de tradición cafetera en los Andes venezolanos, nacida en Santa Ana, Pampán, Trujillo.{% endblock %}
+{% block canonical %}historia{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label">Nuestra historia</p>
+    <h1 class="cafe-section-title">Una marca nacida en los Andes</h1>
+    <p class="cafe-section-subtitle">
+      A través de los años, nos esforzamos en obtener un Café de excelente calidad,
+      100% puro, seleccionando siempre el mejor grano cultivado en la parte alta del
+      estado Trujillo y Cordillera Andina.
+    </p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <div class="cafe-origin-grid" style="margin-bottom: 48px;">
+      <div>
+        <h2 class="cafe-section-title" style="font-size: 24px;">El origen</h2>
+        <p>
+          <strong>Café La Protectora C.A.</strong> es una empresa venezolana que nace en el año
+          <strong>2005</strong> en el estado Trujillo, específicamente en la población de
+          <strong>Santa Ana, Municipio Pampán</strong>, inspirados en la tradición, trabajo
+          arduo y dedicación que caracterizan a los habitantes de esta zona andina.
+        </p>
+        <p>
+          Con su amabilidad y orgullo, quisieron dar a conocer el valor de sus tierras
+          y su labor cafetera a toda Venezuela.
+        </p>
+      </div>
+      <div class="cafe-origin-map" style="display:flex;align-items:center;justify-content:center;background:var(--cafe-surface);">
+        <div style="text-align:center;padding:40px;">
+          <span style="font-size:64px;display:block;margin-bottom:12px;">🏔️</span>
+          <p style="font-family:'Fraunces',serif;font-size:18px;margin:0 0 4px;">Trujillo, Venezuela</p>
+          <p style="font-size:14px;color:var(--cafe-muted);margin:0;">Cordillera Andina</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="cafe-section-title">Evolución de la marca</h2>
+    <p class="cafe-section-subtitle">
+      Nuestro producto ha atravesado tres etapas, reflejando el crecimiento y la mejora
+      continua de la marca.
+    </p>
+
+    <div class="cafe-timeline" style="margin-bottom: 48px;">
+      {% for item in timeline %}
+      <div class="cafe-timeline-item">
+        <p class="cafe-timeline-year">{{ item.year }}</p>
+        <p class="cafe-timeline-event">{{ item.event }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h2 class="cafe-section-title">Nuestra calidad</h2>
+    <p>
+      La calidad de nuestro café está asegurada por la escogencia del grano que se obtiene
+      de la parte alta del <strong>estado Trujillo (Cordillera Andina)</strong>, y es precisamente
+      esta ubicación, la composición del terreno y las condiciones climáticas de la zona,
+      las que hacen propicio allí el cultivo de uno de los mejores de Venezuela.
+    </p>
+    <p>
+      El café proveniente de esta zona, es reconocido tanto nacional como internacionalmente
+      por su aroma, su delicadeza y agradable gusto en la boca, cultivado bajo sombra,
+      entre los <strong>900 y 1,200 metros de altura</strong>.
+    </p>
+    <p>
+      En la mayoría de los casos no se utilizan fertilizantes tóxicos y en todos se recoge
+      el fruto <strong>100% maduro</strong> que es lavado como mínimo durante 4 horas.
+      Posteriormente es secado al sol y almacenado en pergamino por 2 meses a través de
+      sacos de sisal con menos de un <strong>12% de humedad</strong>.
+    </p>
+
+    <div class="cafe-disclaimer" style="margin-top: 48px;">
+      <p class="cafe-disclaimer-text">
+        <strong>Nota:</strong> La información presentada proviene del sitio oficial de
+        Café La Protectora (cafelaprotectora.com.ve) y ha sido documentada como CLAIM
+        (afirmación de la marca) en nuestro research. No se ha verificado con fuentes
+        independientes.
+      </p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

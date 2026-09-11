@@ -1,0 +1,94 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% block meta_description %}{{ product.description }} Café La Protectora — Origen Trujillo, Venezuela.{% endblock %}
+{% block canonical %}productos/{{ product.slug }}{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ product.name }}",
+  "description": "{{ product.description }}",
+  "brand": { "@type": "Brand", "name": "Café La Protectora" },
+  "image": "{{ product.image }}",
+  "category": "Café molido",
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Peso", "value": "{{ product.weight }}" },
+    { "@type": "PropertyValue", "name": "Formato", "value": "{{ product.format }}" },
+    { "@type": "PropertyValue", "name": "Origen", "value": "{{ product.origin }}" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label"><a href="/cafe/productos" style="color:inherit;">← Productos</a></p>
+    <h1 class="cafe-section-title">{{ product.name }}</h1>
+    <p class="cafe-section-subtitle">{{ product.description }}</p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <div class="cafe-origin-grid" style="margin-bottom: 48px;">
+      <div style="display:flex;align-items:center;justify-content:center;background:var(--cafe-surface);border:1px solid var(--cafe-line);border-radius:14px;min-height:300px;">
+        <div style="text-align:center;padding:40px;">
+          <span style="font-size:96px;display:block;margin-bottom:16px;">☕</span>
+          <p style="font-family:'Fraunces',serif;font-size:22px;margin:0;">{{ product.name }}</p>
+        </div>
+      </div>
+      <div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Presentación</p>
+          <p class="cafe-origin-detail-value">{{ product.weight }}</p>
+        </div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Formato</p>
+          <p class="cafe-origin-detail-value">{{ product.format }}</p>
+        </div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Origen</p>
+          <p class="cafe-origin-detail-value">{{ product.origin }}</p>
+        </div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Empaque</p>
+          <p class="cafe-origin-detail-value">{{ product.packaging }}</p>
+        </div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Disponibilidad</p>
+          <p class="cafe-origin-detail-value">{{ product.availability }}</p>
+        </div>
+        <div class="cafe-origin-detail">
+          <p class="cafe-origin-detail-label">Categoría</p>
+          <p class="cafe-origin-detail-value">
+            <span class="cafe-product-badge" style="margin-left:0;">{{ product.badge }}</span>
+          </p>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <a class="cafe-btn cafe-btn-primary" href="/cafe/donde-comprar">Dónde Comprar</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="cafe-section-title">Detalles del producto</h2>
+    <p>{{ product.description }}</p>
+    <p>
+      Todos nuestros productos son <strong>café molido</strong> de calidad, seleccionado
+      de la parte alta del estado Trujillo y Cordillera Andina. El empaque de
+      Polipropileno Biorentado y Metalizado garantiza la conservación del aroma,
+      pureza y sabor.
+    </p>
+
+    <div style="margin-top: 24px;">
+      <a class="cafe-btn" href="/cafe/productos">← Ver todos los productos</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

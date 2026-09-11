@@ -1,0 +1,36 @@
+/* ============================================
+   Berrío Design System — Spacing
+   2px-based scale
+   ============================================ */
+
+:root {
+  --space-1:  2px;
+  --space-2:  4px;
+  --space-3:  6px;
+  --space-4:  8px;
+  --space-5:  10px;
+  --space-6:  12px;
+  --space-7:  14px;
+  --space-8:  16px;
+  --space-9:  18px;
+  --space-10: 20px;
+  --space-11: 22px;
+  --space-12: 24px;
+  --space-14: 28px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 48px;
+  --space-28: 56px;
+  --space-32: 64px;
+  --space-40: 80px;
+
+  /* ---- Semantic spacing shortcuts ---- */
+  --gutter-x:      var(--space-14);  /* 28px — page horizontal padding */
+  --gap-card:      var(--space-7);   /* 14px — card stack gap */
+  --gap-pill:      var(--space-4);   /* 8px  — pill/filter-pill gap */
+  --gap-feature:   9px;              /* feature list grid gap */
+  --gap-card-head: var(--space-5);   /* 10px — card head inner gap */
+  --pad-card-head: var(--space-11) var(--space-12); /* 22px 24px */
+  --pad-card-body: var(--space-2) var(--space-12) var(--space-12); /* 4px 24px 24px */
+  --max-width:     920px;            /* main container max-width */
+}
