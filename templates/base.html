@@ -80,7 +80,17 @@
   .nav-toggle svg{ width: 24px; height: 24px; }
 
   /* ─── HERO ─── */
-  .hero{ padding: 80px 0 60px; }
+  .hero{ position: relative; padding: 80px 0 60px; overflow: hidden; isolation: isolate; }
+  .hero-video{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; z-index: -2;
+  }
+  .hero-video-overlay{
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.94) 70%, var(--bg));
+    z-index: -1;
+  }
   .hero-eyebrow{
     font-family: 'JetBrains Mono', monospace; font-size: 12px;
     letter-spacing: .18em; text-transform: uppercase;
@@ -328,6 +338,10 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="{{ url_for('static', filename='hero-poster.jpg') }}">
+    <source src="{{ url_for('static', filename='hero-bg.mp4') }}" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
   <div class="wrap">
     <p class="hero-eyebrow">Software · IA · Productos Digitales</p>
     <h1>Construyo software y soluciones digitales que convierten problemas reales en <em>productos funcionales.</em></h1>
