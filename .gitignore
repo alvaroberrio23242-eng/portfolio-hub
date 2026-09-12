@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Entorno y secretos
+.env
+.env.local
+.env.*.local
+
+# Datos
+*.db
+*.sqlite3
+
+# Sistema
+.DS_Store
+Thumbs.db

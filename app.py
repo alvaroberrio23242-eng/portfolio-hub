@@ -1,5 +1,9 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask, render_template, redirect, url_for, request, session
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -7,9 +11,9 @@ if not app.secret_key:
     raise RuntimeError("SECRET_KEY environment variable is required")
 
 ADMIN_USER = os.environ.get("ADMIN_USER")
-ADMIN_PASS = os.environ.get("ADMIN_PASS")
-if not ADMIN_USER or not ADMIN_PASS:
-    raise RuntimeError("ADMIN_USER and ADMIN_PASS environment variables are required")
+ADMIN_PASS_HASH = os.environ.get("ADMIN_PASS_HASH")
+if not ADMIN_USER or not ADMIN_PASS_HASH:
+    raise RuntimeError("ADMIN_USER and ADMIN_PASS_HASH environment variables are required")
 
 from cafe_app import cafe_bp
 app.register_blueprint(cafe_bp, url_prefix="/cafe")
@@ -29,7 +33,7 @@ def login():
     if request.method == "POST":
         username = request.form.get("username", "")
         password = request.form.get("password", "")
-        if username == ADMIN_USER and password == ADMIN_PASS:
+        if username == ADMIN_USER and check_password_hash(ADMIN_PASS_HASH, password):
             session["authenticated"] = True
             return redirect(url_for("family"))
         error = "Credenciales inválidas."
