@@ -212,6 +212,17 @@
     .case-demo-fallback{ display: flex !important; }
   }
 
+  .case-features-list{
+    margin: 12px 0 0; padding-left: 18px; list-style: none;
+  }
+  .case-features-list li{
+    position: relative; padding-left: 18px; margin-bottom: 6px;
+    font-size: 14px; line-height: 1.5; color: var(--text);
+  }
+  .case-features-list li::before{
+    content: "—"; position: absolute; left: 0; color: var(--amber);
+  }
+
   /* ─── CAPABILITIES ─── */
   .cap-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .cap-card{
@@ -428,6 +439,13 @@
         <div class="case-block">
           <p class="case-block-title">Solución</p>
           <p>Aplicación web con storytelling gamificado, trivia interactiva, biografías de artistas, línea de tiempo y leaderboard.</p>
+          <ul class="case-features-list">
+            <li>Línea de tiempo interactiva de la historia de la salsa, filtrable por década</li>
+            <li>Biografías de artistas con modal de detalle</li>
+            <li>Trivia salsera gamificada con reto diario, puntos y leaderboard</li>
+            <li>Registro de usuarios con captura de datos</li>
+            <li>Reproductor de Spotify embebido con playlist oficial</li>
+          </ul>
         </div>
 
         <div class="case-block">
@@ -576,6 +594,9 @@
 <section class="wrap">
 
   {# ─── TIER 0: BRAND & BUSINESS CASES ─── #}
+  {% if False %}
+    {# OCULTA DESDE 2026-09-19: Duplicada con ficha destacada "Ruta Salsera".
+         Reactivar cambiando a {% if True %} o eliminando este bloque if. #}
   <article class="project-card" style="--card-accent: var(--amber);">
     <div class="project-top">
       <span class="project-tier" style="border-color: var(--amber); color: var(--amber);">Brand & Business</span>
@@ -605,6 +626,7 @@
       </div>
     </div>
   </article>
+  {% endif %}
 
   <article class="project-card" style="--card-accent: var(--amber);">
     <div class="project-top">
@@ -636,6 +658,9 @@
   </article>
 
   {# ─── TIER 1: PRODUCT PROOF ─── #}
+  {% if False %}
+    {# OCULTA DESDE 2026-09-19: Contenido técnico fusionado en Featured Case Study "Ruta Salsera".
+         Reactivar cambiando a {% if True %} o eliminando este bloque if. #}
   <article class="project-card" style="--card-accent: var(--teal);">
     <div class="project-top">
       <span class="project-tier tier-1">Product Proof</span>
@@ -666,6 +691,7 @@
       </div>
     </div>
   </article>
+  {% endif %}
 
   <article class="project-card" style="--card-accent: var(--teal);">
     <div class="project-top">
@@ -834,8 +860,8 @@
 </div>
 <section class="wrap">
   <div class="about-grid">
-    <div class="about-photo" style="display:flex; align-items:center; justify-content:center;">
-      <span style="font-size: 64px; opacity: .3;">👤</span>
+    <div class="about-photo">
+      <img src="{{ url_for('static', filename='img/profile-avatar.webp') }}" alt="Álvaro Berrío" loading="lazy">
     </div>
     <div class="about-text">
       <h2>Álvaro Berrío</h2>

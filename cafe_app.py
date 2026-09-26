@@ -187,3 +187,9 @@ def cultura():
 def contacto():
     return render_template('cafe/contacto.html',
                          active_page='contacto')
+
+
+@cafe_bp.route('/decisiones')
+def decisiones():
+    return render_template('cafe/decisiones.html',
+                         active_page='decisiones')

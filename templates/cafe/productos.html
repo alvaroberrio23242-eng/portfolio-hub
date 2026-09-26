@@ -42,6 +42,22 @@
 <div class="cafe-content">
   <div class="wrap">
 
+    <!-- ═══ IMAGEN: TAZA DE CAFÉ ═══ -->
+    <div class="cafe-image-hero" style="margin-bottom: 48px;">
+      <picture>
+        <source srcset="/static/cafe/img/coffee-cup.webp" type="image/webp">
+        <img src="/static/cafe/img/coffee-cup.jpg"
+             alt="Taza de café negro — imagen genérica representativa del producto final"
+             width="1200" height="899" loading="lazy"
+             style="width:100%;height:auto;border-radius:12px;display:block;">
+      </picture>
+      <p class="cafe-image-credit">
+        Foto: <a href="https://commons.wikimedia.org/wiki/File:Brown_cup_of_coffee.jpg" target="_blank" rel="noopener">DocteurCosmos</a>,
+        <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>
+        — Taza de café negro (imagen genérica, no del producto real de La Protectora)
+      </p>
+    </div>
+
     <div class="cafe-products-grid">
       {% for product in products %}
       <a href="/cafe/productos/{{ product.slug }}" class="cafe-product-card">

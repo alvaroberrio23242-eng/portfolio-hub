@@ -1,0 +1,203 @@
+{% extends "cafe/base.html" %}
+
+{% block title %}Decisiones de Diseño{% endblock %}
+{% block meta_description %}Decisiones técnicas y de UX detrás de la experiencia digital de Café La Protectora — arquitectura, derechos de autor, y honestidad en los datos.{% endblock %}
+{% block canonical %}decisiones{% endblock %}
+
+{% block content %}
+<div class="cafe-page-header">
+  <div class="wrap">
+    <p class="cafe-section-label">Ingeniería</p>
+    <h1 class="cafe-section-title">Cómo se construyó esto</h1>
+    <p class="cafe-section-subtitle">
+      Tres decisiones técnicas reales que definieron la arquitectura de este proyecto.
+      No son features — son compromisos concretos con sus trade-offs.
+    </p>
+  </div>
+</div>
+
+<div class="cafe-content">
+  <div class="wrap">
+
+    <!-- ═══ DECISIÓN 1 ═══ -->
+    <div class="cafe-decision">
+      <div class="cafe-decision-header">
+        <span class="cafe-decision-number">01</span>
+        <h2 class="cafe-decision-title">¿Por qué sub-app Flask en vez de HTML estático?</h2>
+      </div>
+
+      <div class="cafe-decision-body">
+        <div class="cafe-decision-context">
+          <h3>Contexto</h3>
+          <p>
+            El Portfolio Hub ya funcionaba con Flask 3.1.3 y Jinja2. El contenido de
+            Café La Protectora era estático — no necesitaba base de datos, autenticación,
+            ni lógica de servidor compleja.
+          </p>
+          <p>
+            Las opciones sobre la mesa eran:
+          </p>
+          <ul>
+            <li><strong>HTML estático</strong> — archivos .html sueltos, sin servidor</li>
+            <li><strong>App Flask separada</strong> — proyecto independiente con su propio server</li>
+            <li><strong>Sub-app Flask con blueprint</strong> — módulo dentro del Hub existente</li>
+          </ul>
+        </div>
+
+        <div class="cafe-decision-justification">
+          <h3>Justificación</h3>
+          <p>
+            El audit inicial del Portfolio Hub (fase 0) estableció restricciones claras:
+            no modificar las rutas existentes, no romper el auth, no contaminar la landing
+            principal. Una sub-app con prefix <code>/cafe</code> cumplía todas — registraba
+            el módulo en <code>app.py</code> sin tocar rutas existentes, mantenía los
+            templates separados en <code>templates/cafe/</code>, y encapsulaba los assets
+            en <code>static/cafe/</code>.
+          </p>
+          <p>
+            La decisión fue documentada en el audit como:
+            <em>"Modularidad, no destructivo, escalable."</em>
+          </p>
+        </div>
+
+        <div class="cafe-decision-tradeoff">
+          <h3>Trade-off</h3>
+          <p>
+            Aumentó la complejidad de setup — requería crear <code>cafe_app.py</code>,
+            registrar el blueprint, y mantener una estructura de templates separada.
+            Es un costo que asumí conscientemente: la alternativa (HTML estático) habría
+            roto la consistencia del stack Flask existente y habría creado un precedent
+            de "proyectos sueltos" difícil de mantener.
+          </p>
+        </div>
+      </div>
+
+      <div class="cafe-decision-source">
+        <span class="cafe-evidence-tag" data-status="verified">DOCUMENTADO</span>
+        <span>Fuente: CAFE_PROTECTORA_AUDIT.md, Sección 6</span>
+      </div>
+    </div>
+
+    <!-- ═══ DECISIÓN 2 ═══ -->
+    <div class="cafe-decision">
+      <div class="cafe-decision-header">
+        <span class="cafe-decision-number">02</span>
+        <h2 class="cafe-decision-title">¿Por qué imágenes genéricas en vez de fotos del sitio oficial?</h2>
+      </div>
+
+      <div class="cafe-decision-body">
+        <div class="cafe-decision-context">
+          <h3>Contexto</h3>
+          <p>
+            El sitio oficial de Café La Protectora tiene imágenes de producto (empaque
+            rojo/amarillo/verde, logo con figura religiosa), fotos de proceso, y un
+            paisaje andino. Visualmente, son superiores a cualquier alternativa genérica.
+          </p>
+          <p>
+            Pero este es un caso de estudio independiente — no existe relación comercial
+            con la marca. Usar sus imágenes sería redistribuir contenido protegido sin
+            autorización.
+          </p>
+        </div>
+
+        <div class="cafe-decision-justification">
+          <h3>Justificación</h3>
+          <p>
+            La regla fue clara desde el inicio:
+            <em>"NO se utiliza ninguna imagen del sitio oficial real. Todas las imágenes
+            son genéricas (no identificables como Café La Protectora ni como la marca
+            real)."</em>
+          </p>
+          <p>
+            Se usaron fotos de Wikimedia Commons con licencias CC-BY-SA y CC-BY,
+            todas de cafés genéricos (Colombia, Brasil, Seattle). Cada imagen tiene
+            atribución completa con enlace a la fuente y tipo de licencia.
+          </p>
+        </div>
+
+        <div class="cafe-decision-tradeoff">
+          <h3>Trade-off</h3>
+          <p>
+            Las imágenes no muestran el producto real de la marca — el empaque
+            distinctive, el logo, la identidad visual. Esto reduce la autenticidad
+            del case study. Pero la alternativa habría expuesto el proyecto a riesgo
+            legal por redistribuir contenido protegido sin autorización explícita.
+          </p>
+        </div>
+      </div>
+
+      <div class="cafe-decision-source">
+        <span class="cafe-evidence-tag" data-status="verified">DOCUMENTADO</span>
+        <span>Fuente: CAFE_PROTECTORA_MEDIA_SOURCES.md, Sección "Regla de Derechos de Autor"</span>
+      </div>
+    </div>
+
+    <!-- ═══ DECISIÓN 3 ═══ -->
+    <div class="cafe-decision">
+      <div class="cafe-decision-header">
+        <span class="cafe-decision-number">03</span>
+        <h2 class="cafe-decision-title">¿Por qué "Dónde Comprar" distingue ACTUAL de PROPUESTO?</h2>
+      </div>
+
+      <div class="cafe-decision-body">
+        <div class="cafe-decision-context">
+          <h3>Contexto</h3>
+          <p>
+            La página oficial de distribución de Café La Protectora
+            (cafelaprotectora.com.ve/centros-de-distribucion-autorizados) mostraba
+            "Nro. Distribuidores: 0" al momento de la auditoría. La marca claima
+            85 puntos de venta en redes sociales, pero no hay directorio verificable.
+          </p>
+          <p>
+            Un enfoque típico de marketing sería inventar un directorio completo
+            con supermercados y distribuidores ficticios. Pero esto es un caso de
+            estudio técnico, no un sitio de la marca.
+          </p>
+        </div>
+
+        <div class="cafe-decision-justification">
+          <h3>Justificación</h3>
+          <p>
+            Cada dato de distribución fue clasificado con un tag de evidencia:
+            <code>VERIFIED</code> (confirmado por fuente independiente),
+            <code>CLAIM</code> (afirmación de la marca sin verificación), o
+            <code>PROPUESTO</code> (estructura del directorio es una propuesta
+            del proyecto).
+          </p>
+          <p>
+            El sitio oficial mismo fue documentado como
+            <em>"Digital Directory Data Quality Issue"</em> — un problema técnico
+            del sitio, no una ausencia de distribución real.
+          </p>
+        </div>
+
+        <div class="cafe-decision-tradeoff">
+          <h3>Trade-off</h3>
+          <p>
+            La página se ve menos "llena" y menos impresionante que un directorio
+            completo con 85 distribuidores listados. Pero la alternativa (inventar
+            distribuidores) habría sido deshonesto — el propio sitio oficial no
+            podía mostrar sus distribuidores. En un case study de portafolio, la
+            credibilidad técnica importa más que la cantidad de contenido.
+          </p>
+        </div>
+      </div>
+
+      <div class="cafe-decision-source">
+        <span class="cafe-evidence-tag" data-status="verified">DOCUMENTADO</span>
+        <span>Fuente: templates/cafe/donde-comprar.html, disclaimer "Digital Directory Data Quality Issue"</span>
+      </div>
+    </div>
+
+    <!-- ═══ CIERRE ═══ -->
+    <div class="cafe-disclaimer" style="margin-top: 48px;">
+      <p class="cafe-disclaimer-text">
+        <strong>Nota:</strong> Estas decisiones están documentadas en los archivos
+        de fase del proyecto (CAFE_PROTECTORA_AUDIT.md, CAFE_PROTECTORA_MEDIA_SOURCES.md).
+        No son features de marketing — son compromisos reales con sus limitaciones.
+      </p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

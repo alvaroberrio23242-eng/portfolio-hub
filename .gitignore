@@ -17,3 +17,9 @@ venv/
 # Sistema
 .DS_Store
 Thumbs.db
+
+verify_final*.py
+diff_*.txt
+
+verify_final*.py
+diff_*.txt
