@@ -25,3 +25,12 @@ verify_final*.py
 diff_*.txt
 
 *.swp
+
+# Documentacion interna (auditorias, propuestas, backups) - no publicar
+SALES_AUDIT.md
+POSITIONING_AUDIT.md
+PROJECT_PORTFOLIO_AUDIT.md
+ARCHITECTURE_PROPOSAL.md
+REDESIGN_PROPOSAL.md
+PROJECT_REPORT.md
+index.html.bak
