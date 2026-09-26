@@ -1,0 +1,34 @@
+# Configuracion de GitHub Pages (rama main, directorio raiz).
+#
+# Sin este archivo Jekyll publica TODO el repositorio. Eso hacia accesible sin
+# autenticacion app.py, cafe_app.py, templates/base.html, requirements.txt y los
+# documentos internos CAFE_PROTECTORA_*.md (verificado con HTTP 200 antes de este
+# cambio). La lista `exclude` deja publicado solo el sitio.
+#
+# Verificacion pendiente: requiere push + rebuild de Pages.
+
+exclude:
+  - app.py
+  - cafe_app.py
+  - content.py
+  - conftest.py
+  - pytest.ini
+  - Procfile
+  - requirements.txt
+  - requirements-dev.txt
+  - README.md
+  - SECURITY.md
+  - .env
+  - .env.example
+  - .ai/
+  - .pytest_cache/
+  - __pycache__/
+  - tests/
+  - scripts/
+  - templates/
+  - packages/
+  - data/
+  - docs/
+  - "*.md"
+  - "!README.md"
+  - index.html.bak

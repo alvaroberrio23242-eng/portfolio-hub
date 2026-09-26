@@ -3,18 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Álvaro Berrío — Software Developer | IA Aplicada | Productos Digitales</title>
-<meta name="description" content="Desarrollador de software especializado en aplicaciones web, automatización e IA aplicada. Proyectos en producción con Python, Flask y más. Medellín, Colombia.">
+<meta name="color-scheme" content="dark">
+<title>{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
 <meta name="keywords" content="desarrollador web, desarrollador Python, Flask, software, IA aplicada, automatización, Medellín, Colombia, portafolio">
-<meta name="author" content="Álvaro Berrío">
-<meta property="og:title" content="Álvaro Berrío — Software Developer">
-<meta property="og:description" content="Construyo software y soluciones digitales que convierten problemas reales en productos funcionales.">
+<meta name="author" content="{{ about.name }}">
+<link rel="canonical" href="{{ site.origin }}/">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="es_CO">
-<link rel="canonical" href="https://alvaroberrio.dev">
+<meta property="og:site_name" content="{{ site.brand }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:url" content="{{ site.origin }}/">
+<meta property="og:title" content="{{ site.og_title }}">
+<meta property="og:description" content="{{ site.og_description }}">
+<meta property="og:image" content="{{ asset(site.og_image) | absolute }}">
+<meta property="og:image:alt" content="{{ site.og_title }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ site.og_title }}">
+<meta name="twitter:description" content="{{ site.og_description }}">
+<meta name="twitter:image" content="{{ asset(site.og_image) | absolute }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": about.name,
+  "url": site.origin + "/",
+  "jobTitle": "Software Developer",
+  "description": site.description,
+  "email": contact.email,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Medellín",
+    "addressCountry": "CO"
+  },
+  "sameAs": [contact.github, contact.linkedin]
+} | tojson }}
+</script>
 <style>
   :root{
     --bg: #0B0D12;
@@ -120,6 +146,19 @@
     color: var(--bg); font-weight: 600;
   }
   .btn-primary:hover{ background: transparent; color: var(--amber); }
+  .btn-compact{ padding: 8px 16px; font-size: 12px; }
+  .btn-disabled{
+    border-style: dashed; color: var(--muted); cursor: not-allowed;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 6px,
+      rgba(138,143,156,.07) 6px, rgba(138,143,156,.07) 12px
+    );
+  }
+  .btn-disabled:hover{ border-color: var(--line); color: var(--muted); }
+  .link-note{
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--muted); margin: 10px 0 0; line-height: 1.5;
+  }
 
   /* ─── EVIDENCE STRIP ─── */
   .evidence-strip{
@@ -127,11 +166,12 @@
     margin-top: 8px;
   }
   .evidence-card{
+    display: block;
     border: 1px solid var(--line); border-radius: 12px;
     background: var(--surface); overflow: hidden;
     transition: border-color .25s ease;
   }
-  .evidence-card:hover{ border-color: var(--amber); }
+  a.evidence-card:hover{ border-color: var(--amber); }
   .evidence-thumb{
     width: 100%; aspect-ratio: 16/10; object-fit: cover;
     background: var(--surface-2);
@@ -143,8 +183,9 @@
   }
   .evidence-status{
     font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    letter-spacing: .04em; color: var(--teal);
+    letter-spacing: .04em; color: var(--teal); margin: 0;
   }
+  .evidence-status.is-unavailable{ color: var(--muted); }
 
   /* ─── SECTION LABEL ─── */
   .section-label{
@@ -186,7 +227,7 @@
     letter-spacing: .04em; padding: 4px 10px; border-radius: 20px;
     border: 1px solid var(--line); color: var(--muted);
   }
-  .case-actions{ display: flex; gap: 10px; margin-top: 24px; }
+  .case-actions{ display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
   .case-demo{
     width: 100%; min-height: 400px; border: 0; display: block;
     background: var(--surface-2);
@@ -263,7 +304,7 @@
     margin: 0 0 2px;
   }
   .project-tag{ font-size: 14px; color: var(--muted); margin: 0; }
-  .project-links{ display: flex; gap: 8px; flex: 0 0 auto; }
+  .project-links{ display: flex; gap: 8px; flex: 0 0 auto; flex-wrap: wrap; }
   .project-body{ padding: 0 24px 24px; }
   .project-desc{ font-size: 14px; line-height: 1.7; color: var(--text); margin: 0 0 16px; max-width: 62ch; }
   .project-features{ list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 6px; }
@@ -310,11 +351,24 @@
     padding: 30px 0 50px; border-top: 1px solid var(--line);
     font-family: 'JetBrains Mono', monospace; font-size: 12px;
     color: var(--muted); display: flex; justify-content: space-between;
-    flex-wrap: wrap; gap: 10px;
+    flex-wrap: wrap; gap: 10px; align-items: center;
   }
+  footer .foot-group{ display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .foot-link{ opacity: .55; }
+  .foot-link:hover{ opacity: 1; }
 
   /* ─── FOCUS ─── */
   :focus-visible{ outline: 2px solid var(--teal); outline-offset: 2px; }
+  .sr-only{
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link{
+    position: absolute; left: -9999px; top: 0; z-index: 200;
+    background: var(--amber); color: var(--bg); padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  }
+  .skip-link:focus{ left: 8px; top: 8px; }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px){
@@ -344,514 +398,192 @@
     .case-actions{ flex-direction: column; }
     .contact-links{ flex-direction: column; align-items: center; }
   }
+  @media print{
+    .nav, .hero-video, .hero-video-overlay, .evidence-strip, .case-demo{ display: none; }
+    body{ background: #fff; color: #000; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
 <!-- ═══ NAV ═══ -->
-<nav class="nav">
+<nav class="nav" aria-label="Principal">
   <div class="nav-inner">
-    <a href="/" class="nav-name">Álvaro Berrío</a>
+    <a href="{{ home_url }}" class="nav-name">{{ about.name }}</a>
     <div class="nav-links" id="nav-links">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#capacidades">Capacidades</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto" class="nav-cta">Hablemos</a>
+      {% for item in nav %}
+      <a href="{{ item.href }}"{% if loop.last %} class="nav-cta"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
     </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
 </nav>
 
+<main id="main">
+
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="{{ url_for('static', filename='hero-poster.jpg') }}">
-    <source src="{{ url_for('static', filename='hero-bg.mp4') }}" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="{{ asset(hero.media.poster) }}" aria-hidden="true" tabindex="-1">
+    <source src="{{ asset(hero.media.src) }}" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
   <div class="wrap">
-    <p class="hero-eyebrow">Software · IA · Productos Digitales</p>
-    <h1>Construyo software y soluciones digitales que convierten problemas reales en <em>productos funcionales.</em></h1>
-    <p class="hero-lead">
-      Aplicaciones web, automatización e IA aplicada para crear experiencias
-      digitales útiles, rápidas y escalables.
-    </p>
+    <p class="hero-eyebrow">{{ hero.eyebrow }}</p>
+    <h1>{{ hero.headline }} <em>{{ hero.headline_emphasis }}</em></h1>
+    <p class="hero-lead">{{ hero.lead }}</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-      <a class="btn" href="#contacto">Hablemos</a>
+      {% for action in hero.actions %}
+      <a class="btn{% if loop.first %} btn-primary{% endif %}" href="{{ action.href }}">{{ action.label }}</a>
+      {% endfor %}
     </div>
 
     <div class="evidence-strip">
-      <a href="/cafe/" class="evidence-card">
-        <div class="evidence-thumb" style="background: linear-gradient(135deg, #1a1510, #2a1a15); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:48px;">☕</span>
-        </div>
+      {% for item in evidence %}
+      {% set external = item.url.startswith('http') %}
+      {% if item.available and external %}
+      <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="evidence-card">
+        {{ media_tag(item.media, item.name, lazy=true) }}
         <div class="evidence-info">
-          <p class="evidence-name">Café La Protectora</p>
-          <p class="evidence-status">Brand Experience</p>
+          <p class="evidence-name">{{ item.name }}</p>
+          <p class="evidence-status">{{ item.status }}</p>
         </div>
       </a>
-      <a href="https://salsaquest-1.onrender.com/" target="_blank" rel="noopener noreferrer" class="evidence-card">
-        <div class="evidence-thumb" style="background: linear-gradient(135deg, #1a1520, #2a1a2e); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:48px;">🎵</span>
-        </div>
+      {% else %}
+      <div class="evidence-card" aria-disabled="true">
+        {{ media_tag(item.media, item.name, lazy=true) }}
         <div class="evidence-info">
-          <p class="evidence-name">SalsaQuest</p>
-          <p class="evidence-status">En producción</p>
+          <p class="evidence-name">{{ item.name }}</p>
+          <p class="evidence-status is-unavailable">{{ item.status }} · demo no disponible</p>
         </div>
-      </a>
-      <a href="https://web-production-0f3c8.up.railway.app" target="_blank" rel="noopener noreferrer" class="evidence-card">
-        <div class="evidence-thumb" style="background: linear-gradient(135deg, #0d1a1a, #1a2a2a); display:flex; align-items:center; justify-content:center;">
-          <span style="font-size:48px;">📦</span>
-        </div>
-        <div class="evidence-info">
-          <p class="evidence-name">EduPack Builder</p>
-          <p class="evidence-status">En producción</p>
-        </div>
-      </a>
+      </div>
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<!-- ═══ FEATURED CASE STUDIES ═══ -->
+<!-- ═══ CASOS DE ESTUDIO ═══ -->
 <div class="wrap">
-  <div class="section-label">Casos de estudio destacados</div>
+  <div class="section-label">{{ case_studies.heading }}</div>
 </div>
+{% for case in case_studies['items'] %}
 <section class="wrap">
   <div class="case-study-section">
     <div class="case-grid">
       <div class="case-content">
-        <p class="case-badge">Brand & Business Case</p>
-        <h2>Ruta Salsera</h2>
-        <p class="case-subtitle">Cultura · Turismo · Entretenimiento — Medellín</p>
+        <p class="case-badge">{{ case.badge }}</p>
+        <h2>{{ case.icon }} {{ case.name }}</h2>
+        <p class="case-subtitle">{{ case.caption }}</p>
 
         <div class="case-block">
           <p class="case-block-title">Contexto</p>
-          <p>Son Havana es un bar de salsa y son cubano en Medellín que necesitaba diferenciarse de la competencia.</p>
+          <p>{{ case.context }}</p>
         </div>
 
         <div class="case-block">
           <p class="case-block-title">Problema</p>
-          <p>Ningún negocio de salsa en la ciudad ofrecía una experiencia digital interactiva para turistas.</p>
+          <p>{{ case.problem }}</p>
         </div>
 
         <div class="case-block">
           <p class="case-block-title">Solución</p>
-          <p>Aplicación web con storytelling gamificado, trivia interactiva, biografías de artistas, línea de tiempo y leaderboard.</p>
+          <p>{{ case.solution }}</p>
+          {% if case.features %}
           <ul class="case-features-list">
-            <li>Línea de tiempo interactiva de la historia de la salsa, filtrable por década</li>
-            <li>Biografías de artistas con modal de detalle</li>
-            <li>Trivia salsera gamificada con reto diario, puntos y leaderboard</li>
-            <li>Registro de usuarios con captura de datos</li>
-            <li>Reproductor de Spotify embebido con playlist oficial</li>
+            {% for feature in case.features %}<li>{{ feature }}</li>{% endfor %}
           </ul>
+          {% endif %}
         </div>
 
         <div class="case-block">
           <p class="case-block-title">Tecnologías</p>
           <div class="case-tech">
-            <span class="case-pill">Python</span>
-            <span class="case-pill">Flask</span>
-            <span class="case-pill">SQLAlchemy</span>
-            <span class="case-pill">JavaScript</span>
-            <span class="case-pill">CSS</span>
+            {% for tech in case.tech %}<span class="case-pill">{{ tech }}</span>{% endfor %}
           </div>
         </div>
 
         <div class="case-actions">
-          <a class="btn btn-primary" href="https://salsaquest-1.onrender.com/" target="_blank" rel="noopener noreferrer">Ver demo ↗</a>
-          <a class="btn" href="https://github.com/alvaroberrio23242-eng/salsaquest" target="_blank" rel="noopener noreferrer">Ver código ↗</a>
+          {% for link in case.links %}{{ action_link(link) }}{% endfor %}
         </div>
+        {% set notes = case.links | selectattr('available', 'equalto', false) | map(attribute='note') | select %}
+        {% if notes %}
+        <p class="link-note">{{ notes | join(' ') }}</p>
+        {% endif %}
       </div>
       <div class="case-demo">
-        <video class="case-demo-video" muted loop playsinline preload="none" data-src="{{ url_for('static', filename='case-studies/ruta-salsera-bg.mp4') }}"></video>
+        {% if case.media.kind == 'video' %}
+        <video class="case-demo-video" muted loop playsinline preload="none" data-src="{{ asset(case.media.src) }}" poster="{{ asset(case.media.poster) }}"></video>
         <div class="case-demo-overlay"></div>
         <div class="case-demo-fallback" style="min-height: 400px;">
           <div style="text-align:center; padding: 40px;">
-            <span style="font-size: 80px; display:block; margin-bottom: 16px;">🎵</span>
-            <p style="font-family: 'Fraunces', serif; font-size: 20px; margin: 0 0 8px;">SalsaQuest</p>
-            <p style="font-size: 14px; color: var(--muted); margin: 0;">Experiencia interactiva de cultura salsera</p>
+            <span style="font-size: 80px; display:block; margin-bottom: 16px;">{{ case.icon }}</span>
+            <p style="font-family: 'Fraunces', serif; font-size: 20px; margin: 0 0 8px;">{{ case.name }}</p>
+            <p style="font-size: 14px; color: var(--muted); margin: 0;">{{ case.caption }}</p>
           </div>
         </div>
+        {% else %}
+        <img class="case-demo-img" src="{{ asset(case.media.src) }}" alt="{{ case.name }} — {{ case.caption }}" loading="lazy" decoding="async" width="800" height="1000">
+        {% endif %}
       </div>
     </div>
   </div>
 </section>
-
-<section class="wrap">
-  <div class="case-study-section">
-    <div class="case-grid">
-      <div class="case-content">
-        <p class="case-badge">Brand & Business Case</p>
-        <h2>Café La Protectora</h2>
-        <p class="case-subtitle">Producto · Marca · Retail · Cultura — Venezuela</p>
-
-        <div class="case-block">
-          <p class="case-block-title">Contexto</p>
-          <p>Café La Protectora es una marca venezolana de café fundada en 2005 en los Andes de Trujillo, con historia real y producto real.</p>
-        </div>
-
-        <div class="case-block">
-          <p class="case-block-title">Problema</p>
-          <p>Su experiencia digital no reflejaba su calidad: directorio de distribución roto, productos sin descripción, storytelling incompleto.</p>
-        </div>
-
-        <div class="case-block">
-          <p class="case-block-title">Solución</p>
-          <p>Digital brand experience con investigación documentada de 30 claims, UX journeys, SEO, performance y accessibility.</p>
-        </div>
-
-        <div class="case-block">
-          <p class="case-block-title">Tecnologías</p>
-          <div class="case-tech">
-            <span class="case-pill">Python</span>
-            <span class="case-pill">Flask</span>
-            <span class="case-pill">Jinja2</span>
-            <span class="case-pill">CSS</span>
-            <span class="case-pill">Schema.org</span>
-          </div>
-        </div>
-
-        <div class="case-actions">
-          <a class="btn btn-primary" href="/cafe/">Ver demo ↗</a>
-          <a class="btn" href="#proyectos">Ver caso ↗</a>
-        </div>
-      </div>
-      <div class="case-demo">
-        <video class="case-demo-video" muted loop playsinline preload="none" data-src="{{ url_for('static', filename='case-studies/cafe-la-protectora-bg.mp4') }}"></video>
-        <div class="case-demo-overlay"></div>
-        <div class="case-demo-fallback" style="min-height: 400px;">
-          <div style="text-align:center; padding: 40px;">
-            <span style="font-size: 80px; display:block; margin-bottom: 16px;">☕</span>
-            <p style="font-family: 'Fraunces', serif; font-size: 20px; margin: 0 0 8px;">Café La Protectora</p>
-            <p style="font-size: 14px; color: var(--muted); margin: 0;">Digital brand experience · Independent case study</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% endfor %}
 
 <!-- ═══ CAPACIDADES ═══ -->
 <div class="wrap">
-  <div class="section-label" id="capacidades">Qué puedo hacer</div>
+  <div class="section-label" id="capacidades">{{ capabilities.heading }}</div>
 </div>
 <section class="wrap">
   <div class="cap-grid">
-    <div class="cap-card" style="--card-accent: var(--amber);">
-      <div class="cap-icon">🌐</div>
-      <h3>Desarrollo Web</h3>
-      <p>Transformo procesos o ideas en aplicaciones web funcionales, desde landing pages hasta plataformas complejas.</p>
+    {% for item in capabilities['items'] %}
+    <div class="cap-card" style="--card-accent: {{ accent(item) }};">
+      <div class="cap-icon" aria-hidden="true">{{ item.icon }}</div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
       <div class="cap-pills">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">SQLAlchemy</span>
-        <span class="case-pill">JavaScript</span>
-        <span class="case-pill">HTML/CSS</span>
+        {% for pill in item.pills %}<span class="case-pill">{{ pill }}</span>{% endfor %}
       </div>
     </div>
-    <div class="cap-card" style="--card-accent: var(--teal);">
-      <div class="cap-icon">⚡</div>
-      <h3>Automatización</h3>
-      <p>Reduzco tareas repetitivas mediante flujos automatizados, scraping inteligente e integración de APIs.</p>
-      <div class="cap-pills">
-        <span class="case-pill">APIs</span>
-        <span class="case-pill">Scraping</span>
-        <span class="case-pill">Procesamiento de datos</span>
-        <span class="case-pill">Integraciones</span>
-      </div>
-    </div>
-    <div class="cap-card" style="--card-accent: var(--magenta);">
-      <div class="cap-icon">🤖</div>
-      <h3>IA Aplicada</h3>
-      <p>Integro inteligencia artificial cuando aporta valor real al producto o proceso — sin humo, con resultados.</p>
-      <div class="cap-pills">
-        <span class="case-pill">Modelos</span>
-        <span class="case-pill">APIs de IA</span>
-        <span class="case-pill">Agentes</span>
-        <span class="case-pill">Análisis de datos</span>
-      </div>
-    </div>
-    <div class="cap-card" style="--card-accent: var(--amber);">
-      <div class="cap-icon">🔧</div>
-      <h3>Sistemas Digitales</h3>
-      <p>Diseño soluciones que conectan usuarios, información y procesos — con arquitectura sólida y escalable.</p>
-      <div class="cap-pills">
-        <span class="case-pill">Arquitectura</span>
-        <span class="case-pill">Bases de datos</span>
-        <span class="case-pill">Auth</span>
-        <span class="case-pill">Testing</span>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </section>
 
 <!-- ═══ PROYECTOS ═══ -->
 <div class="wrap">
-  <div class="section-label" id="proyectos">Proyectos</div>
+  <div class="section-label" id="proyectos">{{ projects.heading }}</div>
 </div>
 <section class="wrap">
-
-  {# ─── TIER 0: BRAND & BUSINESS CASES ─── #}
-  {% if False %}
-    {# OCULTA DESDE 2026-09-19: Duplicada con ficha destacada "Ruta Salsera".
-         Reactivar cambiando a {% if True %} o eliminando este bloque if. #}
-  <article class="project-card" style="--card-accent: var(--amber);">
+  {% for project in projects['items'] %}
+  <article class="project-card" style="--card-accent: {{ accent(project) }};">
     <div class="project-top">
-      <span class="project-tier" style="border-color: var(--amber); color: var(--amber);">Brand & Business</span>
+      <span class="project-tier {{ tier(project) }}">{{ project.category }}</span>
       <div class="project-info">
-        <p class="project-name">Son Havana</p>
-        <p class="project-tag">Cultura · Turismo · Entretenimiento — Experiencia digital interactiva</p>
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p class="project-tag">{{ project.tag }}</p>
       </div>
       <div class="project-links">
-        <a class="btn" href="https://alvaro345673344.pythonanywhere.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng/salsaquest" target="_blank" rel="noopener noreferrer">Código ↗</a>
+        {% for link in project.links %}{{ action_link(link, compact=True) }}{% endfor %}
       </div>
     </div>
     <div class="project-body">
-      <p class="project-desc">Experiencia web interactiva para Son Havana, bar de salsa en Medellín. Storytelling gamificado, trivia, biografías de artistas y leaderboard. Demuestra capacidad de investigación, diseño UX y desarrollo de software.</p>
+      <p class="project-desc">{{ project.description }}</p>
+      {% if project.features %}
       <ul class="project-features">
-        <li>Línea de tiempo interactiva de la historia de la salsa</li>
-        <li>Trivia salsera gamificada con reto diario y leaderboard</li>
-        <li>Biografías de artistas con modal de detalle</li>
-        <li>Registro de usuarios con captura de datos</li>
+        {% for feature in project.features %}<li>{{ feature }}</li>{% endfor %}
       </ul>
+      {% endif %}
       <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">SQLAlchemy</span>
-        <span class="case-pill">JavaScript</span>
-        <span class="case-pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
+        {% for tech in project.tech %}<span class="case-pill">{{ tech }}</span>{% endfor %}
+        <span class="case-pill" style="border-color: {{ accent(project) }}; color: {{ accent(project) }};">{{ project.status }}</span>
       </div>
     </div>
   </article>
-  {% endif %}
-
-  <article class="project-card" style="--card-accent: var(--amber);">
-    <div class="project-top">
-      <span class="project-tier" style="border-color: var(--amber); color: var(--amber);">Brand & Business</span>
-      <div class="project-info">
-        <p class="project-name">Café La Protectora</p>
-        <p class="project-tag">Producto · Marca · Retail · Cultura — Digital brand experience</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="/cafe/">Demo ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Digital brand experience independiente para Café La Protectora, marca venezolana de café. Investigación documentada de 30 claims, análisis de competencia, UX journeys, SEO y performance. Caso de estudio público de Brand + Business + Digital Product.</p>
-      <ul class="project-features">
-        <li>Investigación estructurada de 14 secciones con 30 claims documentados</li>
-        <li>Análisis de marca, storytelling y posicionamiento</li>
-        <li>6 journeys de usuario con arquitectura propuesta</li>
-        <li>Sub-app Flask encapsulada con SEO y accessibility</li>
-      </ul>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">Jinja2</span>
-        <span class="case-pill">CSS</span>
-        <span class="case-pill" style="border-color: var(--amber); color: var(--amber);">Concepto</span>
-      </div>
-    </div>
-  </article>
-
-  {# ─── TIER 1: PRODUCT PROOF ─── #}
-  {% if False %}
-    {# OCULTA DESDE 2026-09-19: Contenido técnico fusionado en Featured Case Study "Ruta Salsera".
-         Reactivar cambiando a {% if True %} o eliminando este bloque if. #}
-  <article class="project-card" style="--card-accent: var(--teal);">
-    <div class="project-top">
-      <span class="project-tier tier-1">Product Proof</span>
-      <div class="project-info">
-        <p class="project-name">SalsaQuest</p>
-        <p class="project-tag">Experiencia web interactiva de storytelling y trivia salsera para Son Havana</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://salsaquest-1.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng/salsaquest" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Aplicación web construida para turistas que visitan lugares emblemáticos de la cultura salsera. Combina storytelling, trivia gamificada y módulos interactivos sobre la historia, la música y los personajes de la salsa.</p>
-      <ul class="project-features">
-        <li>Línea de tiempo interactiva de la historia de la salsa, filtrable por década</li>
-        <li>Biografías de artistas con modal de detalle</li>
-        <li>Trivia salsera gamificada con reto diario, puntos y leaderboard</li>
-        <li>Registro de usuarios con captura de datos</li>
-        <li>Reproductor de Spotify embebido con playlist oficial</li>
-      </ul>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">SQLAlchemy</span>
-        <span class="case-pill">JavaScript</span>
-        <span class="case-pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
-      </div>
-    </div>
-  </article>
-  {% endif %}
-
-  <article class="project-card" style="--card-accent: var(--teal);">
-    <div class="project-top">
-      <span class="project-tier tier-2">Product Proof</span>
-      <div class="project-info">
-        <p class="project-name">EduPack Builder</p>
-        <p class="project-tag">Agente autónomo de curación y empaquetado de datos con IA</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://web-production-0f3c8.up.railway.app" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Sistema automatizado que realiza scraping inteligente, filtrado por licencias abiertas y generación autónoma de documentación técnica. Procesa búsquedas en múltiples APIs y compila paquetes de contenido listos para distribución.</p>
-      <ul class="project-features">
-        <li>Reduce el tiempo de compilación de contenido de 3 horas a 15 segundos</li>
-        <li>Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive</li>
-        <li>Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema</li>
-        <li>Genera documentación estructurada a partir de una simple entrada de usuario</li>
-        <li>Empaqueta todo en un .zip descargable</li>
-      </ul>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">APIs</span>
-        <span class="case-pill">Scraping</span>
-        <span class="case-pill" style="border-color: var(--amber); color: var(--amber);">En producción</span>
-      </div>
-    </div>
-  </article>
-
-  {# ─── TIER 2: PRODUCT PROOF ─── #}
-  <article class="project-card" style="--card-accent: var(--teal);">
-    <div class="project-top">
-      <span class="project-tier tier-2">Product Proof</span>
-      <div class="project-info">
-        <p class="project-name">OSINT Search Pro</p>
-        <p class="project-tag">Plataforma de ciberinteligencia y extracción de datos</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://osintsearchpro-production.up.railway.app/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Motor de búsqueda e inteligencia de datos centralizado para análisis competitivo, auditorías de ciberseguridad e investigación de mercado. Filtra y organiza información pública en tiempo real.</p>
-      <ul class="project-features">
-        <li>7 motores de búsqueda en paralelo</li>
-        <li>Módulos especializados: emails, dominios, IPs, usernames</li>
-        <li>Interfaz oscura estilo "Recon Console"</li>
-        <li>Arquitectura extensible para módulos futuros</li>
-      </ul>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">Scraping</span>
-        <span class="case-pill" style="border-color: var(--teal); color: var(--teal);">En producción</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="project-card" style="--card-accent: var(--teal);">
-    <div class="project-top">
-      <span class="project-tier tier-2">Product Proof</span>
-      <div class="project-info">
-        <p class="project-name">Portfolio Engine</p>
-        <p class="project-tag">Sistema multi-perfil con autenticación, revisión y roles</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Arquitectura de backend con Flask + SQLAlchemy que soporta múltiples perfiles privados con datos verificables. Sistema de roles, autenticación, verificación por campo y panel administrativo.</p>
-      <ul class="project-features">
-        <li>16 tablas relacionales con integridad referencial</li>
-        <li>Sistema de verificación por campo: VERIFIED / NEEDS_REVIEW / UNVERIFIED</li>
-        <li>Panel administrativo con login, rutas protegidas y badges</li>
-        <li>39+ tests automatizados cubriendo esquema, semilla y rutas</li>
-      </ul>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">SQLAlchemy</span>
-        <span class="case-pill">Flask-Login</span>
-        <span class="case-pill" style="border-color: var(--teal); color: var(--teal);">En desarrollo</span>
-      </div>
-    </div>
-  </article>
-
-  {# ─── TIER 3: TECHNICAL PROOF ─── #}
-  <article class="project-card" style="--card-accent: var(--muted);">
-    <div class="project-top">
-      <span class="project-tier tier-3">Technical Proof</span>
-      <div class="project-info">
-        <p class="project-name">RockQuest</p>
-        <p class="project-tag">Enciclopedia interactiva de la historia del rock</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://benjaminberrio16.pythonanywhere.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng/rockquest" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Aplicación web con Flask y SQLAlchemy que recorre la historia del rock: décadas, línea de tiempo, subgéneros, bandas y artistas reales cargados en base de datos, y trivia interactiva.</p>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">SQLAlchemy</span>
-        <span class="case-pill" style="border-color: var(--muted); color: var(--muted);">En producción</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="project-card" style="--card-accent: var(--muted);">
-    <div class="project-top">
-      <span class="project-tier tier-3">Technical Proof</span>
-      <div class="project-info">
-        <p class="project-name">Aventura Antioqueña</p>
-        <p class="project-tag">Juego educativo compilado a WebAssembly</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/" target="_blank" rel="noopener noreferrer">Jugar ↗</a>
-        <a class="btn" href="https://alvaroberrio23242-eng.itch.io/aventura-antioquea" target="_blank" rel="noopener noreferrer">itch.io ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Juego de trivia construido en Python y Pygame, compilado a WebAssembly para correr directo en el navegador. Tres niveles temáticos con preguntas sobre cultura antioqueña.</p>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Pygame</span>
-        <span class="case-pill">WebAssembly</span>
-        <span class="case-pill" style="border-color: var(--muted); color: var(--muted);">En producción</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="project-card" style="--card-accent: var(--muted);">
-    <div class="project-top">
-      <span class="project-tier tier-3">Technical Proof</span>
-      <div class="project-info">
-        <p class="project-name">CodeAudit</p>
-        <p class="project-tag">Auditor estático de repositorios Python/Flask</p>
-      </div>
-      <div class="project-links">
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">Código ↗</a>
-      </div>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">Analiza calidad y seguridad de repositorios Python/Flask sin ejecutar el código auditado. Análisis regex/AST en subproceso aislado, rate limiting, caché y rúbrica de severidades A–F.</p>
-      <div class="project-tech">
-        <span class="case-pill">Python</span>
-        <span class="case-pill">Flask</span>
-        <span class="case-pill">AST</span>
-        <span class="case-pill" style="border-color: var(--muted); color: var(--muted);">En desarrollo</span>
-      </div>
-    </div>
-  </article>
-
+  {% endfor %}
 </section>
 
 <!-- ═══ SOBRE MÍ ═══ -->
@@ -861,35 +593,19 @@
 <section class="wrap">
   <div class="about-grid">
     <div class="about-photo">
-      <img src="{{ url_for('static', filename='img/profile-avatar.webp') }}" alt="Álvaro Berrío" loading="lazy">
+      <img src="{{ asset(about.avatar) }}" alt="{{ about.name }}" loading="lazy" decoding="async" width="280" height="373">
     </div>
     <div class="about-text">
-      <h2>Álvaro Berrío</h2>
-      <p>
-        Soy estudiante de <strong>Ingeniería de Sistemas</strong> en Medellín, Colombia.
-        Construyo software y soluciones digitales mientras desarrollo mi carrera
-        como desarrollador.
-      </p>
-      <p>
-        Me interesa resolver problemas que se pueden resolver con tecnología:
-        procesos que se pueden automatizar, ideas que se pueden convertir en
-        productos digitales, y sistemas que conectan usuarios, información y procesos.
-      </p>
-      <p>
-        Cada proyecto que construyo es evidencia de lo que puedo hacer por tu negocio
-        o tu equipo.
-      </p>
+      <h2>{{ about.name }}</h2>
+      {% for paragraph in about.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
 
       <ul class="about-list">
-        <li><strong>Estudio:</strong> Ingeniería de Sistemas</li>
-        <li><strong>Ubicación:</strong> Medellín, Colombia</li>
-        <li><strong>Enfoque:</strong> Desarrollo web, automatización, IA aplicada</li>
-        <li><strong>Stack:</strong> Python, Flask, SQLAlchemy, JavaScript, CSS</li>
+        {% for row in about.list %}<li><strong>{{ row.label }}:</strong> {{ row.value }}</li>{% endfor %}
       </ul>
 
       <div class="about-links">
-        <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a class="btn" href="{{ contact.github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="btn" href="{{ contact.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -898,28 +614,39 @@
 <!-- ═══ CONTACTO ═══ -->
 <section class="contact-section" id="contacto">
   <div class="wrap">
-    <h2>¿Tienes un problema que se puede resolver con tecnología?</h2>
-    <p>¿Necesitas un desarrollador para tu proyecto? ¿Quieres conocer mi trabajo?</p>
+    <h2>{{ contact.headline }}</h2>
+    <p>{{ contact.sub }}</p>
     <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:alvaro@example.com">Email ↗</a>
-      <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-      <a class="btn" href="https://github.com/alvaroberrio23242-eng" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a class="btn btn-primary" href="mailto:{{ contact.email }}">Email ↗</a>
+      <a class="btn" href="{{ contact.whatsapp }}" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+      <a class="btn" href="{{ contact.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a class="btn" href="{{ contact.github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ═══ FOOTER ═══ -->
 <footer class="wrap">
-  <span>© 2026 Álvaro Berrío</span>
-  <span>
-    <a href="{{ url_for('login') }}" style="opacity:.3;" title="Acceso privado">🔐</a>
+  <span class="foot-group">
+    <span>{{ footer.copyright }}</span>
+    <span>·</span>
+    <span>Archivo actualizado en {{ footer.updated }}</span>
+  </span>
+  <span class="foot-group">
+    {% if surface == 'web' %}
+    <a class="foot-link" href="{{ footer.private_access.href }}" title="{{ footer.private_access.label }}" aria-label="{{ footer.private_access.label }}">{{ footer.private_access.icon }}</a>
+    {% endif %}
   </span>
 </footer>
 
 <script>
   // Mobile nav toggle
   document.getElementById('nav-toggle').addEventListener('click', function() {
-    document.getElementById('nav-links').classList.toggle('open');
+    var nav = document.getElementById('nav-links');
+    var open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
   // Close mobile nav on link click

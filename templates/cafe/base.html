@@ -8,7 +8,7 @@
 <meta name="keywords" content="café venezolano, café de Trujillo, café gourmet, café de origen, Cordillera Andina, Pampán, Santa Ana">
 <meta name="author" content="Álvaro Berrío">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://alvaroberrio.dev/cafe/{% block canonical %}{% endblock %}">
+<link rel="canonical" href="{{ site.origin }}/cafe/{% block canonical %}{% endblock %}">
 
 <!-- Open Graph -->
 <meta property="og:title" content="{% block og_title %}Café La Protectora — Café Venezolano de Origen Andino{% endblock %}">
@@ -16,12 +16,16 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_VE">
 <meta property="og:site_name" content="Café La Protectora — Digital Brand Experience">
-<meta property="og:image" content="/static/cafe/img/og-image.jpg">
+<meta property="og:url" content="{{ site.origin }}/cafe/{% block og_url %}{{ self.canonical() }}{% endblock %}">
+<meta property="og:image" content="{{ url_for('static', filename='cafe/img/coffee-farm.jpg') | absolute }}">
+<meta property="og:image:alt" content="Finca cafetera en la Cordillera Andina de Trujillo, origen del café">
+{% block og_image %}{% endblock %}
 
 <!-- Twitter/X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% block tw_title %}Café La Protectora{% endblock %}">
 <meta name="twitter:description" content="{% block tw_description %}Café venezolano de origen andino. Tradición del grano a tu taza.{% endblock %}">
+<meta name="twitter:image" content="{{ url_for('static', filename='cafe/img/coffee-farm.jpg') | absolute }}">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +33,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="/static/cafe/css/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='cafe/css/style.css') }}">
 
 <!-- Schema.org -->
 <script type="application/ld+json">

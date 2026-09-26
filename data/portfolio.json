@@ -1,0 +1,472 @@
+{
+  "site": {
+    "origin": "https://portfolio-hub-app.onrender.com",
+    "locale": "es_CO",
+    "brand": "Berrío Digital Lab",
+    "title": "Álvaro Berrío — Software Developer | IA Aplicada | Productos Digitales",
+    "description": "Desarrollador de software especializado en aplicaciones web, automatización e IA aplicada. Proyectos en producción con Python, Flask y más. Medellín, Colombia.",
+    "og_title": "Álvaro Berrío — Software Developer",
+    "og_description": "Construyo software y soluciones digitales que convierten problemas reales en productos funcionales.",
+    "og_image": "hero-poster.jpg"
+  },
+  "nav": [
+    {
+      "label": "Proyectos",
+      "href": "#proyectos"
+    },
+    {
+      "label": "Capacidades",
+      "href": "#capacidades"
+    },
+    {
+      "label": "Sobre mí",
+      "href": "#sobre-mi"
+    },
+    {
+      "label": "Hablemos",
+      "href": "#contacto"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Software · IA · Productos Digitales",
+    "headline": "Construyo software y soluciones digitales que convierten problemas reales en",
+    "headline_emphasis": "productos funcionales.",
+    "lead": "Aplicaciones web, automatización e IA aplicada para crear experiencias digitales útiles, rápidas y escalables.",
+    "avatar": "img/profile-avatar.webp",
+    "actions": [
+      {
+        "label": "Ver proyectos",
+        "href": "#proyectos",
+        "available": true
+      },
+      {
+        "label": "Hablemos",
+        "href": "#contacto",
+        "available": true
+      }
+    ],
+    "media": {
+      "kind": "video",
+      "src": "hero-bg.mp4",
+      "poster": "hero-poster.jpg"
+    }
+  },
+  "capabilities": {
+    "heading": "Qué puedo hacer",
+    "items": [
+      {
+        "icon": "🌐",
+        "title": "Desarrollo Web",
+        "text": "Transformo procesos o ideas en aplicaciones web funcionales, desde landing pages hasta plataformas complejas.",
+        "pills": [
+          "Python",
+          "Flask",
+          "SQLAlchemy",
+          "JavaScript",
+          "HTML/CSS"
+        ],
+        "accent": "amber"
+      },
+      {
+        "icon": "⚡",
+        "title": "Automatización",
+        "text": "Reduzco tareas repetitivas mediante flujos automatizados, scraping inteligente e integración de APIs.",
+        "pills": [
+          "APIs",
+          "Scraping",
+          "Procesamiento de datos",
+          "Integraciones"
+        ],
+        "accent": "teal"
+      },
+      {
+        "icon": "🤖",
+        "title": "IA Aplicada",
+        "text": "Integro inteligencia artificial cuando aporta valor real al producto o proceso — sin humo, con resultados.",
+        "pills": [
+          "Modelos",
+          "APIs de IA",
+          "Agentes",
+          "Análisis de datos"
+        ],
+        "accent": "magenta"
+      },
+      {
+        "icon": "🔧",
+        "title": "Sistemas Digitales",
+        "text": "Diseño soluciones que conectan usuarios, información y procesos — con arquitectura sólida y escalable.",
+        "pills": [
+          "Arquitectura",
+          "Bases de datos",
+          "Auth",
+          "Testing"
+        ],
+        "accent": "amber"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "name": "SalsaQuest",
+      "url": "https://salsaquest-1.onrender.com/",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "video",
+        "src": "img/thumbnails/salsaquest.mp4",
+        "poster": "img/thumbnails/salsaquest.png"
+      },
+      "note": ""
+    },
+    {
+      "name": "EduPack Builder",
+      "url": "https://web-production-0f3c8.up.railway.app",
+      "status": "En producción",
+      "available": false,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/edupack.png"
+      },
+      "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26. Pendiente la URL vigente."
+    },
+    {
+      "name": "OSINT Search Pro",
+      "url": "https://osintsearchpro-production.up.railway.app/",
+      "status": "En producción",
+      "available": false,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/osint.png"
+      },
+      "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26. Pendiente la URL vigente."
+    }
+  ],
+  "case_studies": {
+    "heading": "Casos de estudio destacados",
+    "items": [
+      {
+        "name": "SalsaQuest",
+        "icon": "🎵",
+        "badge": "Cultura · Turismo · Entretenimiento — Medellín",
+        "caption": "Experiencia interactiva de cultura salsera",
+        "context": "Son Havana es un bar de salsa y son cubano en Medellín que necesitaba diferenciarse de la competencia.",
+        "problem": "Ningún negocio de salsa en la ciudad ofrecía una experiencia digital interactiva para turistas.",
+        "solution": "Aplicación web con storytelling gamificado, trivia interactiva, biografías de artistas, línea de tiempo y leaderboard.",
+        "features": [
+          "Línea de tiempo interactiva de la historia de la salsa, filtrable por década",
+          "Biografías de artistas con modal de detalle",
+          "Trivia salsera gamificada con reto diario, puntos y leaderboard",
+          "Registro de usuarios con captura de datos",
+          "Reproductor de Spotify embebido con playlist oficial"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "SQLAlchemy",
+          "JavaScript",
+          "CSS"
+        ],
+        "links": [
+          {
+            "label": "Ver demo",
+            "href": "https://salsaquest-1.onrender.com/",
+            "available": true
+          },
+          {
+            "label": "Ver código",
+            "href": "https://github.com/alvaroberrio23242-eng/salsaquest",
+            "available": true
+          }
+        ],
+        "media": {
+          "kind": "video",
+          "src": "img/thumbnails/salsaquest.mp4",
+          "poster": "img/thumbnails/salsaquest.png"
+        }
+      },
+      {
+        "name": "Café La Protectora",
+        "icon": "☕",
+        "badge": "Producto · Marca · Retail · Cultura — Venezuela",
+        "caption": "Digital brand experience · Independent case study",
+        "context": "Café La Protectora es una marca venezolana de café fundada en 2005 en los Andes de Trujillo, con historia real y producto real.",
+        "problem": "Su experiencia digital no reflejaba su calidad: directorio de distribución roto, productos sin descripción, storytelling incompleto.",
+        "solution": "Digital brand experience con investigación documentada de 30 claims, UX journeys, SEO, performance y accessibility.",
+        "features": [
+          "Investigación estructurada de 14 secciones con 30 claims documentados",
+          "Análisis de marca, storytelling y posicionamiento",
+          "6 journeys de usuario con arquitectura propuesta",
+          "Sub-app Flask encapsulada con SEO y accessibility"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "Jinja2",
+          "CSS",
+          "Schema.org"
+        ],
+        "links": [
+          {
+            "label": "Ver demo",
+            "href": "/cafe/",
+            "available": true
+          },
+          {
+            "label": "Ver caso",
+            "href": "https://alvaro345673344.pythonanywhere.com/",
+            "available": false,
+            "note": "La URL devolvía 404 en la verificación del 2026-09-26."
+          }
+        ],
+        "media": {
+          "kind": "image",
+          "src": "cafe/img/coffee-farm.webp"
+        }
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Proyectos",
+    "items": [
+      {
+        "name": "Café La Protectora",
+        "category": "Brand & Business",
+        "status": "Concepto",
+        "accent": "amber",
+        "description": "Digital brand experience independiente para Café La Protectora, marca venezolana de café. Investigación documentada de 30 claims, análisis de competencia, UX journeys, SEO y performance. Caso de estudio público de Brand + Business + Digital Product.",
+        "features": [
+          "Investigación estructurada de 14 secciones con 30 claims documentados",
+          "Análisis de marca, storytelling y posicionamiento",
+          "6 journeys de usuario con arquitectura propuesta",
+          "Sub-app Flask encapsulada con SEO y accessibility"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "Jinja2",
+          "CSS"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "/cafe/",
+            "available": true
+          }
+        ],
+        "tag": "Producto · Marca · Retail · Cultura — Digital brand experience"
+      },
+      {
+        "name": "EduPack Builder",
+        "category": "Product Proof",
+        "status": "En producción",
+        "accent": "teal",
+        "description": "Sistema automatizado que realiza scraping inteligente, filtrado por licencias abiertas y generación autónoma de documentación técnica. Procesa búsquedas en múltiples APIs y compila paquetes de contenido listos para distribución.",
+        "features": [
+          "Reduce el tiempo de compilación de contenido de 3 horas a 15 segundos",
+          "Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive",
+          "Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema",
+          "Genera documentación estructurada a partir de una simple entrada de usuario",
+          "Empaqueta todo en un .zip descargable"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "APIs",
+          "Scraping"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://web-production-0f3c8.up.railway.app",
+            "available": false,
+            "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26."
+          },
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/EduPack-Builder",
+            "available": true
+          }
+        ],
+        "tag": "Agente autónomo de curación y empaquetado de datos con IA"
+      },
+      {
+        "name": "OSINT Search Pro",
+        "category": "Product Proof",
+        "status": "En producción",
+        "accent": "teal",
+        "description": "Motor de búsqueda e inteligencia de datos centralizado para análisis competitivo, auditorías de ciberseguridad e investigación de mercado. Filtra y organiza información pública en tiempo real.",
+        "features": [
+          "7 motores de búsqueda en paralelo",
+          "Módulos especializados: emails, dominios, IPs, usernames",
+          "Interfaz oscura estilo \"Recon Console\"",
+          "Arquitectura extensible para módulos futuros"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "Scraping"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://osintsearchpro-production.up.railway.app/",
+            "available": false,
+            "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26."
+          },
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/OSINT_Search_Pro",
+            "available": true
+          }
+        ],
+        "tag": "Plataforma de ciberinteligencia y extracción de datos"
+      },
+      {
+        "name": "Portfolio Engine",
+        "category": "Product Proof",
+        "status": "En desarrollo",
+        "accent": "teal",
+        "description": "Arquitectura de backend con Flask + SQLAlchemy que soporta múltiples perfiles privados con datos verificables. Sistema de roles, autenticación, verificación por campo y panel administrativo.",
+        "features": [
+          "16 tablas relacionales con integridad referencial",
+          "Sistema de verificación por campo: VERIFIED / NEEDS_REVIEW / UNVERIFIED",
+          "Panel administrativo con login, rutas protegidas y badges",
+          "125 tests automatizados cubriendo esquema, semilla y rutas"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "SQLAlchemy",
+          "Flask-Login"
+        ],
+        "links": [
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng",
+            "available": true,
+            "note": "El repositorio del motor es privado; el enlace apunta al perfil público de GitHub."
+          }
+        ],
+        "tag": "Sistema multi-perfil con autenticación, revisión y roles"
+      },
+      {
+        "name": "RockQuest",
+        "category": "Technical Proof",
+        "status": "En producción",
+        "accent": "muted",
+        "description": "Aplicación web con Flask y SQLAlchemy que recorre la historia del rock: décadas, línea de tiempo, subgéneros, bandas y artistas reales cargados en base de datos, y trivia interactiva.",
+        "features": [],
+        "tech": [
+          "Python",
+          "Flask",
+          "SQLAlchemy"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://rockquest.onrender.com/",
+            "available": true
+          },
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/rockquest",
+            "available": true
+          }
+        ],
+        "tag": "Enciclopedia interactiva de la historia del rock"
+      },
+      {
+        "name": "Aventura Antioqueña",
+        "category": "Technical Proof",
+        "status": "En producción",
+        "accent": "muted",
+        "description": "Juego de trivia construido en Python y Pygame, compilado a WebAssembly para correr directo en el navegador. Tres niveles temáticos con preguntas sobre cultura antioqueña.",
+        "features": [],
+        "tech": [
+          "Python",
+          "Pygame",
+          "WebAssembly"
+        ],
+        "links": [
+          {
+            "label": "Jugar",
+            "href": "https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/",
+            "available": true
+          },
+          {
+            "label": "itch.io",
+            "href": "https://alvaroberrio23242-eng.itch.io/aventura-antioquea",
+            "available": true
+          }
+        ],
+        "tag": "Juego educativo compilado a WebAssembly"
+      },
+      {
+        "name": "CodeAudit",
+        "category": "Technical Proof",
+        "status": "En desarrollo",
+        "accent": "muted",
+        "description": "Analiza calidad y seguridad de repositorios Python/Flask sin ejecutar el código auditado. Análisis regex/AST en subproceso aislado, rate limiting, caché y rúbrica de severidades A–F.",
+        "features": [],
+        "tech": [
+          "Python",
+          "Flask",
+          "AST"
+        ],
+        "links": [
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng",
+            "available": true,
+            "note": "El repositorio de CodeAudit no es público; el enlace apunta al perfil de GitHub."
+          }
+        ],
+        "tag": "Auditor estático de repositorios Python/Flask"
+      }
+    ]
+  },
+  "about": {
+    "name": "Álvaro Berrío",
+    "avatar": "img/profile-avatar.webp",
+    "paragraphs": [
+      "Soy estudiante de Ingeniería de Sistemas en Medellín, Colombia. Construyo software y soluciones digitales mientras desarrollo mi carrera como desarrollador.",
+      "Me interesa resolver problemas que se pueden resolver con tecnología: procesos que se pueden automatizar, ideas que se pueden convertir en productos digitales, y sistemas que conectan usuarios, información y procesos.",
+      "Cada proyecto que construyo es evidencia de lo que puedo hacer por tu negocio o tu equipo."
+    ],
+    "list": [
+      {
+        "label": "Estudio",
+        "value": "Ingeniería de Sistemas"
+      },
+      {
+        "label": "Ubicación",
+        "value": "Medellín, Colombia"
+      },
+      {
+        "label": "Enfoque",
+        "value": "Desarrollo web, automatización, IA aplicada"
+      },
+      {
+        "label": "Stack",
+        "value": "Python, Flask, SQLAlchemy, JavaScript, CSS"
+      }
+    ]
+  },
+  "contact": {
+    "headline": "¿Tienes un problema que se puede resolver con tecnología?",
+    "sub": "¿Necesitas un desarrollador para tu proyecto? ¿Quieres conocer mi trabajo?",
+    "email": "berriobenjamin16@gmail.com",
+    "whatsapp": "https://wa.me/573165192825",
+    "github": "https://github.com/alvaroberrio23242-eng",
+    "linkedin": "https://www.linkedin.com/in/alvaro-benjamin-berrio-cabello-56a449434/"
+  },
+  "footer": {
+    "copyright": "© 2026 Álvaro Berrío",
+    "updated": "septiembre de 2026",
+    "private_access": {
+      "label": "Acceso privado",
+      "href": "/login",
+      "icon": "🔐"
+    }
+  }
+}

@@ -18,7 +18,6 @@ PRODUCTS = [
         "packaging": "Polipropileno Biorentado 25μ + Metalizado 20μ, termosellado",
         "origin": "Santa Ana, Municipio Pampán, Estado Trujillo",
         "availability": "Disponible en distribuidores autorizados",
-        "image": "/static/cafe/img/products-50g.png",
         "badge": "Para probar"
     },
     {
@@ -30,7 +29,6 @@ PRODUCTS = [
         "packaging": "Polipropileno Biorentado 25μ + Metalizado 20μ, termosellado",
         "origin": "Santa Ana, Municipio Pampán, Estado Trujillo",
         "availability": "Disponible en distribuidores autorizados",
-        "image": "/static/cafe/img/products-100g.png",
         "badge": "Consumo diario"
     },
     {
@@ -42,7 +40,6 @@ PRODUCTS = [
         "packaging": "Polipropileno Biorentado 25μ + Metalizado 20μ, termosellado",
         "origin": "Santa Ana, Municipio Pampán, Estado Trujillo",
         "availability": "Disponible en distribuidores autorizados",
-        "image": "/static/cafe/img/products-200g.png",
         "badge": "Equilibrado"
     },
     {
@@ -54,7 +51,6 @@ PRODUCTS = [
         "packaging": "Polipropileno Biorentado 25μ + Metalizado 20μ, termosellado",
         "origin": "Santa Ana, Municipio Pampán, Estado Trujillo",
         "availability": "Disponible en distribuidores autorizados",
-        "image": "/static/cafe/img/products-500g.png",
         "badge": "Más popular"
     },
     {
@@ -66,7 +62,6 @@ PRODUCTS = [
         "packaging": "Polipropileno Biorentado 25μ + Metalizado 20μ, termosellado",
         "origin": "Santa Ana, Municipio Pampán, Estado Trujillo",
         "availability": "Disponible en distribuidores autorizados",
-        "image": "/static/cafe/img/products-1kg.png",
         "badge": "Mayor volumen"
     }
 ]

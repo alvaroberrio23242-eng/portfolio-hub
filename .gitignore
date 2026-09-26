@@ -21,9 +21,6 @@ Thumbs.db
 verify_final*.py
 diff_*.txt
 
-verify_final*.py
-diff_*.txt
-
 *.swp
 
 # Documentacion interna (auditorias, propuestas, backups) - no publicar
