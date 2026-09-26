@@ -23,3 +23,5 @@ diff_*.txt
 
 verify_final*.py
 diff_*.txt
+
+*.swp
