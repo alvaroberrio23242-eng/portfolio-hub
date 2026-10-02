@@ -106,15 +106,15 @@
   .nav-toggle svg{ width: 24px; height: 24px; }
 
   /* ─── HERO ─── */
-  .hero{ position: relative; padding: 80px 0 60px; overflow: hidden; isolation: isolate; }
+  .hero{ position: relative; padding: 80px 0 60px; }
   .hero-video{
-    position: absolute; inset: 0;
+    position: fixed; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover; z-index: -2;
   }
   .hero-video-overlay{
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(11,13,18,.82), rgba(11,13,18,.94) 70%, var(--bg));
+    position: fixed; pointer-events: none; inset: 0;
+    background: rgba(11,13,18,.88);
     z-index: -1;
   }
   .hero-eyebrow{
@@ -155,6 +155,16 @@
     );
   }
   .btn-disabled:hover{ border-color: var(--line); color: var(--muted); }
+  .demo-unavailable{
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: .03em; padding: 8px 16px; border-radius: 20px;
+    border: 1px dashed var(--muted); color: var(--muted);
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 6px,
+      rgba(138,143,156,.07) 6px, rgba(138,143,156,.07) 12px
+    );
+  }
   .link-note{
     font-family: 'JetBrains Mono', monospace; font-size: 11px;
     color: var(--muted); margin: 10px 0 0; line-height: 1.5;
@@ -402,6 +412,9 @@
     .nav, .hero-video, .hero-video-overlay, .evidence-strip, .case-demo{ display: none; }
     body{ background: #fff; color: #000; }
   }
+  /* CASE-OVERLAY */ .case-study-section{ position:relative; } .case-grid{ display:block; position:relative; min-height:480px; } .case-demo{ position:absolute; inset:0; z-index:0; min-height:0; } .case-demo-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; } .case-demo-video{ z-index:0; } .case-demo-overlay{ display:none; } .case-demo-fallback{ display:none !important; } .case-demo::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(90deg, rgba(11,13,18,.93), rgba(11,13,18,.78) 60%, rgba(11,13,18,.55)); } .case-content{ position:relative; z-index:2; max-width:680px; } @media (max-width:900px){ .case-demo::after{ background:rgba(11,13,18,.86); } }
+  /* CAROUSEL-8 */ .evidence-strip{display:flex !important;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px calc(50% - 170px);scrollbar-width:none;scroll-behavior:smooth;} .evidence-strip::-webkit-scrollbar{display:none;} .evidence-strip > .evidence-card{flex:0 0 340px;scroll-snap-align:center;transition:transform .2s ease,opacity .2s ease;} .carousel-wrap{position:relative;} .carousel-btn{position:absolute;top:50%;z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(11,13,18,.85);color:var(--text);cursor:pointer;font-size:22px;transform:translateY(-50%);} .carousel-btn.prev{left:8px;} .carousel-btn.next{right:8px;} @media (max-width:640px){.evidence-strip{padding:24px calc(50% - 130px);}.evidence-strip > .evidence-card{flex-basis:260px;}.carousel-btn{display:none;}} @media (prefers-reduced-motion:reduce){.evidence-strip{scroll-behavior:auto;}.evidence-strip > .evidence-card{transition:none;}}
+  /* CAROUSEL-SM */ .evidence-strip{gap:14px;padding:22px calc(50% - 110px);} .evidence-strip > .evidence-card{flex:0 0 220px;} .evidence-strip .evidence-thumb{height:130px;width:100%;object-fit:cover;} .evidence-strip .evidence-info{padding:10px 12px;} .evidence-strip .evidence-name{font-size:14px;} .evidence-strip .evidence-status{font-size:11px;} .carousel-btn{width:38px;height:38px;font-size:18px;} @media (max-width:640px){.evidence-strip{padding:20px calc(50% - 90px);}.evidence-strip > .evidence-card{flex-basis:180px;}.evidence-strip .evidence-thumb{height:110px;}}
 </style>
 </head>
 <body>
@@ -453,11 +466,11 @@
         </div>
       </a>
       {% else %}
-      <div class="evidence-card" aria-disabled="true">
+      <div class="evidence-card">
         {{ media_tag(item.media, item.name, lazy=true) }}
         <div class="evidence-info">
           <p class="evidence-name">{{ item.name }}</p>
-          <p class="evidence-status is-unavailable">{{ item.status }} · demo no disponible</p>
+          <p class="evidence-status is-unavailable">{{ item.status }}</p>
         </div>
       </div>
       {% endif %}
@@ -707,5 +720,6 @@
   })();
 </script>
 
+<script>/* CAROUSEL-8 */ (function(){var s=document.querySelector(".evidence-strip"); if(!s) return;var w=document.createElement("div"); w.className="carousel-wrap"; s.parentNode.insertBefore(w,s); w.appendChild(s);function cs(){return Array.prototype.slice.call(s.children);}function upd(){var r=s.getBoundingClientRect(), c=r.left+r.width/2; cs().forEach(function(el){var b=el.getBoundingClientRect(); var d=Math.min(Math.abs(b.left+b.width/2-c)/(r.width/2),1); el.style.transform="scale("+(1.08-0.26*d).toFixed(3)+")"; el.style.opacity=(1-0.5*d).toFixed(2);});}function go(n){var a=cs()[0]; var step=a?a.getBoundingClientRect().width+20:340; s.scrollBy({left:n*step,behavior:"smooth"});}["prev","next"].forEach(function(k){var b=document.createElement("button"); b.type="button"; b.className="carousel-btn "+k; b.setAttribute("aria-label",k==="prev"?"Anterior":"Siguiente"); b.textContent=k==="prev"?"\u2039":"\u203A"; b.onclick=function(){go(k==="prev"?-1:1);}; w.appendChild(b);});s.addEventListener("scroll",function(){requestAnimationFrame(upd);},{passive:true}); window.addEventListener("resize",upd); upd();})();</script>
 </body>
 </html>

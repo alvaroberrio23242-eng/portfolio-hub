@@ -107,7 +107,7 @@
   },
   "evidence": [
     {
-      "name": "SalsaQuest",
+      "name": "SalsaQuest · Ruta Salsera",
       "url": "https://salsaquest-1.onrender.com/",
       "status": "En producción",
       "available": true,
@@ -117,28 +117,6 @@
         "poster": "img/thumbnails/salsaquest.png"
       },
       "note": ""
-    },
-    {
-      "name": "EduPack Builder",
-      "url": "https://web-production-0f3c8.up.railway.app",
-      "status": "En producción",
-      "available": false,
-      "media": {
-        "kind": "image",
-        "src": "img/thumbnails/edupack.png"
-      },
-      "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26. Pendiente la URL vigente."
-    },
-    {
-      "name": "OSINT Search Pro",
-      "url": "https://osintsearchpro-production.up.railway.app/",
-      "status": "En producción",
-      "available": false,
-      "media": {
-        "kind": "image",
-        "src": "img/thumbnails/osint.png"
-      },
-      "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26. Pendiente la URL vigente."
     }
   ],
   "case_studies": {
@@ -149,7 +127,7 @@
         "icon": "🎵",
         "badge": "Cultura · Turismo · Entretenimiento — Medellín",
         "caption": "Experiencia interactiva de cultura salsera",
-        "context": "Son Havana es un bar de salsa y son cubano en Medellín que necesitaba diferenciarse de la competencia.",
+        "context": "Un bar de salsa y son cubano en Medellín necesitaba diferenciarse de la competencia.",
         "problem": "Ningún negocio de salsa en la ciudad ofrecía una experiencia digital interactiva para turistas.",
         "solution": "Aplicación web con storytelling gamificado, trivia interactiva, biografías de artistas, línea de tiempo y leaderboard.",
         "features": [
@@ -209,7 +187,9 @@
           {
             "label": "Ver demo",
             "href": "/cafe/",
-            "available": true
+            "available": false,
+            "unavailable_text": "Demo no disponible",
+            "note": "La URL pública de la demo (portfolio-hub-app.onrender.com/cafe/) devolvió 503 el 2026-10-01: la demo no está disponible por ahora."
           },
           {
             "label": "Ver caso",
@@ -250,7 +230,9 @@
           {
             "label": "Demo",
             "href": "/cafe/",
-            "available": true
+            "available": false,
+            "unavailable_text": "Demo no disponible",
+            "note": "La URL pública de la demo (portfolio-hub-app.onrender.com/cafe/) devolvió 503 el 2026-10-01: la demo no está disponible por ahora."
           }
         ],
         "tag": "Producto · Marca · Retail · Cultura — Digital brand experience"
@@ -258,28 +240,28 @@
       {
         "name": "EduPack Builder",
         "category": "Product Proof",
-        "status": "En producción",
+        "status": "Demo no disponible",
         "accent": "teal",
-        "description": "Sistema automatizado que realiza scraping inteligente, filtrado por licencias abiertas y generación autónoma de documentación técnica. Procesa búsquedas en múltiples APIs y compila paquetes de contenido listos para distribución.",
+        "description": "Aplicación web que arma un paquete educativo en .zip a partir de un tema. El usuario escribe la guía docente y la trivia, y la app consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia—, filtra por licencia libre y reúne imágenes, enlaces de video, repositorios y artículos.",
         "features": [
-          "Reduce el tiempo de compilación de contenido de 3 horas a 15 segundos",
-          "Busca imágenes y videos con licencia libre en Wikimedia, Openverse e Internet Archive",
-          "Encuentra repositorios en GitHub y artículos en Wikipedia relacionados con el tema",
-          "Genera documentación estructurada a partir de una simple entrada de usuario",
-          "Empaqueta todo en un .zip descargable"
+          "Consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia— sin claves de API",
+          "Filtra imágenes por licencia (CC BY, CC BY-SA, CC0, dominio público) antes de incluirlas",
+          "Descarga las imágenes como archivos reales del paquete y reúne videos y repositorios como enlaces con su licencia y fuente",
+          "Compila una bibliografía con fuente, autor, licencia y enlace de cada recurso incluido",
+          "Empaqueta la guía docente, la trivia, las imágenes y los listados de fuentes en un .zip descargable"
         ],
         "tech": [
           "Python",
           "Flask",
           "APIs",
-          "Scraping"
+          "Testing"
         ],
         "links": [
           {
             "label": "Demo",
             "href": "https://web-production-0f3c8.up.railway.app",
             "available": false,
-            "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26."
+            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
           {
             "label": "Código",
@@ -287,12 +269,12 @@
             "available": true
           }
         ],
-        "tag": "Agente autónomo de curación y empaquetado de datos con IA"
+        "tag": "Constructor de paquetes educativos con recursos de licencia libre"
       },
       {
         "name": "OSINT Search Pro",
         "category": "Product Proof",
-        "status": "En producción",
+        "status": "Demo no disponible",
         "accent": "teal",
         "description": "Motor de búsqueda e inteligencia de datos centralizado para análisis competitivo, auditorías de ciberseguridad e investigación de mercado. Filtra y organiza información pública en tiempo real.",
         "features": [
@@ -311,7 +293,7 @@
             "label": "Demo",
             "href": "https://osintsearchpro-production.up.railway.app/",
             "available": false,
-            "note": "La URL del despliegue devolvía 404 en la verificación del 2026-09-26."
+            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
           {
             "label": "Código",
@@ -339,15 +321,8 @@
           "SQLAlchemy",
           "Flask-Login"
         ],
-        "links": [
-          {
-            "label": "Código",
-            "href": "https://github.com/alvaroberrio23242-eng",
-            "available": true,
-            "note": "El repositorio del motor es privado; el enlace apunta al perfil público de GitHub."
-          }
-        ],
-        "tag": "Sistema multi-perfil con autenticación, revisión y roles"
+        "links": [],
+        "tag": "Sistema multi-perfil con autenticación, revisión y roles (repo privado)"
       },
       {
         "name": "RockQuest",
@@ -413,15 +388,8 @@
           "Flask",
           "AST"
         ],
-        "links": [
-          {
-            "label": "Código",
-            "href": "https://github.com/alvaroberrio23242-eng",
-            "available": true,
-            "note": "El repositorio de CodeAudit no es público; el enlace apunta al perfil de GitHub."
-          }
-        ],
-        "tag": "Auditor estático de repositorios Python/Flask"
+        "links": [],
+        "tag": "Auditor estático de repositorios Python/Flask (repo privado)"
       }
     ]
   },

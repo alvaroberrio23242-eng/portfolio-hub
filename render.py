@@ -66,13 +66,11 @@ def _make_helpers(surface, asset_url, origin):
         label = escape(link["label"])
         href = link.get("href") or ""
         note = link.get("note") or ""
+        is_external = href.startswith(("http://", "https://"))
 
         if not link.get("available", True):
-            reason = note or "Enlace no disponible."
-            return Markup(
-                f'<span class="{base} btn-disabled" role="link" aria-disabled="true"'
-                f' title="{escape(reason)}">{label} · no disponible</span>'
-            )
+            text = link.get("unavailable_text") or f"{link['label']} no disponible"
+            return Markup(f'<span class="demo-unavailable">{escape(text)}</span>')
 
         if href.startswith("/") and surface == SURFACE_STATIC:
             return Markup(
@@ -80,7 +78,7 @@ def _make_helpers(surface, asset_url, origin):
                 f' title="{escape(STATIC_ONLY_NOTE)}">{label}</span>'
             )
 
-        if href.startswith(("http://", "https://")):
+        if is_external:
             attrs = ' target="_blank" rel="noopener noreferrer"'
         else:
             attrs = ""

@@ -66,11 +66,20 @@ def test_static_has_no_link_to_flask_only_routes(static_html):
     """`/cafe/` y `/login` no existen en GitHub Pages: no pueden quedar como enlaces."""
     assert 'href="/cafe/"' not in static_html
     assert 'href="/login"' not in static_html
-    assert "Disponible solo en la version web" in static_html
+    assert "Disponible solo en la version web" not in static_html
 
 
-def test_web_links_to_cafe_subapp(web_html):
-    assert 'href="/cafe/"' in web_html
+def test_cafe_demo_has_no_button_without_a_verified_200(surfaces):
+    """Sin 200 verificado en la demo desplegada no hay botón de demo de Café.
+
+    El texto de no disponible es texto plano: sin atributos y sin envoltorios
+    con `title`, `aria-disabled`, `aria-label` o `tabindex`.
+    """
+    for name, html in surfaces.items():
+        assert 'href="/cafe/"' not in html, name
+        for tag in re.findall(r'<span class="demo-unavailable"[^>]*>', html):
+            assert tag == '<span class="demo-unavailable">', f"{name}: {tag}"
+        assert ">Demo no disponible</span>" in html, name
 
 
 def test_static_omits_private_access_link(static_html):
