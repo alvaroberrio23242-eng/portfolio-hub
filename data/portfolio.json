@@ -117,6 +117,39 @@
         "poster": "img/thumbnails/salsaquest.png"
       },
       "note": ""
+    },
+    {
+      "name": "ReviewTap",
+      "url": "https://reviewtap.onrender.com/",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/reviewtap.png"
+      },
+      "note": ""
+    },
+    {
+      "name": "MarketLens AI",
+      "url": "https://marketlens-ai.onrender.com/",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/marketlens.png"
+      },
+      "note": ""
+    },
+    {
+      "name": "OSINT Search Pro",
+      "url": "https://osint-search-pro.onrender.com/",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/osint-demo.png"
+      },
+      "note": ""
     }
   ],
   "case_studies": {
