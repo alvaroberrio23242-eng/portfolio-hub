@@ -226,7 +226,7 @@
           },
           {
             "label": "Ver caso",
-            "href": "https://alvaro345673344.pythonanywhere.com/",
+            "href": "https://salsaquest-1.onrender.com/",
             "available": false,
             "note": "La URL devolvía 404 en la verificación del 2026-09-26."
           }
@@ -292,7 +292,7 @@
         "links": [
           {
             "label": "Demo",
-            "href": "https://web-production-0f3c8.up.railway.app",
+            "href": "https://edupack-builder.onrender.com",
             "available": false,
             "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
@@ -324,7 +324,7 @@
         "links": [
           {
             "label": "Demo",
-            "href": "https://osintsearchpro-production.up.railway.app/",
+            "href": "https://osint-search-pro.onrender.com/",
             "available": false,
             "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
