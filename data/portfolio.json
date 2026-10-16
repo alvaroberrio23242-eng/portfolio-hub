@@ -3,9 +3,9 @@
     "origin": "https://portfolio-hub-app.onrender.com",
     "locale": "es_CO",
     "brand": "Berrío Digital Lab",
-    "title": "Álvaro Berrío — Software Developer | IA Aplicada | Productos Digitales",
+    "title": "Álvaro Benjamín Berrío — Software Developer | IA Aplicada | Productos Digitales",
     "description": "Desarrollador de software especializado en aplicaciones web, automatización e IA aplicada. Proyectos en producción con Python, Flask y más. Medellín, Colombia.",
-    "og_title": "Álvaro Berrío — Software Developer",
+    "og_title": "Álvaro Benjamín Berrío — Software Developer",
     "og_description": "Construyo software y soluciones digitales que convierten problemas reales en productos funcionales.",
     "og_image": "hero-poster.jpg"
   },
@@ -107,6 +107,17 @@
   },
   "evidence": [
     {
+      "name": "Perfil de GitHub",
+      "url": "https://github.com/alvaroberrio23242-eng",
+      "status": "Perfil público",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/profile-avatar.webp"
+      },
+      "note": ""
+    },
+    {
       "name": "SalsaQuest · Ruta Salsera",
       "url": "https://salsaquest-1.onrender.com/",
       "status": "En producción",
@@ -148,6 +159,17 @@
       "media": {
         "kind": "image",
         "src": "img/thumbnails/osint-demo.png"
+      },
+      "note": ""
+    },
+    {
+      "name": "EduPack Builder",
+      "url": "https://edupack-builder.onrender.com",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/edupack.png"
       },
       "note": ""
     }
@@ -194,82 +216,12 @@
           "src": "img/thumbnails/salsaquest.mp4",
           "poster": "img/thumbnails/salsaquest.png"
         }
-      },
-      {
-        "name": "Café La Protectora",
-        "icon": "☕",
-        "badge": "Producto · Marca · Retail · Cultura — Venezuela",
-        "caption": "Digital brand experience · Independent case study",
-        "context": "Café La Protectora es una marca venezolana de café fundada en 2005 en los Andes de Trujillo, con historia real y producto real.",
-        "problem": "Su experiencia digital no reflejaba su calidad: directorio de distribución roto, productos sin descripción, storytelling incompleto.",
-        "solution": "Digital brand experience con investigación documentada de 30 claims, UX journeys, SEO, performance y accessibility.",
-        "features": [
-          "Investigación estructurada de 14 secciones con 30 claims documentados",
-          "Análisis de marca, storytelling y posicionamiento",
-          "6 journeys de usuario con arquitectura propuesta",
-          "Sub-app Flask encapsulada con SEO y accessibility"
-        ],
-        "tech": [
-          "Python",
-          "Flask",
-          "Jinja2",
-          "CSS",
-          "Schema.org"
-        ],
-        "links": [
-          {
-            "label": "Ver demo",
-            "href": "/cafe/",
-            "available": false,
-            "unavailable_text": "Demo no disponible",
-            "note": "La URL pública de la demo (portfolio-hub-app.onrender.com/cafe/) devolvió 503 el 2026-10-01: la demo no está disponible por ahora."
-          },
-          {
-            "label": "Ver caso",
-            "href": "https://salsaquest-1.onrender.com/",
-            "available": false,
-            "note": "La URL devolvía 404 en la verificación del 2026-09-26."
-          }
-        ],
-        "media": {
-          "kind": "image",
-          "src": "cafe/img/coffee-farm.webp"
-        }
       }
     ]
   },
   "projects": {
     "heading": "Proyectos",
     "items": [
-      {
-        "name": "Café La Protectora",
-        "category": "Brand & Business",
-        "status": "Concepto",
-        "accent": "amber",
-        "description": "Digital brand experience independiente para Café La Protectora, marca venezolana de café. Investigación documentada de 30 claims, análisis de competencia, UX journeys, SEO y performance. Caso de estudio público de Brand + Business + Digital Product.",
-        "features": [
-          "Investigación estructurada de 14 secciones con 30 claims documentados",
-          "Análisis de marca, storytelling y posicionamiento",
-          "6 journeys de usuario con arquitectura propuesta",
-          "Sub-app Flask encapsulada con SEO y accessibility"
-        ],
-        "tech": [
-          "Python",
-          "Flask",
-          "Jinja2",
-          "CSS"
-        ],
-        "links": [
-          {
-            "label": "Demo",
-            "href": "/cafe/",
-            "available": false,
-            "unavailable_text": "Demo no disponible",
-            "note": "La URL pública de la demo (portfolio-hub-app.onrender.com/cafe/) devolvió 503 el 2026-10-01: la demo no está disponible por ahora."
-          }
-        ],
-        "tag": "Producto · Marca · Retail · Cultura — Digital brand experience"
-      },
       {
         "name": "EduPack Builder",
         "category": "Product Proof",
@@ -293,7 +245,7 @@
           {
             "label": "Demo",
             "href": "https://edupack-builder.onrender.com",
-            "available": false,
+            "available": true,
             "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
           {
@@ -325,7 +277,7 @@
           {
             "label": "Demo",
             "href": "https://osint-search-pro.onrender.com/",
-            "available": false,
+            "available": true,
             "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
           },
           {
@@ -427,7 +379,7 @@
     ]
   },
   "about": {
-    "name": "Álvaro Berrío",
+    "name": "Álvaro Benjamín Berrío",
     "avatar": "img/profile-avatar.webp",
     "paragraphs": [
       "Soy estudiante de Ingeniería de Sistemas en Medellín, Colombia. Construyo software y soluciones digitales mientras desarrollo mi carrera como desarrollador.",
@@ -462,8 +414,8 @@
     "linkedin": "https://www.linkedin.com/in/alvaro-benjamin-berrio-cabello-56a449434/"
   },
   "footer": {
-    "copyright": "© 2026 Álvaro Berrío",
-    "updated": "septiembre de 2026",
+    "copyright": "© 2026 Álvaro Benjamín Berrío",
+    "updated": "octubre de 2026",
     "private_access": {
       "label": "Acceso privado",
       "href": "/login",
