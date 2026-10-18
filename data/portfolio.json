@@ -172,6 +172,29 @@
         "src": "img/thumbnails/edupack.png"
       },
       "note": ""
+    },
+    {
+      "name": "Aventura Antioqueña",
+      "url": "https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/",
+      "status": "En producción",
+      "available": true,
+      "media": {
+        "kind": "image",
+        "src": "img/thumbnails/aventura.png"
+      },
+      "note": ""
+    },
+    {
+      "name": "LAP Video",
+      "url": "https://github.com/alvaroberrio23242-eng/laboratorio-video-ia",
+      "status": "Demo en video",
+      "available": true,
+      "media": {
+        "kind": "video",
+        "src": "img/thumbnails/lapvideo.mp4",
+        "poster": "img/thumbnails/lapvideo.png"
+      },
+      "note": ""
     }
   ],
   "case_studies": {
@@ -222,6 +245,35 @@
   "projects": {
     "heading": "Proyectos",
     "items": [
+      {
+        "name": "LAP Video",
+        "category": "Product Proof",
+        "status": "Demo en video",
+        "accent": "teal",
+        "tag": "Estudio local de edicion y compresion de video con FFmpeg",
+        "description": "Aplicacion web local para editar y comprimir video. Se sube un archivo, se ajustan recorte, velocidad, color y exportacion con una vista previa en vivo, y un procesador FFmpeg en segundo plano genera el MP4 final con progreso en tiempo real.",
+        "features": [
+          "Recorta, cambia la velocidad y aplica brillo, contraste, saturacion, desenfoque y escala de grises con vista previa en vivo",
+          "Exporta ajustando resolucion, FPS, calidad (CRF) y preset, o comprimiendo a un tamano objetivo en MB",
+          "Procesa en cola con barra de progreso y opcion de cancelar, sin bloquear la interfaz",
+          "Interfaz con carga por arrastrar y soltar, fondo de video y diseno translucido",
+          "Cubierta por 45 pruebas automaticas del backend Flask y del motor de video"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "FFmpeg",
+          "JavaScript",
+          "Testing"
+        ],
+        "links": [
+          {
+            "label": "Codigo",
+            "href": "https://github.com/alvaroberrio23242-eng/laboratorio-video-ia",
+            "available": true
+          }
+        ]
+      },
       {
         "name": "EduPack Builder",
         "category": "Product Proof",

@@ -485,6 +485,20 @@
           <p class="evidence-status">En producción</p>
         </div>
       </a>
+      <a href="https://alvaroberrio23242-eng.github.io/aventura-antioquena-web/" target="_blank" rel="noopener noreferrer" class="evidence-card">
+        <img class="evidence-thumb" src="static/img/thumbnails/aventura.png" alt="Aventura Antioqueña" loading="lazy" decoding="async" width="480" height="300">
+        <div class="evidence-info">
+          <p class="evidence-name">Aventura Antioqueña</p>
+          <p class="evidence-status">En producción</p>
+        </div>
+      </a>
+      <a href="https://github.com/alvaroberrio23242-eng/laboratorio-video-ia" target="_blank" rel="noopener noreferrer" class="evidence-card">
+        <video class="evidence-thumb" autoplay muted loop playsinline preload="metadata" poster="static/img/thumbnails/lapvideo.png" aria-hidden="true" tabindex="-1"><source src="static/img/thumbnails/lapvideo.mp4" type="video/mp4"></video>
+        <div class="evidence-info">
+          <p class="evidence-name">LAP Video</p>
+          <p class="evidence-status">Demo en video</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -545,46 +559,28 @@
 
 <!-- ═══ CAPACIDADES ═══ -->
 <div class="wrap">
-  <div class="section-label" id="capacidades">Qué puedo hacer</div>
-</div>
-<section class="wrap">
-  <div class="cap-grid">
-    <div class="cap-card" style="--card-accent: var(--amber);">
-      <div class="cap-icon" aria-hidden="true">🌐</div>
-      <h3>Desarrollo Web</h3>
-      <p>Transformo procesos o ideas en aplicaciones web funcionales, desde landing pages hasta plataformas complejas.</p>
-      <div class="cap-pills">
-<span class="case-pill">Python</span><span class="case-pill">Flask</span><span class="case-pill">SQLAlchemy</span><span class="case-pill">JavaScript</span><span class="case-pill">HTML/CSS</span>      </div>
-    </div>
-    <div class="cap-card" style="--card-accent: var(--teal);">
-      <div class="cap-icon" aria-hidden="true">⚡</div>
-      <h3>Automatización</h3>
-      <p>Reduzco tareas repetitivas mediante flujos automatizados, scraping inteligente e integración de APIs.</p>
-      <div class="cap-pills">
-<span class="case-pill">APIs</span><span class="case-pill">Scraping</span><span class="case-pill">Procesamiento de datos</span><span class="case-pill">Integraciones</span>      </div>
-    </div>
-    <div class="cap-card" style="--card-accent: var(--magenta);">
-      <div class="cap-icon" aria-hidden="true">🤖</div>
-      <h3>IA Aplicada</h3>
-      <p>Integro inteligencia artificial cuando aporta valor real al producto o proceso — sin humo, con resultados.</p>
-      <div class="cap-pills">
-<span class="case-pill">Modelos</span><span class="case-pill">APIs de IA</span><span class="case-pill">Agentes</span><span class="case-pill">Análisis de datos</span>      </div>
-    </div>
-    <div class="cap-card" style="--card-accent: var(--amber);">
-      <div class="cap-icon" aria-hidden="true">🔧</div>
-      <h3>Sistemas Digitales</h3>
-      <p>Diseño soluciones que conectan usuarios, información y procesos — con arquitectura sólida y escalable.</p>
-      <div class="cap-pills">
-<span class="case-pill">Arquitectura</span><span class="case-pill">Bases de datos</span><span class="case-pill">Auth</span><span class="case-pill">Testing</span>      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROYECTOS ═══ -->
-<div class="wrap">
   <div class="section-label" id="proyectos">Proyectos</div>
 </div>
 <section class="wrap">
+  <article class="project-card" style="--card-accent: var(--teal);">
+    <div class="project-top">
+      <span class="project-tier tier-2">Product Proof</span>
+      <div class="project-info">
+        <h3 class="project-name">LAP Video</h3>
+        <p class="project-tag">Estudio local de edicion y compresion de video con FFmpeg</p>
+      </div>
+      <div class="project-links">
+<a class="btn btn-compact" href="https://github.com/alvaroberrio23242-eng/laboratorio-video-ia" target="_blank" rel="noopener noreferrer">Codigo ↗</a>      </div>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">Aplicacion web local para editar y comprimir video. Se sube un archivo, se ajustan recorte, velocidad, color y exportacion con una vista previa en vivo, y un procesador FFmpeg en segundo plano genera el MP4 final con progreso en tiempo real.</p>
+      <ul class="project-features">
+<li>Recorta, cambia la velocidad y aplica brillo, contraste, saturacion, desenfoque y escala de grises con vista previa en vivo</li><li>Exporta ajustando resolucion, FPS, calidad (CRF) y preset, o comprimiendo a un tamano objetivo en MB</li><li>Procesa en cola con barra de progreso y opcion de cancelar, sin bloquear la interfaz</li><li>Interfaz con carga por arrastrar y soltar, fondo de video y diseno translucido</li><li>Cubierta por 45 pruebas automaticas del backend Flask y del motor de video</li>      </ul>
+      <div class="project-tech">
+<span class="case-pill">Python</span><span class="case-pill">Flask</span><span class="case-pill">FFmpeg</span><span class="case-pill">JavaScript</span><span class="case-pill">Testing</span>        <span class="case-pill" style="border-color: var(--teal); color: var(--teal);">Demo en video</span>
+      </div>
+    </div>
+  </article>
   <article class="project-card" style="--card-accent: var(--teal);">
     <div class="project-top">
       <span class="project-tier tier-2">Product Proof</span>
@@ -693,6 +689,43 @@
       </div>
     </div>
   </article>
+</section>
+
+<!-- ═══ PROYECTOS ═══ -->
+<div class="wrap">
+  <div class="section-label" id="capacidades">Qué puedo hacer</div>
+</div>
+<section class="wrap">
+  <div class="cap-grid">
+    <div class="cap-card" style="--card-accent: var(--amber);">
+      <div class="cap-icon" aria-hidden="true">🌐</div>
+      <h3>Desarrollo Web</h3>
+      <p>Transformo procesos o ideas en aplicaciones web funcionales, desde landing pages hasta plataformas complejas.</p>
+      <div class="cap-pills">
+<span class="case-pill">Python</span><span class="case-pill">Flask</span><span class="case-pill">SQLAlchemy</span><span class="case-pill">JavaScript</span><span class="case-pill">HTML/CSS</span>      </div>
+    </div>
+    <div class="cap-card" style="--card-accent: var(--teal);">
+      <div class="cap-icon" aria-hidden="true">⚡</div>
+      <h3>Automatización</h3>
+      <p>Reduzco tareas repetitivas mediante flujos automatizados, scraping inteligente e integración de APIs.</p>
+      <div class="cap-pills">
+<span class="case-pill">APIs</span><span class="case-pill">Scraping</span><span class="case-pill">Procesamiento de datos</span><span class="case-pill">Integraciones</span>      </div>
+    </div>
+    <div class="cap-card" style="--card-accent: var(--magenta);">
+      <div class="cap-icon" aria-hidden="true">🤖</div>
+      <h3>IA Aplicada</h3>
+      <p>Integro inteligencia artificial cuando aporta valor real al producto o proceso — sin humo, con resultados.</p>
+      <div class="cap-pills">
+<span class="case-pill">Modelos</span><span class="case-pill">APIs de IA</span><span class="case-pill">Agentes</span><span class="case-pill">Análisis de datos</span>      </div>
+    </div>
+    <div class="cap-card" style="--card-accent: var(--amber);">
+      <div class="cap-icon" aria-hidden="true">🔧</div>
+      <h3>Sistemas Digitales</h3>
+      <p>Diseño soluciones que conectan usuarios, información y procesos — con arquitectura sólida y escalable.</p>
+      <div class="cap-pills">
+<span class="case-pill">Arquitectura</span><span class="case-pill">Bases de datos</span><span class="case-pill">Auth</span><span class="case-pill">Testing</span>      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ SOBRE MÍ ═══ -->
@@ -811,6 +844,66 @@
   })();
 </script>
 
-<script>/* CAROUSEL-8 */ (function(){var s=document.querySelector(".evidence-strip"); if(!s) return;var w=document.createElement("div"); w.className="carousel-wrap"; s.parentNode.insertBefore(w,s); w.appendChild(s);function cs(){return Array.prototype.slice.call(s.children);}function upd(){var r=s.getBoundingClientRect(), c=r.left+r.width/2; cs().forEach(function(el){var b=el.getBoundingClientRect(); var d=Math.min(Math.abs(b.left+b.width/2-c)/(r.width/2),1); el.style.transform="scale("+(1.08-0.26*d).toFixed(3)+")"; el.style.opacity=(1-0.5*d).toFixed(2);});}function go(n){var a=cs()[0]; var step=a?a.getBoundingClientRect().width+20:340; s.scrollBy({left:n*step,behavior:"smooth"});}["prev","next"].forEach(function(k){var b=document.createElement("button"); b.type="button"; b.className="carousel-btn "+k; b.setAttribute("aria-label",k==="prev"?"Anterior":"Siguiente"); b.textContent=k==="prev"?"\u2039":"\u203A"; b.onclick=function(){go(k==="prev"?-1:1);}; w.appendChild(b);});s.addEventListener("scroll",function(){requestAnimationFrame(upd);},{passive:true}); window.addEventListener("resize",upd); upd();})();</script>
+<script>/* CAROUSEL-8 */ (function(){var s=document.querySelector(".evidence-strip"); if(!s) return;var w=document.createElement("div"); w.className="carousel-wrap"; s.parentNode.insertBefore(w,s); w.appendChild(s);function cs(){return Array.prototype.slice.call(s.children);}function upd(){var r=s.getBoundingClientRect(), c=r.left+r.width/2; cs().forEach(function(el){var b=el.getBoundingClientRect(); var d=Math.min(Math.abs(b.left+b.width/2-c)/(r.width/2),1); el.style.transform="scale("+(1.08-0.26*d).toFixed(3)+")"; el.style.opacity=(1-0.5*d).toFixed(2);});}function go(n){var a=cs()[0]; var step=a?a.getBoundingClientRect().width+20:340; s.scrollBy({left:n*step,behavior:"smooth"});}["prev","next"].forEach(function(k){var b=document.createElement("button"); b.type="button"; b.className="carousel-btn "+k; b.setAttribute("aria-label",k==="prev"?"Anterior":"Siguiente"); b.textContent=k==="prev"?"\u2039":"\u203A"; b.onclick=function(){go(k==="prev"?-1:1);}; w.appendChild(b);});s.addEventListener("scroll",function(){requestAnimationFrame(upd);},{passive:true}); window.addEventListener("resize",upd); /* CAROUSEL-INIT */ var moved=false; ["pointerdown","wheel","touchstart"].forEach(function(e){w.addEventListener(e,function(){moved=true;},{passive:true});}); function ini(){ if(moved) return; var c=cs()[2]; if(!c) return; var sr=s.getBoundingClientRect(), cr=c.getBoundingClientRect(); s.style.scrollBehavior="auto"; s.scrollLeft=cr.left-sr.left+s.scrollLeft-(s.clientWidth-cr.width)/2; upd(); requestAnimationFrame(function(){s.style.scrollBehavior="";}); } ini(); window.addEventListener("load",ini); upd();})();</script>
+<style>/* PROJ-BG-VIDEO */
+.project-card{position:relative;overflow:hidden;}
+.project-card>.proj-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;z-index:0;pointer-events:none;}
+.project-card:has(>.proj-bg-video)>*:not(.proj-bg-video){position:relative;z-index:1;}
+.project-card:has(>.proj-bg-video){background:linear-gradient(180deg,rgba(11,13,18,.55),rgba(11,13,18,.82));}
+@media (prefers-reduced-motion:reduce){.proj-bg-video{display:none;}}
+</style>
+<script>/* PROJ-BG-VIDEO */
+(function(){var M={"LAP Video":"static/img/thumbnails/lapvideo.mp4"};
+document.querySelectorAll(".project-card").forEach(function(c){
+var n=c.querySelector(".project-name"); if(!n) return;
+var src=M[n.textContent.trim()]; if(!src) return;
+var v=document.createElement("video"); v.className="proj-bg-video"; v.muted=true; v.loop=true; v.playsInline=true; v.preload="metadata"; v.setAttribute("aria-hidden","true"); v.src=src;
+c.insertBefore(v,c.firstChild);
+if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{threshold:.15}).observe(c);}
+else{v.play().catch(function(){});}
+});})();
+</script>
+<style>/* SAME-SIZE */
+.project-card.same-size{display:flex;flex-direction:column;justify-content:center;}
+</style>
+<script>/* SAME-SIZE */
+(function(){
+function card(el){var a=el.parentElement;while(a&&a!==document.body){var cs=getComputedStyle(a);if(parseFloat(cs.borderTopWidth)>0&&parseFloat(cs.borderTopLeftRadius)>0)return a;a=a.parentElement;}return null;}
+var demo=document.querySelector(".case-demo"); if(!demo) return;
+var ref=card(demo); if(!ref) return;
+var lap=null; document.querySelectorAll(".project-card").forEach(function(c){var n=c.querySelector(".project-name"); if(n&&n.textContent.trim()==="LAP Video") lap=c;});
+if(!lap) return; lap.classList.add("same-size");
+function sync(){lap.style.minHeight=Math.round(ref.getBoundingClientRect().height)+"px";}
+sync(); window.addEventListener("load",sync); window.addEventListener("resize",sync);
+if("ResizeObserver" in window){new ResizeObserver(sync).observe(ref);}
+})();
+</script>
+<style>/* DEMO-BTN */
+dialog.demo-dlg{border:1px solid rgba(255,255,255,.18);border-radius:14px;background:#0b0d12;padding:0;width:min(900px,92vw);overflow:hidden;color:#fff;}
+dialog.demo-dlg::backdrop{background:rgba(0,0,0,.72);}
+.demo-dlg video{display:block;width:100%;max-height:80vh;background:#000;}
+.demo-dlg .demo-close{position:absolute;top:8px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(11,13,18,.8);color:#fff;font-size:20px;line-height:1;cursor:pointer;}
+</style>
+<script>/* DEMO-BTN */
+(function(){
+var SRC="static/img/thumbnails/lapvideo.mp4";
+var lap=null; document.querySelectorAll(".project-card").forEach(function(c){var n=c.querySelector(".project-name"); if(n&&n.textContent.trim()==="LAP Video") lap=c;});
+if(!lap) return;
+var links=lap.querySelector(".project-links"); var ref=links&&links.querySelector("a"); if(!ref) return;
+var d=document.createElement("dialog"); d.className="demo-dlg"; d.setAttribute("aria-label","Demo de LAP Video");
+var x=document.createElement("button"); x.type="button"; x.className="demo-close"; x.setAttribute("aria-label","Cerrar demo"); x.textContent="\u00d7";
+var v=document.createElement("video"); v.controls=true; v.playsInline=true; v.preload="none";
+d.appendChild(x); d.appendChild(v); document.body.appendChild(d);
+function close(){v.pause(); d.close();}
+x.addEventListener("click",close);
+d.addEventListener("click",function(e){if(e.target===d) close();});
+d.addEventListener("close",function(){v.pause();});
+var b=ref.cloneNode(false); b.removeAttribute("href"); b.removeAttribute("target"); b.removeAttribute("rel"); b.setAttribute("role","button"); b.setAttribute("tabindex","0"); b.textContent="Ver demo \u2197"; b.style.cursor="pointer";
+function open(){if(!v.src) v.src=SRC; d.showModal(); v.play().catch(function(){});}
+b.addEventListener("click",function(e){e.preventDefault(); open();});
+b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault(); open();}});
+links.insertBefore(b,links.firstChild);
+})();
+</script>
 </body>
 </html>
