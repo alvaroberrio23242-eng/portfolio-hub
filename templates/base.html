@@ -721,7 +721,7 @@
   })();
 </script>
 
-<script>/* CAROUSEL-8 */ (function(){var s=document.querySelector(".evidence-strip"); if(!s) return;var w=document.createElement("div"); w.className="carousel-wrap"; s.parentNode.insertBefore(w,s); w.appendChild(s);function cs(){return Array.prototype.slice.call(s.children);}function upd(){var r=s.getBoundingClientRect(), c=r.left+r.width/2; cs().forEach(function(el){var b=el.getBoundingClientRect(); var d=Math.min(Math.abs(b.left+b.width/2-c)/(r.width/2),1); el.style.transform="scale("+(1.08-0.26*d).toFixed(3)+")"; el.style.opacity=(1-0.5*d).toFixed(2);});}function go(n){var a=cs()[0]; var step=a?a.getBoundingClientRect().width+20:340; s.scrollBy({left:n*step,behavior:"smooth"});}["prev","next"].forEach(function(k){var b=document.createElement("button"); b.type="button"; b.className="carousel-btn "+k; b.setAttribute("aria-label",k==="prev"?"Anterior":"Siguiente"); b.textContent=k==="prev"?"\u2039":"\u203A"; b.onclick=function(){go(k==="prev"?-1:1);}; w.appendChild(b);});s.addEventListener("scroll",function(){requestAnimationFrame(upd);},{passive:true}); window.addEventListener("resize",upd); /* CAROUSEL-INIT */ var moved=false; ["pointerdown","wheel","touchstart"].forEach(function(e){w.addEventListener(e,function(){moved=true;},{passive:true});}); function ini(){ if(moved) return; var c=cs()[2]; if(!c) return; var sr=s.getBoundingClientRect(), cr=c.getBoundingClientRect(); s.style.scrollBehavior="auto"; s.scrollLeft=cr.left-sr.left+s.scrollLeft-(s.clientWidth-cr.width)/2; upd(); requestAnimationFrame(function(){s.style.scrollBehavior="";}); } ini(); window.addEventListener("load",ini); upd();})();</script>
+<script>/* CAROUSEL-8 */ (function(){var s=document.querySelector(".evidence-strip"); if(!s) return;var w=document.createElement("div"); w.className="carousel-wrap"; s.parentNode.insertBefore(w,s); w.appendChild(s);function cs(){return Array.prototype.slice.call(s.children);}function upd(){var r=s.getBoundingClientRect(), c=r.left+r.width/2; cs().forEach(function(el){var b=el.getBoundingClientRect(); var d=Math.min(Math.abs(b.left+b.width/2-c)/(r.width/2),1); el.style.transform="scale("+(1.08-0.26*d).toFixed(3)+")"; el.style.opacity=(1-0.5*d).toFixed(2);});}function go(n){var a=cs()[0]; var step=a?a.getBoundingClientRect().width+20:340; s.scrollBy({left:n*step,behavior:"smooth"});}["prev","next"].forEach(function(k){var b=document.createElement("button"); b.type="button"; b.className="carousel-btn "+k; b.setAttribute("aria-label",k==="prev"?"Anterior":"Siguiente"); b.textContent=k==="prev"?"\u2039":"\u203A"; b.onclick=function(){go(k==="prev"?-1:1);}; w.appendChild(b);});s.addEventListener("scroll",function(){requestAnimationFrame(upd);},{passive:true}); window.addEventListener("resize",upd); /* CAROUSEL-INIT */ var moved=false; ["pointerdown","wheel","touchstart"].forEach(function(e){w.addEventListener(e,function(){moved=true;},{passive:true});}); function ini(){ if(moved) return; /* INIT-BY-NAME */ var c=cs().filter(function(e){var n=e.querySelector(".evidence-name"); return n&&n.textContent.trim()==="ReviewTap";})[0]||cs()[2]; if(!c) return; var sr=s.getBoundingClientRect(), cr=c.getBoundingClientRect(); s.style.scrollBehavior="auto"; s.scrollLeft=cr.left-sr.left+s.scrollLeft-(s.clientWidth-cr.width)/2; upd(); requestAnimationFrame(function(){s.style.scrollBehavior="";}); } ini(); window.addEventListener("load",ini); upd();})();</script>
 <style>/* PROJ-BG-VIDEO */
 .project-card{position:relative;overflow:hidden;}
 .project-card>.proj-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;z-index:0;pointer-events:none;}
@@ -730,7 +730,7 @@
 @media (prefers-reduced-motion:reduce){.proj-bg-video{display:none;}}
 </style>
 <script>/* PROJ-BG-VIDEO */
-(function(){var M={"LAP Video":"static/img/thumbnails/lapvideo.mp4"};
+(function(){var M={"LAP Video": "static/img/thumbnails/bg-lap-video.mp4"};
 document.querySelectorAll(".project-card").forEach(function(c){
 var n=c.querySelector(".project-name"); if(!n) return;
 var src=M[n.textContent.trim()]; if(!src) return;
@@ -775,10 +775,10 @@ function close(){v.pause(); d.close();}
 x.addEventListener("click",close);
 d.addEventListener("click",function(e){if(e.target===d) close();});
 d.addEventListener("close",function(){v.pause();});
-var b=ref.cloneNode(false); b.removeAttribute("href"); b.removeAttribute("target"); b.removeAttribute("rel"); b.setAttribute("role","button"); b.setAttribute("tabindex","0"); b.textContent="Ver demo \u2197"; b.style.cursor="pointer";
-function open(){if(!v.src) v.src=SRC; d.showModal(); v.play().catch(function(){});}
-b.addEventListener("click",function(e){e.preventDefault(); open();});
-b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault(); open();}});
+var b=ref.cloneNode(false); b.setAttribute("href","https://lap-video.onrender.com/"); b.setAttribute("target","_blank"); b.setAttribute("rel","noopener noreferrer"); b.textContent="Ver demo \u2197";
+
+
+
 links.insertBefore(b,links.firstChild);
 })();
 </script>

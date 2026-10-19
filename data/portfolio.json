@@ -107,6 +107,18 @@
   },
   "evidence": [
     {
+      "name": "LAP Video",
+      "url": "https://github.com/alvaroberrio23242-eng/laboratorio-video-ia",
+      "status": "Demo en video",
+      "available": true,
+      "media": {
+        "kind": "video",
+        "src": "img/thumbnails/lapvideo.mp4",
+        "poster": "img/thumbnails/lapvideo.png"
+      },
+      "note": ""
+    },
+    {
       "name": "Perfil de GitHub",
       "url": "https://github.com/alvaroberrio23242-eng",
       "status": "Perfil público",
@@ -181,18 +193,6 @@
       "media": {
         "kind": "image",
         "src": "img/thumbnails/aventura.png"
-      },
-      "note": ""
-    },
-    {
-      "name": "LAP Video",
-      "url": "https://github.com/alvaroberrio23242-eng/laboratorio-video-ia",
-      "status": "Demo en video",
-      "available": true,
-      "media": {
-        "kind": "video",
-        "src": "img/thumbnails/lapvideo.mp4",
-        "poster": "img/thumbnails/lapvideo.png"
       },
       "note": ""
     }
@@ -277,7 +277,7 @@
       {
         "name": "EduPack Builder",
         "category": "Product Proof",
-        "status": "Demo no disponible",
+        "status": "Demo en línea",
         "accent": "teal",
         "description": "Aplicación web que arma un paquete educativo en .zip a partir de un tema. El usuario escribe la guía docente y la trivia, y la app consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia—, filtra por licencia libre y reúne imágenes, enlaces de video, repositorios y artículos.",
         "features": [
@@ -295,10 +295,9 @@
         ],
         "links": [
           {
-            "label": "Demo",
+            "label": "Ver demo",
             "href": "https://edupack-builder.onrender.com",
-            "available": true,
-            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
+            "available": true
           },
           {
             "label": "Código",
@@ -307,6 +306,36 @@
           }
         ],
         "tag": "Constructor de paquetes educativos con recursos de licencia libre"
+      },
+      {
+        "name": "Benja Karaoke",
+        "category": "Product Proof",
+        "status": "En desarrollo",
+        "accent": "teal",
+        "tag": "Reproductor de karaoke con letras sincronizadas",
+        "description": "Aplicación web desarrollada con Flask que permite reproducir archivos de audio locales y sincronizar letras mediante marcas de tiempo. El proyecto está evolucionando hacia una experiencia de karaoke con modo escenario, controles mejorados y una interfaz más inmersiva.",
+        "features": [
+          "Reproducción de archivos de audio locales en el navegador",
+          "Carga manual de letras con marcas de tiempo en formato segundos|texto",
+          "Visualización de la frase actual y referencias de las frases anterior y siguiente",
+          "Ajuste temporal de las letras durante la reproducción",
+          "Búsqueda externa de canciones en YouTube"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "pytest"
+        ],
+        "links": [
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/benja-karaoque",
+            "available": true
+          }
+        ]
       },
       {
         "name": "OSINT Search Pro",
@@ -339,27 +368,6 @@
           }
         ],
         "tag": "Plataforma de ciberinteligencia y extracción de datos"
-      },
-      {
-        "name": "Portfolio Engine",
-        "category": "Product Proof",
-        "status": "En desarrollo",
-        "accent": "teal",
-        "description": "Arquitectura de backend con Flask + SQLAlchemy que soporta múltiples perfiles privados con datos verificables. Sistema de roles, autenticación, verificación por campo y panel administrativo.",
-        "features": [
-          "16 tablas relacionales con integridad referencial",
-          "Sistema de verificación por campo: VERIFIED / NEEDS_REVIEW / UNVERIFIED",
-          "Panel administrativo con login, rutas protegidas y badges",
-          "125 tests automatizados cubriendo esquema, semilla y rutas"
-        ],
-        "tech": [
-          "Python",
-          "Flask",
-          "SQLAlchemy",
-          "Flask-Login"
-        ],
-        "links": [],
-        "tag": "Sistema multi-perfil con autenticación, revisión y roles (repo privado)"
       },
       {
         "name": "RockQuest",
