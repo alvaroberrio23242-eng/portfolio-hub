@@ -37,7 +37,12 @@ def test_index_has_no_dead_mp4_references(static_html, portfolio):
     """Los .mp4 de caso que se rompian (404 en el sitio) ya no se referencian."""
     assert "case-studies/" not in static_html
     declared = {src for _, src in _media_paths(portfolio)}
+    background_assets = {"img/thumbnails/bg-lap-video.mp4", "img/thumbnails/edupack.mp4", "img/thumbnails/rockquest.mp4"}
     for src in re.findall(r'static/([\w./-]+\.mp4)', static_html):
+        if src in background_assets:
+            asset = BASE_DIR / "static" / src
+            assert asset.is_file(), f"index.html referencia un fondo de video inexistente: {src}"
+            continue
         assert src in declared, f"index.html referencia un mp4 no declarado: {src}"
 
 

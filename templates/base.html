@@ -730,7 +730,7 @@
 @media (prefers-reduced-motion:reduce){.proj-bg-video{display:none;}}
 </style>
 <script>/* PROJ-BG-VIDEO */
-(function(){var M={"LAP Video": "static/img/thumbnails/bg-lap-video.mp4"};
+(function(){var M={"LAP Video": "static/img/thumbnails/bg-lap-video.mp4","EduPack Builder": "static/img/thumbnails/edupack.mp4"};M["Rock"+"Quest"]="static/img/thumbnails/rockquest.mp4";M["Rock"+"Quest"]="static/img/thumbnails/rockquest.mp4";
 document.querySelectorAll(".project-card").forEach(function(c){
 var n=c.querySelector(".project-name"); if(!n) return;
 var src=M[n.textContent.trim()]; if(!src) return;
@@ -780,6 +780,35 @@ var b=ref.cloneNode(false); b.setAttribute("href","https://lap-video.onrender.co
 
 
 links.insertBefore(b,links.firstChild);
+})();
+</script>
+<style>/* LAP-FIRST-V1 */
+.evidence-strip > .evidence-card{transform:none !important;opacity:1 !important;}
+.project-card.same-size{display:block !important;min-height:0 !important;}
+</style>
+<script>/* LAP-FIRST-V1 */
+(function(){var s=document.querySelector(".evidence-strip"); if(!s) return; var t=false;
+function mark(){t=true;}
+["pointerdown","wheel","touchstart","keydown"].forEach(function(e){s.addEventListener(e,mark,{passive:true});});
+function go(){if(t) return; s.style.scrollBehavior="auto"; s.scrollLeft=0; s.style.scrollBehavior="";}
+go(); window.addEventListener("load",function(){go(); setTimeout(go,500);});
+})();
+</script>
+<style>/* LAP-FIRST-V2 */
+.evidence-strip > .evidence-card{scroll-snap-align:start !important;}
+</style>
+<script>/* LAP-FIRST-V2 */
+(function(){var s=document.querySelector(".evidence-strip"); if(!s) return;
+function fit(){
+ if(window.innerWidth<=640){s.style.paddingLeft="";s.style.paddingRight="";s.style.scrollPaddingLeft="";return;}
+ var c=s.querySelector(".evidence-card"); if(!c) return;
+ var cs=getComputedStyle(s), g=parseFloat(cs.columnGap)||parseFloat(cs.gap)||14, cw=c.offsetWidth, W=s.clientWidth;
+ var n=Math.max(1,Math.floor((W+g)/(cw+g))), p=Math.max(0,Math.round((W-(n*cw+(n-1)*g))/2));
+ s.style.paddingLeft=p+"px"; s.style.paddingRight=p+"px"; s.style.scrollPaddingLeft=p+"px";
+ if(!s.__lapMoved) s.scrollLeft=0;
+}
+fit(); window.addEventListener("load",fit); window.addEventListener("resize",fit);
+["pointerdown","wheel","touchstart","keydown"].forEach(function(e){s.addEventListener(e,function(){s.__lapMoved=true;},{passive:true});});
 })();
 </script>
 </body>

@@ -275,39 +275,6 @@
         ]
       },
       {
-        "name": "EduPack Builder",
-        "category": "Product Proof",
-        "status": "Demo en línea",
-        "accent": "teal",
-        "description": "Aplicación web que arma un paquete educativo en .zip a partir de un tema. El usuario escribe la guía docente y la trivia, y la app consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia—, filtra por licencia libre y reúne imágenes, enlaces de video, repositorios y artículos.",
-        "features": [
-          "Consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia— sin claves de API",
-          "Filtra imágenes por licencia (CC BY, CC BY-SA, CC0, dominio público) antes de incluirlas",
-          "Descarga las imágenes como archivos reales del paquete y reúne videos y repositorios como enlaces con su licencia y fuente",
-          "Compila una bibliografía con fuente, autor, licencia y enlace de cada recurso incluido",
-          "Empaqueta la guía docente, la trivia, las imágenes y los listados de fuentes en un .zip descargable"
-        ],
-        "tech": [
-          "Python",
-          "Flask",
-          "APIs",
-          "Testing"
-        ],
-        "links": [
-          {
-            "label": "Ver demo",
-            "href": "https://edupack-builder.onrender.com",
-            "available": true
-          },
-          {
-            "label": "Código",
-            "href": "https://github.com/alvaroberrio23242-eng/EduPack-Builder",
-            "available": true
-          }
-        ],
-        "tag": "Constructor de paquetes educativos con recursos de licencia libre"
-      },
-      {
         "name": "Benja Karaoke",
         "category": "Product Proof",
         "status": "En desarrollo",
@@ -336,38 +303,6 @@
             "available": true
           }
         ]
-      },
-      {
-        "name": "OSINT Search Pro",
-        "category": "Product Proof",
-        "status": "Demo no disponible",
-        "accent": "teal",
-        "description": "Motor de búsqueda e inteligencia de datos centralizado para análisis competitivo, auditorías de ciberseguridad e investigación de mercado. Filtra y organiza información pública en tiempo real.",
-        "features": [
-          "7 motores de búsqueda en paralelo",
-          "Módulos especializados: emails, dominios, IPs, usernames",
-          "Interfaz oscura estilo \"Recon Console\"",
-          "Arquitectura extensible para módulos futuros"
-        ],
-        "tech": [
-          "Python",
-          "Flask",
-          "Scraping"
-        ],
-        "links": [
-          {
-            "label": "Demo",
-            "href": "https://osint-search-pro.onrender.com/",
-            "available": true,
-            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
-          },
-          {
-            "label": "Código",
-            "href": "https://github.com/alvaroberrio23242-eng/OSINT_Search_Pro",
-            "available": true
-          }
-        ],
-        "tag": "Plataforma de ciberinteligencia y extracción de datos"
       },
       {
         "name": "RockQuest",
@@ -420,6 +355,105 @@
           }
         ],
         "tag": "Juego educativo compilado a WebAssembly"
+      },
+      {
+        "name": "EduPack Builder",
+        "category": "Product Proof",
+        "status": "Demo en línea",
+        "accent": "teal",
+        "description": "Aplicación web que arma un paquete educativo en .zip a partir de un tema. El usuario escribe la guía docente y la trivia, y la app consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia—, filtra por licencia libre y reúne imágenes, enlaces de video, repositorios y artículos.",
+        "features": [
+          "Consulta cinco APIs públicas —Wikimedia Commons, Openverse, Internet Archive, GitHub y Wikipedia— sin claves de API",
+          "Filtra imágenes por licencia (CC BY, CC BY-SA, CC0, dominio público) antes de incluirlas",
+          "Descarga las imágenes como archivos reales del paquete y reúne videos y repositorios como enlaces con su licencia y fuente",
+          "Compila una bibliografía con fuente, autor, licencia y enlace de cada recurso incluido",
+          "Empaqueta la guía docente, la trivia, las imágenes y los listados de fuentes en un .zip descargable"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "APIs",
+          "Testing"
+        ],
+        "links": [
+          {
+            "label": "Ver demo",
+            "href": "https://edupack-builder.onrender.com",
+            "available": true
+          },
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/EduPack-Builder",
+            "available": true
+          }
+        ],
+        "tag": "Constructor de paquetes educativos con recursos de licencia libre"
+      },
+      {
+        "name": "OSINT Search Pro",
+        "category": "Product Proof",
+        "status": "Demo no disponible",
+        "accent": "teal",
+        "description": "Motor de búsqueda e inteligencia de datos centralizado para análisis competitivo, auditorías de ciberseguridad e investigación de mercado. Filtra y organiza información pública en tiempo real.",
+        "features": [
+          "7 motores de búsqueda en paralelo",
+          "Módulos especializados: emails, dominios, IPs, usernames",
+          "Interfaz oscura estilo \"Recon Console\"",
+          "Arquitectura extensible para módulos futuros"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "Scraping"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://osint-search-pro.onrender.com/",
+            "available": true,
+            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
+          },
+          {
+            "label": "Código",
+            "href": "https://github.com/alvaroberrio23242-eng/OSINT_Search_Pro",
+            "available": true
+          }
+        ],
+        "tag": "Plataforma de ciberinteligencia y extracción de datos"
+      },
+      {
+        "name": "Berrío Budget",
+        "category": "Product Proof",
+        "status": "Demo en línea",
+        "accent": "teal",
+        "tag": "Herramienta web para elaborar presupuestos en pesos colombianos",
+        "description": "Aplicación web para organizar conceptos, registrar cantidades y precios unitarios, y calcular subtotales y el total de un presupuesto en pesos colombianos (COP).",
+        "features": [
+          "Organiza productos, servicios y conceptos en una sola vista",
+          "Calcula subtotales y el total del presupuesto",
+          "Permite preparar el presupuesto para compartir o imprimir",
+          "Incluye pruebas automatizadas del backend Flask"
+        ],
+        "tech": [
+          "Python",
+          "Flask",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "pytest"
+        ],
+        "links": [
+          {
+            "label": "Ver demo",
+            "href": "https://berrio-budget.vercel.app/",
+            "available": true
+          },
+          {
+            "label": "Ver código",
+            "href": "https://github.com/alvaroberrio23242-eng/berrio-budget",
+            "available": true
+          }
+        ]
       },
       {
         "name": "CodeAudit",
