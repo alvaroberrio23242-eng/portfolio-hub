@@ -279,13 +279,17 @@
         "category": "Product Proof",
         "status": "En desarrollo",
         "accent": "teal",
-        "tag": "Reproductor de karaoke con letras sincronizadas",
-        "description": "Aplicación web desarrollada con Flask que permite reproducir archivos de audio locales y sincronizar letras mediante marcas de tiempo. El proyecto está evolucionando hacia una experiencia de karaoke con modo escenario, controles mejorados y una interfaz más inmersiva.",
+        "tag": "Karaoke web con modo escenario, letras sincronizadas y API Flask",
+        "description": "Aplicación web de karaoke que combina reproducción de audio local, letras con marcas de tiempo y una interfaz inmersiva con modo escenario. Incorpora controles de reproducción y navegación temporal, volumen, atajos de teclado y consulta del estado de una API Flask desplegada en Render. La reproducción local sigue disponible aunque la API no responda.",
         "features": [
-          "Reproducción de archivos de audio locales en el navegador",
+          "Reproducción de archivos de audio locales directamente en el navegador",
           "Carga manual de letras con marcas de tiempo en formato segundos|texto",
           "Visualización de la frase actual y referencias de las frases anterior y siguiente",
           "Ajuste temporal de las letras durante la reproducción",
+          "Controles de progreso, tiempo transcurrido y duración, volumen y silencio",
+          "Navegación temporal configurable y controles para reiniciar la reproducción",
+          "Modo escenario y atajos de teclado para facilitar el uso durante el karaoke",
+          "Consulta del estado de la API Flask con mensajes accesibles y alternativa local si no está disponible",
           "Búsqueda externa de canciones en YouTube"
         ],
         "tech": [
@@ -294,9 +298,15 @@
           "HTML5",
           "CSS3",
           "JavaScript",
-          "pytest"
+          "pytest",
+          "REST API"
         ],
         "links": [
+          {
+            "label": "Demo",
+            "href": "https://alvaroberrio23242-eng.github.io/benja-karaoque/karaoke.html",
+            "available": true
+          },
           {
             "label": "Código",
             "href": "https://github.com/alvaroberrio23242-eng/benja-karaoque",
