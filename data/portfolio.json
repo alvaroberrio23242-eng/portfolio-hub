@@ -31,7 +31,7 @@
     "eyebrow": "Software · IA · Productos Digitales",
     "headline": "Construyo software y soluciones digitales que convierten problemas reales en",
     "headline_emphasis": "productos funcionales.",
-    "lead": "Aplicaciones web, automatización e IA aplicada para crear experiencias digitales útiles, rápidas y escalables.",
+    "lead": "Aplicaciones web, automatización e IA aplicada para crear experiencias digitales útiles y rápidas.",
     "avatar": "img/profile-avatar.webp",
     "actions": [
       {
@@ -82,7 +82,7 @@
       {
         "icon": "🤖",
         "title": "IA Aplicada",
-        "text": "Integro inteligencia artificial cuando aporta valor real al producto o proceso — sin humo, con resultados.",
+        "text": "Integro inteligencia artificial cuando aporta valor real al producto o proceso.",
         "pills": [
           "Modelos",
           "APIs de IA",
@@ -94,7 +94,7 @@
       {
         "icon": "🔧",
         "title": "Sistemas Digitales",
-        "text": "Diseño soluciones que conectan usuarios, información y procesos — con arquitectura sólida y escalable.",
+        "text": "Diseño soluciones que conectan usuarios, información y procesos, con una arquitectura sólida.",
         "pills": [
           "Arquitectura",
           "Bases de datos",
@@ -420,8 +420,7 @@
           {
             "label": "Demo",
             "href": "https://osint-search-pro.onrender.com/",
-            "available": true,
-            "note": "404 verificado el 2026-10-01 (timeout 75 s, reintento a los 20 s)."
+            "available": true
           },
           {
             "label": "Código",
