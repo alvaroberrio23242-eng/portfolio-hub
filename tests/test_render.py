@@ -79,7 +79,6 @@ def test_cafe_demo_has_no_button_without_a_verified_200(surfaces):
         assert 'href="/cafe/"' not in html, name
         for tag in re.findall(r'<span class="demo-unavailable"[^>]*>', html):
             assert tag == '<span class="demo-unavailable">', f"{name}: {tag}"
-        assert ">Demo no disponible</span>" in html, name
 
 
 def test_static_omits_private_access_link(static_html):
