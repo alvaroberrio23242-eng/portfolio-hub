@@ -31,3 +31,7 @@ ARCHITECTURE_PROPOSAL.md
 REDESIGN_PROPOSAL.md
 PROJECT_REPORT.md
 index.html.bak
+
+# Backups locales de scripts y datos
+data/*.backup-*
+scripts/*.bak
