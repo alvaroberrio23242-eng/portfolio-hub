@@ -755,33 +755,6 @@ sync(); window.addEventListener("load",sync); window.addEventListener("resize",s
 if("ResizeObserver" in window){new ResizeObserver(sync).observe(ref);}
 })();
 </script>
-<style>/* DEMO-BTN */
-dialog.demo-dlg{border:1px solid rgba(255,255,255,.18);border-radius:14px;background:#0b0d12;padding:0;width:min(900px,92vw);overflow:hidden;color:#fff;}
-dialog.demo-dlg::backdrop{background:rgba(0,0,0,.72);}
-.demo-dlg video{display:block;width:100%;max-height:80vh;background:#000;}
-.demo-dlg .demo-close{position:absolute;top:8px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(11,13,18,.8);color:#fff;font-size:20px;line-height:1;cursor:pointer;}
-</style>
-<script>/* DEMO-BTN */
-(function(){
-var SRC="static/img/thumbnails/lapvideo.mp4";
-var lap=null; document.querySelectorAll(".project-card").forEach(function(c){var n=c.querySelector(".project-name"); if(n&&n.textContent.trim()==="LAP Video") lap=c;});
-if(!lap) return;
-var links=lap.querySelector(".project-links"); var ref=links&&links.querySelector("a"); if(!ref) return;
-var d=document.createElement("dialog"); d.className="demo-dlg"; d.setAttribute("aria-label","Demo de LAP Video");
-var x=document.createElement("button"); x.type="button"; x.className="demo-close"; x.setAttribute("aria-label","Cerrar demo"); x.textContent="\u00d7";
-var v=document.createElement("video"); v.controls=true; v.playsInline=true; v.preload="none";
-d.appendChild(x); d.appendChild(v); document.body.appendChild(d);
-function close(){v.pause(); d.close();}
-x.addEventListener("click",close);
-d.addEventListener("click",function(e){if(e.target===d) close();});
-d.addEventListener("close",function(){v.pause();});
-var b=ref.cloneNode(false); b.setAttribute("href","https://lap-video.onrender.com/"); b.setAttribute("target","_blank"); b.setAttribute("rel","noopener noreferrer"); b.textContent="Ver demo \u2197";
-
-
-
-links.insertBefore(b,links.firstChild);
-})();
-</script>
 <style>/* LAP-FIRST-V1 */
 .evidence-strip > .evidence-card{transform:none !important;opacity:1 !important;}
 .project-card.same-size{display:block !important;min-height:0 !important;}

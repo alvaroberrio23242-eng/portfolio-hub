@@ -248,7 +248,7 @@
       {
         "name": "LAP Video",
         "category": "Product Proof",
-        "status": "Demo en video",
+        "status": "Demo en línea",
         "accent": "teal",
         "tag": "Estudio local de edicion y compresion de video con FFmpeg",
         "description": "Aplicacion web local para editar y comprimir video. Se sube un archivo, se ajustan recorte, velocidad, color y exportacion con una vista previa en vivo, y un procesador FFmpeg en segundo plano genera el MP4 final con progreso en tiempo real.",
@@ -267,6 +267,11 @@
           "Testing"
         ],
         "links": [
+          {
+            "label": "Demo",
+            "href": "https://lap-video.onrender.com/",
+            "available": true
+          },
           {
             "label": "Codigo",
             "href": "https://github.com/alvaroberrio23242-eng/laboratorio-video-ia",

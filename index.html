@@ -570,14 +570,14 @@
         <p class="project-tag">Estudio local de edicion y compresion de video con FFmpeg</p>
       </div>
       <div class="project-links">
-<a class="btn btn-compact" href="https://github.com/alvaroberrio23242-eng/laboratorio-video-ia" target="_blank" rel="noopener noreferrer">Codigo ↗</a>      </div>
+<a class="btn btn-compact" href="https://lap-video.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a><a class="btn btn-compact" href="https://github.com/alvaroberrio23242-eng/laboratorio-video-ia" target="_blank" rel="noopener noreferrer">Codigo ↗</a>      </div>
     </div>
     <div class="project-body">
       <p class="project-desc">Aplicacion web local para editar y comprimir video. Se sube un archivo, se ajustan recorte, velocidad, color y exportacion con una vista previa en vivo, y un procesador FFmpeg en segundo plano genera el MP4 final con progreso en tiempo real.</p>
       <ul class="project-features">
 <li>Recorta, cambia la velocidad y aplica brillo, contraste, saturacion, desenfoque y escala de grises con vista previa en vivo</li><li>Exporta ajustando resolucion, FPS, calidad (CRF) y preset, o comprimiendo a un tamano objetivo en MB</li><li>Procesa en cola con barra de progreso y opcion de cancelar, sin bloquear la interfaz</li><li>Interfaz con carga por arrastrar y soltar, fondo de video y diseno translucido</li><li>Cubierta por 45 pruebas automaticas del backend Flask y del motor de video</li>      </ul>
       <div class="project-tech">
-<span class="case-pill">Python</span><span class="case-pill">Flask</span><span class="case-pill">FFmpeg</span><span class="case-pill">JavaScript</span><span class="case-pill">Testing</span>        <span class="case-pill" style="border-color: var(--teal); color: var(--teal);">Demo en video</span>
+<span class="case-pill">Python</span><span class="case-pill">Flask</span><span class="case-pill">FFmpeg</span><span class="case-pill">JavaScript</span><span class="case-pill">Testing</span>        <span class="case-pill" style="border-color: var(--teal); color: var(--teal);">Demo en línea</span>
       </div>
     </div>
   </article>
@@ -912,33 +912,6 @@ if(!lap) return; lap.classList.add("same-size");
 function sync(){lap.style.minHeight=Math.round(ref.getBoundingClientRect().height)+"px";}
 sync(); window.addEventListener("load",sync); window.addEventListener("resize",sync);
 if("ResizeObserver" in window){new ResizeObserver(sync).observe(ref);}
-})();
-</script>
-<style>/* DEMO-BTN */
-dialog.demo-dlg{border:1px solid rgba(255,255,255,.18);border-radius:14px;background:#0b0d12;padding:0;width:min(900px,92vw);overflow:hidden;color:#fff;}
-dialog.demo-dlg::backdrop{background:rgba(0,0,0,.72);}
-.demo-dlg video{display:block;width:100%;max-height:80vh;background:#000;}
-.demo-dlg .demo-close{position:absolute;top:8px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(11,13,18,.8);color:#fff;font-size:20px;line-height:1;cursor:pointer;}
-</style>
-<script>/* DEMO-BTN */
-(function(){
-var SRC="static/img/thumbnails/lapvideo.mp4";
-var lap=null; document.querySelectorAll(".project-card").forEach(function(c){var n=c.querySelector(".project-name"); if(n&&n.textContent.trim()==="LAP Video") lap=c;});
-if(!lap) return;
-var links=lap.querySelector(".project-links"); var ref=links&&links.querySelector("a"); if(!ref) return;
-var d=document.createElement("dialog"); d.className="demo-dlg"; d.setAttribute("aria-label","Demo de LAP Video");
-var x=document.createElement("button"); x.type="button"; x.className="demo-close"; x.setAttribute("aria-label","Cerrar demo"); x.textContent="\u00d7";
-var v=document.createElement("video"); v.controls=true; v.playsInline=true; v.preload="none";
-d.appendChild(x); d.appendChild(v); document.body.appendChild(d);
-function close(){v.pause(); d.close();}
-x.addEventListener("click",close);
-d.addEventListener("click",function(e){if(e.target===d) close();});
-d.addEventListener("close",function(){v.pause();});
-var b=ref.cloneNode(false); b.setAttribute("href","https://lap-video.onrender.com/"); b.setAttribute("target","_blank"); b.setAttribute("rel","noopener noreferrer"); b.textContent="Ver demo \u2197";
-
-
-
-links.insertBefore(b,links.firstChild);
 })();
 </script>
 <style>/* LAP-FIRST-V1 */
