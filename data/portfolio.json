@@ -478,6 +478,27 @@
         ],
         "links": [],
         "tag": "Auditor estático de repositorios Python/Flask (repo privado)"
+      },
+      {
+        "name": "Portafolio OFF",
+        "category": "Technical Proof",
+        "status": "Demo en línea",
+        "accent": "teal",
+        "description": "Página única que reúne mis proyectos y los portafolios de terceros con su aprobación. Lee sus datos de un archivo JSON y se publica como sitio estático, sin dependencias.",
+        "features": [],
+        "tech": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://portafolio-off.onrender.com",
+            "available": true
+          }
+        ],
+        "tag": "Portafolio de proyectos y perfiles (repo privado)"
       }
     ]
   },
