@@ -450,16 +450,22 @@
       {
         "name": "CodeAudit",
         "category": "Technical Proof",
-        "status": "En desarrollo",
-        "accent": "muted",
-        "description": "Analiza calidad y seguridad de repositorios Python/Flask sin ejecutar el código auditado. Análisis regex/AST en subproceso aislado, rate limiting, caché y rúbrica de severidades A–F.",
+        "status": "Demo en línea",
+        "accent": "teal",
+        "description": "Analiza calidad y seguridad de repositorios Python/Flask sin ejecutar el código auditado. Análisis regex/AST en subproceso aislado, con rate limiting, caché por commit y rúbrica de severidades A–F. Detecta secretos hardcodeados, inyección de comandos y SQL, deserialización insegura, SSRF y configuración débil.",
         "features": [],
         "tech": [
           "Python",
           "Flask",
           "AST"
         ],
-        "links": [],
+        "links": [
+          {
+            "label": "Demo",
+            "href": "https://codeaudit-zxc5.onrender.com",
+            "available": true
+          }
+        ],
         "tag": "Auditor estático de repositorios Python/Flask (repo privado)"
       },
       {
